@@ -152,6 +152,7 @@ const DashboardContent: React.FC = () => {
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         <BackendHealthBanner />
         <Navbar
+          activePage={activePage}
           kpis={(overviewData as { kpis?: unknown } | null)?.kpis}
           onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
           onNavigateAlerts={() => setActivePage('alerts')}
@@ -159,8 +160,8 @@ const DashboardContent: React.FC = () => {
         />
         <GlobalFilterBar />
 
-        <main className="flex-1 overflow-y-auto p-4 sm:p-6 md:p-8 custom-scrollbar">
-          <div className="max-w-7xl mx-auto">
+        <main className="flex-1 overflow-y-auto p-4 sm:p-6 md:p-8 custom-scrollbar space-y-6">
+          <div className="max-w-7xl mx-auto space-y-6">
             <ErrorBoundary key={activePage}>
               {renderPage()}
             </ErrorBoundary>
