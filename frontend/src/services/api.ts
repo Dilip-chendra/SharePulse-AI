@@ -261,12 +261,17 @@ export async function postChatMessage(payload: { message: string; customer_id?: 
 }
 export const sendChatMessage = postChatMessage;
 
+export async function fetchReport() {
+  const res = await safeFetch(`${API_ENDPOINT}/report`);
+  if (!res.ok) throw new Error("Failed to fetch executive report");
+  return res.json();
+}
+
 export async function fetchExecutiveBrief() {
   const res = await safeFetch(`${API_V1_ENDPOINT}/executive-brief`);
   if (!res.ok) throw new Error("Failed to fetch executive brief");
   return res.json();
 }
-export const fetchReport = fetchExecutiveBrief;
 
 // ─── Enterprise API v1 Methods ─────────────────────────────────────────────
 export async function fetchBusinessPulse(horizon: string = "24h") {
