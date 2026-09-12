@@ -1,0 +1,5 @@
+INTERVENTION_ID,NAME,TARGET_COHORT,EXPECTED_RECOVERY_RATE_PCT,EST_INCREMENTAL_HSIC_SPEND_INR,INTERVENTION_COST_PER_USER_INR,EXPECTED_NET_ROI,EXPERIMENT_DESIGN
+NBA_01_PRIME_UNCLAIMED_CASHBACK,Prime Statement Transparency Alert,Prime members with > ₹500 forfeited cashback in past 60 days,18.5,12850000.0,15.0,4.8,"Randomized A/B test on 5,000 Prime accounts (Push + In-App Banner vs Control)"
+NBA_02_BIG_TICKET_POS_FINANCING,0% Merchant Subsidized POS Financing,"Shoppers viewing/purchasing Electronics & Appliances > ₹5,000",14.2,26200000.0,120.0,3.4,Split-checkout test across 20 high-volume MetroMart POS locations
+NBA_03_SILENT_DEFECTOR_REENGAGEMENT,Predictive Trajectory Re-Anchor Voucher,Cardholders flagged by ML model with > 0.70 attrition probability,11.8,8200000.0,85.0,2.9,"Matched-cohort randomized control trial across 4,000 at-risk customers"
+NBA_04_ONE_HIT_REACTIVATION,Second-Swipe Incentive Ladder,Customers with exactly 1 HSIC transaction in past 90 days,9.5,4000000.0,45.0,2.2,Targeted SMS and email voucher series on Day 14 post-first swipe

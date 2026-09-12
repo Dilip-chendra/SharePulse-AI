@@ -1,0 +1,5 @@
+DEFINITION,AFFECTED_CUSTOMERS,AFFECTED_FY26_SPEND_INR,AVG_LOST_SOW_PP,RECOMMENDED_RANK,JUSTIFICATION
+"Definition A: Rate Collapse (FY25 SoW >= 25% -> FY26 SoW < 10%, Spend >= 5k)",3636,55247098.86,80.73,1,Most statistically robust measure of payment displacement among active retail shoppers.
+"Definition B: Hard Cessation (FY25 HSIC > 0 -> FY26 HSIC == 0, Active MetroMart)",5384,56326445.11,55.92,2,Captures complete abandonment of co-brand card while customer remains actively retained by retailer.
+"Definition C: High-Value Velocity Deceleration (Delta_SoW <= -20 pp, Spend >= 10k)",2506,51143844.7,46.49,3,High-ticket focus; protects top decile revenue contributors.
+"Definition D: Recency Gap (No HSIC in 2026, Active MetroMart in 2026)",12043,132580472.27,13.36,4,Useful for immediate operational CRM contact triggers.

@@ -1,0 +1,5 @@
+TABLE,TOTAL_ROWS,UNIQUE_KEYS,NULL_COUNTS,KEY_VALIDATION,DATE_RANGE
+Customer Data.csv,45000,45000,"Open_Date: 6836, Closed_Date: 37336","Customer_ID is 100% unique primary key. 6,836 non-cardholders have null Open_Date.","Static snapshot of 45,000 customers"
+Transactions Data.csv,444118,444118,0 missing values across all required fields,"Transaction_ID is 100% unique. 399,304 Sales, 44,814 Returns.",2024-08-01 to 2026-07-31 (24 full months)
+Category Code.csv,10,10,0,10 unique product categories (1 to 10),N/A
+Payment Code.csv,5,5,0,"5 payment methods (1=Debit, 2=Other CC, 3=HSIC Bank CC, 4=Cash/UPI, 5=Wallet)",N/A

@@ -1,0 +1,4 @@
+Model_Name,ROC_AUC,PR_AUC,F1_Score,Precision,Recall,Brier_Score,Status
+Hist Gradient Boosting (Champion),0.7681,0.4934,0.4266,0.503,0.3703,0.1672,Champion
+Random Forest,0.7704,0.501,0.3566,0.5173,0.2721,0.1672,Benchmark
+Logistic Regression (Baseline),0.6607,0.414,0.1314,0.4673,0.0764,0.1993,Benchmark

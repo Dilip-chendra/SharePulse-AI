@@ -1,0 +1,12 @@
+METRIC,VALUE,NOTES
+Total MetroMart Transactions,"444,118","399,304 Sales, 44,814 Returns"
+Total MetroMart Gross Sales,"₹1,233,257,856.33",Gross transaction ledger sum
+Total MetroMart Returns,"₹139,316,933.90","10.09% return rate by transaction count, 4.8% by value"
+Total MetroMart Net Sales,"₹1,093,940,922.43",Gross Sales minus Returns
+Total Registered Customers,"45,000","38,164 HSIC Cardholders, 6,836 Non-Cardholders"
+Active HSIC Cardholders,"30,500","30,500 currently open, 7,664 closed"
+Cardholder MetroMart Net Spend,"₹650,148,730.08",Net spend within active card tenure
+HSIC Net Spend,"₹154,594,354.68",Spend captured on HSIC co-branded card
+Overall Portfolio SoW,23.78%,Net HSIC Spend / Net Cardholder Spend
+FY25 HSIC SoW,28.91%,Aug 2024 - Jul 2025 Baseline SoW
+FY26 HSIC SoW,19.48%,Aug 2025 - Jul 2026 Declining SoW (-9.43 pp drop)
