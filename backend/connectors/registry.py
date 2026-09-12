@@ -1,3 +1,4 @@
+import os
 """
 Connector Registry and Lifecycle Manager
 Accurately reflects real SQLite database state, live REST gateway status, and external connector standby states.
@@ -21,7 +22,7 @@ class RESTConnector(BaseConnector):
     def test_connection(self) -> Dict[str, Any]:
         return {
             "status": "SUCCESS",
-            "message": "REST Ingestion Gateway listening on http://127.0.0.1:8000/api/v1/events (Ready for POST requests)"
+            "message": f'REST Ingestion Gateway listening on {os.environ.get("RENDER_EXTERNAL_URL", "https://sharepulse-ai.onrender.com")}/api/v1/events (Ready for POST requests)'
         }
 
     def fetch_events(self, limit: int = 100) -> List[Dict[str, Any]]:
