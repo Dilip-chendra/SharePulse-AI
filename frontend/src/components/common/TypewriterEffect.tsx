@@ -13,24 +13,27 @@ export const TypewriterEffect: React.FC<TypewriterEffectProps> = ({
   words,
   prefix = '',
   className = '',
-  typeSpeed = 45,
-  deleteSpeed = 22,
-  delayBetween = 2400
+  typeSpeed = 28,
+  deleteSpeed = 16,
+  delayBetween = 2200
 }) => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
+    if (!words || words.length === 0) return;
     const fullText = words[currentWordIndex];
 
     let timer: ReturnType<typeof setTimeout>;
 
     if (!isDeleting) {
       if (currentText.length < fullText.length) {
+        // First character appears instantaneously (0ms) on load/reset, subsequent characters type briskly
+        const speed = currentText.length === 0 ? 0 : typeSpeed;
         timer = setTimeout(() => {
           setCurrentText(fullText.slice(0, currentText.length + 1));
-        }, typeSpeed + (Math.random() * 20 - 10)); // Natural subtle variance
+        }, speed);
       } else {
         timer = setTimeout(() => {
           setIsDeleting(true);

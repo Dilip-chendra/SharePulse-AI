@@ -245,12 +245,15 @@ export const LandingPage: React.FC = () => {
               See where your customers are going <br className="hidden sm:inline" />
               <TypewriterEffect 
                 words={[
-                  "before your revenue follows.",
                   "before your share of wallet collapses.",
+                  "before your revenue follows.",
                   "before silent defection happens.",
                   "before competitors capture them.",
                   "before margins bleed away."
                 ]}
+                typeSpeed={28}
+                deleteSpeed={16}
+                delayBetween={2200}
                 className="mt-2 block sm:inline"
               />
             </h1>
