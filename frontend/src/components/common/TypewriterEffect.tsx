@@ -13,28 +13,28 @@ export const TypewriterEffect: React.FC<TypewriterEffectProps> = ({
   words,
   prefix = '',
   className = '',
-  typeSpeed = 28,
-  deleteSpeed = 16,
-  delayBetween = 2200
+  typeSpeed = 24,
+  deleteSpeed = 15,
+  delayBetween = 2500
 }) => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [currentText, setCurrentText] = useState('');
+  // Initialize with the full first phrase so the entire headline is 100% visible on first paint
+  const [currentText, setCurrentText] = useState(() => (words && words.length > 0 ? words[0] : ''));
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     if (!words || words.length === 0) return;
-    const fullText = words[currentWordIndex];
+    const fullText = words[currentWordIndex] || '';
 
     let timer: ReturnType<typeof setTimeout>;
 
     if (!isDeleting) {
       if (currentText.length < fullText.length) {
-        // First character appears instantaneously (0ms) on load/reset, subsequent characters type briskly
-        const speed = currentText.length === 0 ? 0 : typeSpeed;
         timer = setTimeout(() => {
           setCurrentText(fullText.slice(0, currentText.length + 1));
-        }, speed);
+        }, typeSpeed);
       } else {
+        // Full word is visible: pause so user can read, then begin delete cycle
         timer = setTimeout(() => {
           setIsDeleting(true);
         }, delayBetween);
@@ -45,6 +45,7 @@ export const TypewriterEffect: React.FC<TypewriterEffectProps> = ({
           setCurrentText(fullText.slice(0, currentText.length - 1));
         }, deleteSpeed);
       } else {
+        // Finished deleting: move to next word and start typing
         setIsDeleting(false);
         setCurrentWordIndex((prev) => (prev + 1) % words.length);
       }
