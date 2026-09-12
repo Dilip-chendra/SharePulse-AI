@@ -23,14 +23,14 @@ async function safeFetch(url: string, options?: RequestInit, retries = 2): Promi
     try {
       const res = await fetch(url, options);
       if (res.status === 503 && attempt < retries) {
-        await new Promise((r) => setTimeout(r, 1500 * (attempt + 1)));
+        await new Promise((r) => setTimeout(r, 2000 * (attempt + 1)));
         continue;
       }
       return res;
     } catch (err: any) {
       lastError = err;
       if (attempt < retries) {
-        await new Promise((r) => setTimeout(r, 1500 * (attempt + 1)));
+        await new Promise((r) => setTimeout(r, 2000 * (attempt + 1)));
       }
     }
   }
@@ -48,7 +48,7 @@ function buildFilterQuery(filters?: FilterParams): string {
   return qStr ? `?${qStr}` : "";
 }
 
-// Case-Study API Methods
+// ─── Case-Study Core Endpoints ─────────────────────────────────────────────
 export async function fetchOverview(filters?: FilterParams) {
   const q = buildFilterQuery(filters);
   const res = await safeFetch(`${API_ENDPOINT}/overview${q}`);
@@ -96,7 +96,7 @@ export async function fetchCustomers(params: {
   if (params.prime && params.prime !== "All") query.append("prime", params.prime);
   if (params.sortBy) query.append("sort_by", params.sortBy);
   if (params.sortOrder) query.append("sort_order", params.sortOrder);
-  
+
   const res = await safeFetch(`${API_ENDPOINT}/customers?${query.toString()}`);
   if (!res.ok) throw new Error("Failed to fetch customer directory");
   return res.json();
@@ -116,14 +116,22 @@ export async function fetchSegmentation(filters?: FilterParams) {
   return res.json();
 }
 
+// FIXED: was /opportunity (404), now /opportunities (correct)
 export async function fetchOpportunity(filters?: FilterParams) {
   const q = buildFilterQuery(filters);
-  const res = await safeFetch(`${API_ENDPOINT}/opportunity${q}`);
+  const res = await safeFetch(`${API_ENDPOINT}/opportunities${q}`);
   if (!res.ok) throw new Error("Failed to fetch opportunity data");
   return res.json();
 }
 export const fetchOpportunities = fetchOpportunity;
-export const fetchNextBestAction = fetchOpportunity;
+
+// FIXED: was /opportunity (same as above), now /next-best-action (correct)
+export async function fetchNextBestAction(filters?: FilterParams) {
+  const q = buildFilterQuery(filters);
+  const res = await safeFetch(`${API_ENDPOINT}/next-best-action${q}`);
+  if (!res.ok) throw new Error("Failed to fetch next best action data");
+  return res.json();
+}
 
 export async function fetchReturnAnalysis(filters?: FilterParams) {
   const q = buildFilterQuery(filters);
@@ -152,46 +160,78 @@ export async function fetchSurvival(filters?: FilterParams) {
   if (!res.ok) throw new Error("Failed to fetch survival analysis");
   return res.json();
 }
-export const fetchExplainability = fetchSurvival;
 
+// FIXED: was mapped to fetchSurvival (/survival), now calls /explainability (correct)
+export async function fetchExplainability(filters?: FilterParams) {
+  const q = buildFilterQuery(filters);
+  const res = await safeFetch(`${API_ENDPOINT}/explainability${q}`);
+  if (!res.ok) {
+    // Graceful fallback to survival for older data
+    return fetchSurvival(filters);
+  }
+  return res.json();
+}
+
+// FIXED: was /margin-bleed (404), now /leakage (correct)
 export async function fetchMarginBleed(filters?: FilterParams) {
   const q = buildFilterQuery(filters);
-  const res = await safeFetch(`${API_ENDPOINT}/margin-bleed${q}`);
-  if (!res.ok) throw new Error("Failed to fetch margin bleed data");
+  const res = await safeFetch(`${API_ENDPOINT}/leakage${q}`);
+  if (!res.ok) throw new Error("Failed to fetch leakage data");
   return res.json();
 }
 export const fetchLeakage = fetchMarginBleed;
 
+// FIXED: was /ai-discovery (404), now /insights (correct)
 export async function fetchAIDiscovery(filters?: FilterParams) {
   const q = buildFilterQuery(filters);
-  const res = await safeFetch(`${API_ENDPOINT}/ai-discovery${q}`);
+  const res = await safeFetch(`${API_ENDPOINT}/insights${q}`);
   if (!res.ok) throw new Error("Failed to fetch AI discovered insights");
   return res.json();
 }
 export const fetchInsights = fetchAIDiscovery;
 
+// FIXED: was /dataset/summary (404), now /datasets (correct)
 export async function fetchDatasetSummary() {
-  const res = await safeFetch(`${API_ENDPOINT}/dataset/summary`);
+  const res = await safeFetch(`${API_ENDPOINT}/datasets`);
   if (!res.ok) throw new Error("Failed to fetch dataset summary");
   return res.json();
 }
 
+// FIXED: was /governance/audit (404), now /governance (correct)
 export async function fetchGovernanceAudit(filters?: FilterParams) {
   const q = buildFilterQuery(filters);
-  const res = await safeFetch(`${API_ENDPOINT}/governance/audit${q}`);
+  const res = await safeFetch(`${API_ENDPOINT}/governance${q}`);
   if (!res.ok) throw new Error("Failed to fetch governance audit");
   return res.json();
 }
 export const fetchGovernance = fetchGovernanceAudit;
 
+// ADDED: /filters endpoint for GlobalFilterBar dynamic population
 export async function fetchFilters() {
   const res = await safeFetch(`${API_ENDPOINT}/filters`);
-  if (!res.ok) throw new Error("Failed to fetch filter options");
+  if (!res.ok) {
+    // Return sensible defaults if filters endpoint unavailable
+    return {
+      fiscal_years: ["All", "FY25", "FY26"],
+      memberships: ["All", "Prime", "Non-Prime"],
+      categories: ["All", "Grocery", "Electronics", "Large Appliances", "Furniture",
+                   "Travel", "Apparel", "Outdoor", "Kids And Toys", "Beauty", "Bill Payments"],
+      segments: [
+        "All",
+        "MetroMart Wallet Dominant Shoppers",
+        "High-Value Multi-Channel Shoppers",
+        "HSIC Core Loyalists",
+        "Cash & UPI Transactors",
+        "Dormant & Low-Engagement Shoppers"
+      ]
+    };
+  }
   return res.json();
 }
 
+// FIXED: was /strategy/simulate (404), now /simulation (correct)
 export async function simulateStrategy(payload: any) {
-  const res = await safeFetch(`${API_ENDPOINT}/strategy/simulate`, {
+  const res = await safeFetch(`${API_ENDPOINT}/simulation`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
@@ -211,7 +251,7 @@ export async function fetchExperiments(filters?: FilterParams) {
 }
 
 export async function postChatMessage(payload: { message: string; customer_id?: number }) {
-  const res = await safeFetch(`${API_ENDPOINT}/ai/chat`, {
+  const res = await safeFetch(`${API_ENDPOINT}/chat`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
@@ -228,7 +268,7 @@ export async function fetchExecutiveBrief() {
 }
 export const fetchReport = fetchExecutiveBrief;
 
-// Enterprise API v1 Methods
+// ─── Enterprise API v1 Methods ─────────────────────────────────────────────
 export async function fetchBusinessPulse(horizon: string = "24h") {
   const res = await safeFetch(`${API_V1_ENDPOINT}/business-pulse?horizon=${horizon}`);
   if (!res.ok) throw new Error("Failed to fetch business pulse");
@@ -378,12 +418,16 @@ export async function fetchDeadLetterQueue() {
 }
 
 export async function fetchLiveThroughput() {
-  const res = await fetchBusinessPulse('live');
-  return {
-    total_events: res?.kpis?.live_event_count || 184920,
-    events_per_second: res?.kpis?.events_per_second || 142.6,
-    p99_latency_ms: res?.kpis?.p99_latency_ms || 1.2
-  };
+  try {
+    const res = await fetchBusinessPulse("live");
+    return {
+      total_events: res?.kpis?.live_event_count || 0,
+      events_per_second: res?.kpis?.events_per_second || 0,
+      p99_latency_ms: res?.kpis?.p99_latency_ms || 0
+    };
+  } catch {
+    return { total_events: 0, events_per_second: 0, p99_latency_ms: 0 };
+  }
 }
 
 export async function fetchLiveStreamTelemetry() {

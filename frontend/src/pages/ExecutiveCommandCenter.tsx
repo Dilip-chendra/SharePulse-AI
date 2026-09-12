@@ -226,7 +226,7 @@ export const ExecutiveCommandCenter: React.FC<Props> = ({ overviewData, setActiv
             <h3 className="text-sm font-bold text-white">Top Discovered Empirical Breakthroughs</h3>
           </div>
           <button
-            onClick={() => setActivePage("insights")}
+            onClick={() => setActivePage("ai-discovery")}
             className="text-xs text-brand-400 hover:text-brand-300 font-semibold flex items-center cursor-pointer"
           >
             Explore All Insights ({top_insights.length}) <ArrowRight className="w-3.5 h-3.5 ml-1" />

@@ -90,6 +90,42 @@ def system_status():
         "timestamp": datetime.now().isoformat(),
     }
 
+
+# ─── Global Filter Options ────────────────────────────────────────────────────
+@router.get("/filters")
+def get_filter_options():
+    """Returns available filter option values derived from the active dataset."""
+    cache = get_cache()
+    sow = cache.get("sow", {})
+    seg = cache.get("segmentation", {})
+    
+    categories = ["All"] + sorted(set(
+        c.get("category", "") for c in sow.get("category_breakdown", [])
+        if c.get("category")
+    ))
+    
+    segment_names = ["All"] + sorted(set(
+        s.get("segment_name", s.get("name", "")) for s in seg.get("segments", [])
+        if s.get("segment_name") or s.get("name")
+    ))
+    
+    return {
+        "fiscal_years": ["All", "FY25", "FY26"],
+        "memberships": ["All", "Prime", "Non-Prime"],
+        "categories": categories if len(categories) > 1 else [
+            "All", "Grocery", "Electronics", "Large Appliances", "Furniture",
+            "Travel", "Apparel", "Outdoor", "Kids And Toys", "Beauty", "Bill Payments"
+        ],
+        "segments": segment_names if len(segment_names) > 1 else [
+            "All",
+            "MetroMart Wallet Dominant Shoppers",
+            "High-Value Multi-Channel Shoppers",
+            "HSIC Core Loyalists",
+            "Cash & UPI Transactors",
+            "Dormant & Low-Engagement Shoppers"
+        ]
+    }
+
 def compute_filtered_overview(
     fiscal_year: Optional[str] = "All",
     membership: Optional[str] = "All",

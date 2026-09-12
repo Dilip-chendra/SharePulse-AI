@@ -15,7 +15,7 @@ import {
   Wallet,
   Clock
 } from 'lucide-react';
-import { fetchLiveStreamTelemetry, clearLiveStreamDatabase, generateLiveStreamTraffic } from '../services/api';
+import { fetchLiveStreamTelemetry, clearLiveStreamDatabase, generateLiveStreamTraffic, API_V1_ENDPOINT } from '../services/api';
 
 export const BusinessPulse: React.FC = () => {
   const [data, setData] = useState<any>(null);
@@ -281,7 +281,7 @@ export const BusinessPulse: React.FC = () => {
               <Server className="w-8 h-8 text-slate-600 mx-auto" />
               <div className="text-sm font-semibold text-slate-300">Live Ingestion Gateway is Idle</div>
               <p className="text-xs text-slate-500 max-w-md mx-auto">
-                No external transactions have been streamed yet in this session. Click <strong className="text-emerald-400">"Start Live Traffic Stream"</strong> above or send a POST request to <code className="text-indigo-300 font-mono">http://127.0.0.1:8000/api/v1/events</code> to see live events stream here.
+                No external transactions have been streamed yet in this session. Click <strong className="text-emerald-400">"Start Live Traffic Stream"</strong> above or send a POST request to <code className="text-indigo-300 font-mono">{API_V1_ENDPOINT}/events</code> to see live events stream here.
               </p>
             </div>
           ) : (
@@ -376,7 +376,7 @@ export const BusinessPulse: React.FC = () => {
 
           <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-[11px] text-slate-400 space-y-1 mt-4">
             <div className="font-semibold text-slate-200">How to stream directly:</div>
-            <div>Send JSON to <code className="text-cyan-300 font-mono">POST /api/v1/events</code> with <code className="text-cyan-300 font-mono">customer_id</code> and <code className="text-cyan-300 font-mono">amount</code>.</div>
+            <div>Send JSON to <code className="text-cyan-300 font-mono">POST {API_V1_ENDPOINT}/events</code> with <code className="text-cyan-300 font-mono">customer_id</code> and <code className="text-cyan-300 font-mono">amount</code>.</div>
           </div>
         </div>
       </div>

@@ -327,7 +327,7 @@ async def get_live_stream_metrics():
         "active_incidents": active_incidents,
         "recent_events": recent_events,
         "payment_breakdown": payment_breakdown,
-        "gateway_endpoint": "http://127.0.0.1:8000/api/v1/events"
+        "gateway_endpoint": f'{os.environ.get("RENDER_EXTERNAL_URL", "https://sharepulse-ai.onrender.com")}/api/v1/events'
     }
 
 @router.post("/live-stream/clear")
