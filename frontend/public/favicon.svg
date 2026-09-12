@@ -1,40 +1,33 @@
-<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" width="48" height="48">
   <defs>
-    <linearGradient id="sp-fav-prim" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stopColor="#818CF8" />
-      <stop offset="45%" stopColor="#06B6D4" />
-      <stop offset="100%" stopColor="#10B981" />
+    <linearGradient id="f-tile" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#0D1224"/>
+      <stop offset="100%" stop-color="#060A14"/>
     </linearGradient>
-    <linearGradient id="sp-fav-count" x1="44" y1="4" x2="4" y2="44" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stopColor="#38BDF8" />
-      <stop offset="50%" stopColor="#6366F1" />
-      <stop offset="100%" stopColor="#A855F7" />
+    <linearGradient id="f-wave" x1="6" y1="24" x2="42" y2="24" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#6366F1"/>
+      <stop offset="55%"  stop-color="#22D3EE"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
     </linearGradient>
-    <linearGradient id="sp-fav-bg" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stopColor="#0A0E1A" />
-      <stop offset="100%" stopColor="#04060B" />
-    </linearGradient>
-    <linearGradient id="sp-fav-rim" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.45" />
-      <stop offset="50%" stopColor="#06B6D4" stopOpacity="0.6" />
-      <stop offset="100%" stopColor="#10B981" stopOpacity="0.3" />
-    </linearGradient>
+    <filter id="f-glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
   </defs>
 
-  <!-- Faceted Hex-Shield Base -->
-  <path d="M24 3L43 10V25C43 35.5 35 43.5 24 46C13 43.5 5 35.5 5 25V10L24 3Z" fill="url(#sp-fav-bg)" stroke="url(#sp-fav-rim)" stroke-width="2" stroke-linejoin="round" />
+  <!-- Rounded-square dark tile -->
+  <rect x="2" y="2" width="44" height="44" rx="11"
+        fill="url(#f-tile)"
+        stroke="rgba(99,102,241,0.25)" stroke-width="1.2"/>
 
-  <!-- SOW Pulse Wave Stream -->
-  <path d="M13 22C13 16 18 13.5 23 14C27.5 14.5 31 17.5 34 21C36.5 24 37 28 35 32C33 36 28 37 24 36.5C18.5 35.8 14 31 14 26" stroke="url(#sp-fav-prim)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
+  <!-- Pulse waveform -->
+  <path d="M6 28 L14 28 C15.5 28 16 29 17 33 C18 37 18.5 37 19 34 L22 13 C22.5 10.5 23 9.5 24 9.5 C25 9.5 25.5 10.5 26 13 L28.5 34 C29 37 29.5 37 30.5 33 C31.5 29 32 28 33 28 L42 28"
+        stroke="url(#f-wave)"
+        stroke-width="2.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
 
-  <!-- Inner Flow Trajectory -->
-  <path d="M35 26C35 21 31 18 27 18C23 18 19 21 16 25C14 28 14 31 16 33C18 35 22 35 25 33C29 30.5 34 26 35 21" stroke="url(#sp-fav-count)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" />
-
-  <!-- Apex Catalyst Core -->
-  <path d="M24 19L28 24L24 29L20 24L24 19Z" fill="#FFFFFF" />
-  <circle cx="24" cy="24" r="2" fill="#06B6D4" />
-
-  <!-- Telemetry Nodes -->
-  <circle cx="16" cy="18" r="1.8" fill="#818CF8" />
-  <circle cx="32" cy="30" r="1.8" fill="#10B981" />
+  <!-- Glowing apex node -->
+  <circle cx="24" cy="9.5" r="2.8" fill="#22D3EE" filter="url(#f-glow)"/>
+  <circle cx="24" cy="9.5" r="1.4" fill="#FFFFFF"/>
 </svg>
