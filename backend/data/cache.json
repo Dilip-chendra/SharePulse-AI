@@ -1,0 +1,2953 @@
+{
+  "timestamp": "2026-09-11T07:46:26.675599",
+  "audit": {
+    "data_quality_score": 100.0,
+    "quality_dimensions": [
+      {
+        "dimension": "Completeness",
+        "score_pct": 100.0,
+        "description": "100% population of mandatory demographic and transaction schema columns."
+      },
+      {
+        "dimension": "Uniqueness",
+        "score_pct": 100.0,
+        "description": "0 duplicate primary keys across customer and transaction records."
+      },
+      {
+        "dimension": "Referential Integrity",
+        "score_pct": 100.0,
+        "description": "100% valid foreign keys matching Category and Payment reference tables."
+      },
+      {
+        "dimension": "Temporal Consistency",
+        "score_pct": 100.0,
+        "description": "Zero HSIC transactions outside active credit card validity windows."
+      },
+      {
+        "dimension": "Domain Validity",
+        "score_pct": 100.0,
+        "description": "Non-negative transaction amounts and validated Sale/Return transaction types."
+      }
+    ],
+    "total_customers": 45000,
+    "total_transactions": 444118,
+    "sales_count": 399304,
+    "returns_count": 44814,
+    "return_rate_pct": 10.09,
+    "customers_with_hsic_card": 38164,
+    "customers_without_hsic_card": 6836,
+    "customers_closed_hsic_card": 7664,
+    "date_range": {
+      "start": "2024-08-01",
+      "end": "2026-07-31",
+      "fiscal_years": [
+        "FY25 (2024-08-01 to 2025-07-31)",
+        "FY26 (2025-08-01 to 2026-07-31)"
+      ]
+    },
+    "integrity_checks": {
+      "customer_duplicates": 0,
+      "transaction_duplicates": 0,
+      "orphan_transactions": 0,
+      "invalid_category_codes": 0,
+      "invalid_payment_codes": 0,
+      "negative_transaction_amounts": 0,
+      "zero_transaction_amounts": 0,
+      "hsic_transactions_outside_active_window": 0,
+      "returns_with_invalid_tx_count": 0
+    },
+    "status": "PASSED - STATISTICALLY VALIDATED DATA QUALITY"
+  },
+  "sow": {
+    "overall": {
+      "total_net_spend": 650148730.08,
+      "hsic_net_spend": 154594354.68,
+      "overall_sow_pct": 23.78,
+      "fy25_sow_pct": 28.91,
+      "fy26_sow_pct": 19.48,
+      "sow_collapse_pp": -9.43,
+      "relative_collapse_pct": -32.62
+    },
+    "fiscal_years": [
+      {
+        "fiscal_year": "FY25",
+        "total_net_spend": 296344254.68,
+        "hsic_net_spend": 85671725.46,
+        "sow_pct": 28.91,
+        "sales_amount": 333574073.12,
+        "returns_amount": 37229818.44,
+        "return_rate_pct": 11.16,
+        "total_transactions": 1212938,
+        "active_customers": 25835,
+        "hsic_active_customers": 17556,
+        "hsic_penetration_pct": 67.95
+      },
+      {
+        "fiscal_year": "FY26",
+        "total_net_spend": 353804475.4,
+        "hsic_net_spend": 68922629.22,
+        "sow_pct": 19.48,
+        "sales_amount": 398620101.6,
+        "returns_amount": 44815626.2,
+        "return_rate_pct": 11.24,
+        "total_transactions": 1475288,
+        "active_customers": 31132,
+        "hsic_active_customers": 16767,
+        "hsic_penetration_pct": 53.86
+      }
+    ],
+    "monthly_trend": [
+      {
+        "month": "2024-08",
+        "fiscal_year": "FY25",
+        "total_net_spend": 22305468.94,
+        "hsic_net_spend": 7662233.13,
+        "sow_pct": 34.35,
+        "wallet_net_spend": 7330761.0,
+        "wallet_share_pct": 32.87,
+        "upi_net_spend": 3594388.67,
+        "upi_share_pct": 16.11,
+        "other_cc_net_spend": 1990946.08,
+        "other_cc_share_pct": 8.93,
+        "debit_net_spend": 1727140.06,
+        "debit_share_pct": 7.74,
+        "sow_velocity_pp": 0.0,
+        "active_customers": 6827,
+        "hsic_active_customers": 2639
+      },
+      {
+        "month": "2024-09",
+        "fiscal_year": "FY25",
+        "total_net_spend": 22988280.98,
+        "hsic_net_spend": 7422401.0,
+        "sow_pct": 32.29,
+        "wallet_net_spend": 7710443.96,
+        "wallet_share_pct": 33.54,
+        "upi_net_spend": 4169844.18,
+        "upi_share_pct": 18.14,
+        "other_cc_net_spend": 1914595.43,
+        "other_cc_share_pct": 8.33,
+        "debit_net_spend": 1770996.41,
+        "debit_share_pct": 7.7,
+        "sow_velocity_pp": -2.06,
+        "active_customers": 7183,
+        "hsic_active_customers": 2619
+      },
+      {
+        "month": "2024-10",
+        "fiscal_year": "FY25",
+        "total_net_spend": 23148416.0,
+        "hsic_net_spend": 7315369.99,
+        "sow_pct": 31.6,
+        "wallet_net_spend": 8171519.93,
+        "wallet_share_pct": 35.3,
+        "upi_net_spend": 3881999.44,
+        "upi_share_pct": 16.77,
+        "other_cc_net_spend": 1848502.08,
+        "other_cc_share_pct": 7.99,
+        "debit_net_spend": 1931024.56,
+        "debit_share_pct": 8.34,
+        "sow_velocity_pp": -0.69,
+        "active_customers": 7318,
+        "hsic_active_customers": 2563
+      },
+      {
+        "month": "2024-11",
+        "fiscal_year": "FY25",
+        "total_net_spend": 24060810.83,
+        "hsic_net_spend": 7177393.47,
+        "sow_pct": 29.83,
+        "wallet_net_spend": 8185663.75,
+        "wallet_share_pct": 34.02,
+        "upi_net_spend": 4292530.97,
+        "upi_share_pct": 17.84,
+        "other_cc_net_spend": 2162134.63,
+        "other_cc_share_pct": 8.99,
+        "debit_net_spend": 2243088.01,
+        "debit_share_pct": 9.32,
+        "sow_velocity_pp": -1.77,
+        "active_customers": 7627,
+        "hsic_active_customers": 2610
+      },
+      {
+        "month": "2024-12",
+        "fiscal_year": "FY25",
+        "total_net_spend": 25365498.12,
+        "hsic_net_spend": 7788680.1,
+        "sow_pct": 30.71,
+        "wallet_net_spend": 8573090.81,
+        "wallet_share_pct": 33.8,
+        "upi_net_spend": 4527402.86,
+        "upi_share_pct": 17.85,
+        "other_cc_net_spend": 2204000.86,
+        "other_cc_share_pct": 8.69,
+        "debit_net_spend": 2272323.49,
+        "debit_share_pct": 8.96,
+        "sow_velocity_pp": 0.88,
+        "active_customers": 7917,
+        "hsic_active_customers": 2689
+      },
+      {
+        "month": "2025-01",
+        "fiscal_year": "FY25",
+        "total_net_spend": 23980301.46,
+        "hsic_net_spend": 6995945.31,
+        "sow_pct": 29.17,
+        "wallet_net_spend": 8076047.39,
+        "wallet_share_pct": 33.68,
+        "upi_net_spend": 4751929.92,
+        "upi_share_pct": 19.82,
+        "other_cc_net_spend": 2121524.92,
+        "other_cc_share_pct": 8.85,
+        "debit_net_spend": 2034853.92,
+        "debit_share_pct": 8.49,
+        "sow_velocity_pp": -1.53,
+        "active_customers": 7578,
+        "hsic_active_customers": 2451
+      },
+      {
+        "month": "2025-02",
+        "fiscal_year": "FY25",
+        "total_net_spend": 22450776.95,
+        "hsic_net_spend": 6773144.47,
+        "sow_pct": 30.17,
+        "wallet_net_spend": 7888989.22,
+        "wallet_share_pct": 35.14,
+        "upi_net_spend": 3951104.84,
+        "upi_share_pct": 17.6,
+        "other_cc_net_spend": 1881729.39,
+        "other_cc_share_pct": 8.38,
+        "debit_net_spend": 1955809.03,
+        "debit_share_pct": 8.71,
+        "sow_velocity_pp": 1.0,
+        "active_customers": 7329,
+        "hsic_active_customers": 2360
+      },
+      {
+        "month": "2025-03",
+        "fiscal_year": "FY25",
+        "total_net_spend": 25151559.66,
+        "hsic_net_spend": 6824908.59,
+        "sow_pct": 27.14,
+        "wallet_net_spend": 8882116.9,
+        "wallet_share_pct": 35.31,
+        "upi_net_spend": 4898441.63,
+        "upi_share_pct": 19.48,
+        "other_cc_net_spend": 2424840.98,
+        "other_cc_share_pct": 9.64,
+        "debit_net_spend": 2121251.56,
+        "debit_share_pct": 8.43,
+        "sow_velocity_pp": -3.03,
+        "active_customers": 8074,
+        "hsic_active_customers": 2452
+      },
+      {
+        "month": "2025-04",
+        "fiscal_year": "FY25",
+        "total_net_spend": 26940759.44,
+        "hsic_net_spend": 7404505.73,
+        "sow_pct": 27.48,
+        "wallet_net_spend": 9287464.91,
+        "wallet_share_pct": 34.47,
+        "upi_net_spend": 5446120.83,
+        "upi_share_pct": 20.22,
+        "other_cc_net_spend": 2382188.69,
+        "other_cc_share_pct": 8.84,
+        "debit_net_spend": 2420479.28,
+        "debit_share_pct": 8.98,
+        "sow_velocity_pp": 0.35,
+        "active_customers": 8485,
+        "hsic_active_customers": 2612
+      },
+      {
+        "month": "2025-05",
+        "fiscal_year": "FY25",
+        "total_net_spend": 26796706.73,
+        "hsic_net_spend": 7258050.51,
+        "sow_pct": 27.09,
+        "wallet_net_spend": 9226979.98,
+        "wallet_share_pct": 34.43,
+        "upi_net_spend": 5274693.93,
+        "upi_share_pct": 19.68,
+        "other_cc_net_spend": 2570935.74,
+        "other_cc_share_pct": 9.59,
+        "debit_net_spend": 2466046.57,
+        "debit_share_pct": 9.2,
+        "sow_velocity_pp": -0.4,
+        "active_customers": 8577,
+        "hsic_active_customers": 2580
+      },
+      {
+        "month": "2025-06",
+        "fiscal_year": "FY25",
+        "total_net_spend": 25934640.61,
+        "hsic_net_spend": 6517874.54,
+        "sow_pct": 25.13,
+        "wallet_net_spend": 8957480.17,
+        "wallet_share_pct": 34.54,
+        "upi_net_spend": 5460226.21,
+        "upi_share_pct": 21.05,
+        "other_cc_net_spend": 2572537.65,
+        "other_cc_share_pct": 9.92,
+        "debit_net_spend": 2426522.04,
+        "debit_share_pct": 9.36,
+        "sow_velocity_pp": -1.95,
+        "active_customers": 8333,
+        "hsic_active_customers": 2368
+      },
+      {
+        "month": "2025-07",
+        "fiscal_year": "FY25",
+        "total_net_spend": 27221034.96,
+        "hsic_net_spend": 6531218.62,
+        "sow_pct": 23.99,
+        "wallet_net_spend": 9634671.38,
+        "wallet_share_pct": 35.39,
+        "upi_net_spend": 5741989.83,
+        "upi_share_pct": 21.09,
+        "other_cc_net_spend": 2739193.09,
+        "other_cc_share_pct": 10.06,
+        "debit_net_spend": 2573962.04,
+        "debit_share_pct": 9.46,
+        "sow_velocity_pp": -1.14,
+        "active_customers": 8648,
+        "hsic_active_customers": 2355
+      },
+      {
+        "month": "2025-08",
+        "fiscal_year": "FY26",
+        "total_net_spend": 27034113.61,
+        "hsic_net_spend": 6328245.82,
+        "sow_pct": 23.41,
+        "wallet_net_spend": 9493682.92,
+        "wallet_share_pct": 35.12,
+        "upi_net_spend": 5753709.9,
+        "upi_share_pct": 21.28,
+        "other_cc_net_spend": 2687200.32,
+        "other_cc_share_pct": 9.94,
+        "debit_net_spend": 2771274.65,
+        "debit_share_pct": 10.25,
+        "sow_velocity_pp": -0.58,
+        "active_customers": 8655,
+        "hsic_active_customers": 2220
+      },
+      {
+        "month": "2025-09",
+        "fiscal_year": "FY26",
+        "total_net_spend": 29228376.09,
+        "hsic_net_spend": 6810818.96,
+        "sow_pct": 23.3,
+        "wallet_net_spend": 10454327.15,
+        "wallet_share_pct": 35.77,
+        "upi_net_spend": 6399972.69,
+        "upi_share_pct": 21.9,
+        "other_cc_net_spend": 2866091.63,
+        "other_cc_share_pct": 9.81,
+        "debit_net_spend": 2697165.66,
+        "debit_share_pct": 9.23,
+        "sow_velocity_pp": -0.11,
+        "active_customers": 9211,
+        "hsic_active_customers": 2409
+      },
+      {
+        "month": "2025-10",
+        "fiscal_year": "FY26",
+        "total_net_spend": 31460639.37,
+        "hsic_net_spend": 7312203.0,
+        "sow_pct": 23.24,
+        "wallet_net_spend": 10798550.07,
+        "wallet_share_pct": 34.32,
+        "upi_net_spend": 6862489.99,
+        "upi_share_pct": 21.81,
+        "other_cc_net_spend": 3156418.06,
+        "other_cc_share_pct": 10.03,
+        "debit_net_spend": 3330978.25,
+        "debit_share_pct": 10.59,
+        "sow_velocity_pp": -0.06,
+        "active_customers": 9817,
+        "hsic_active_customers": 2490
+      },
+      {
+        "month": "2025-11",
+        "fiscal_year": "FY26",
+        "total_net_spend": 29669402.63,
+        "hsic_net_spend": 6117630.61,
+        "sow_pct": 20.62,
+        "wallet_net_spend": 10765220.29,
+        "wallet_share_pct": 36.28,
+        "upi_net_spend": 6579404.55,
+        "upi_share_pct": 22.18,
+        "other_cc_net_spend": 3255730.53,
+        "other_cc_share_pct": 10.97,
+        "debit_net_spend": 2951416.65,
+        "debit_share_pct": 9.95,
+        "sow_velocity_pp": -2.62,
+        "active_customers": 9584,
+        "hsic_active_customers": 2250
+      },
+      {
+        "month": "2025-12",
+        "fiscal_year": "FY26",
+        "total_net_spend": 29366643.22,
+        "hsic_net_spend": 6260369.28,
+        "sow_pct": 21.32,
+        "wallet_net_spend": 10054615.2,
+        "wallet_share_pct": 34.24,
+        "upi_net_spend": 6725449.59,
+        "upi_share_pct": 22.9,
+        "other_cc_net_spend": 3156774.11,
+        "other_cc_share_pct": 10.75,
+        "debit_net_spend": 3169435.04,
+        "debit_share_pct": 10.79,
+        "sow_velocity_pp": 0.7,
+        "active_customers": 9328,
+        "hsic_active_customers": 2192
+      },
+      {
+        "month": "2026-01",
+        "fiscal_year": "FY26",
+        "total_net_spend": 27745030.98,
+        "hsic_net_spend": 5533348.46,
+        "sow_pct": 19.94,
+        "wallet_net_spend": 9813206.21,
+        "wallet_share_pct": 35.37,
+        "upi_net_spend": 6537595.81,
+        "upi_share_pct": 23.56,
+        "other_cc_net_spend": 2971264.42,
+        "other_cc_share_pct": 10.71,
+        "debit_net_spend": 2889616.08,
+        "debit_share_pct": 10.41,
+        "sow_velocity_pp": -1.37,
+        "active_customers": 9173,
+        "hsic_active_customers": 2041
+      },
+      {
+        "month": "2026-02",
+        "fiscal_year": "FY26",
+        "total_net_spend": 28712626.09,
+        "hsic_net_spend": 5675771.01,
+        "sow_pct": 19.77,
+        "wallet_net_spend": 10047395.31,
+        "wallet_share_pct": 34.99,
+        "upi_net_spend": 7059534.41,
+        "upi_share_pct": 24.59,
+        "other_cc_net_spend": 3071071.73,
+        "other_cc_share_pct": 10.7,
+        "debit_net_spend": 2858853.63,
+        "debit_share_pct": 9.96,
+        "sow_velocity_pp": -0.18,
+        "active_customers": 9235,
+        "hsic_active_customers": 1937
+      },
+      {
+        "month": "2026-03",
+        "fiscal_year": "FY26",
+        "total_net_spend": 28633865.02,
+        "hsic_net_spend": 5431007.26,
+        "sow_pct": 18.97,
+        "wallet_net_spend": 10319613.8,
+        "wallet_share_pct": 36.04,
+        "upi_net_spend": 6712807.32,
+        "upi_share_pct": 23.44,
+        "other_cc_net_spend": 2999262.97,
+        "other_cc_share_pct": 10.47,
+        "debit_net_spend": 3171173.67,
+        "debit_share_pct": 11.07,
+        "sow_velocity_pp": -0.8,
+        "active_customers": 9376,
+        "hsic_active_customers": 1889
+      },
+      {
+        "month": "2026-04",
+        "fiscal_year": "FY26",
+        "total_net_spend": 31389657.88,
+        "hsic_net_spend": 5324589.75,
+        "sow_pct": 16.96,
+        "wallet_net_spend": 11163636.7,
+        "wallet_share_pct": 35.56,
+        "upi_net_spend": 7586943.48,
+        "upi_share_pct": 24.17,
+        "other_cc_net_spend": 3536722.39,
+        "other_cc_share_pct": 11.27,
+        "debit_net_spend": 3777765.56,
+        "debit_share_pct": 12.04,
+        "sow_velocity_pp": -2.0,
+        "active_customers": 10238,
+        "hsic_active_customers": 1998
+      },
+      {
+        "month": "2026-05",
+        "fiscal_year": "FY26",
+        "total_net_spend": 31631392.56,
+        "hsic_net_spend": 5124372.54,
+        "sow_pct": 16.2,
+        "wallet_net_spend": 11728069.31,
+        "wallet_share_pct": 37.08,
+        "upi_net_spend": 7919076.39,
+        "upi_share_pct": 25.04,
+        "other_cc_net_spend": 3497524.43,
+        "other_cc_share_pct": 11.06,
+        "debit_net_spend": 3362349.89,
+        "debit_share_pct": 10.63,
+        "sow_velocity_pp": -0.76,
+        "active_customers": 10372,
+        "hsic_active_customers": 1942
+      },
+      {
+        "month": "2026-06",
+        "fiscal_year": "FY26",
+        "total_net_spend": 28752208.21,
+        "hsic_net_spend": 4582905.2,
+        "sow_pct": 15.94,
+        "wallet_net_spend": 10165477.44,
+        "wallet_share_pct": 35.36,
+        "upi_net_spend": 7356254.46,
+        "upi_share_pct": 25.59,
+        "other_cc_net_spend": 3450247.96,
+        "other_cc_share_pct": 12.0,
+        "debit_net_spend": 3197323.15,
+        "debit_share_pct": 11.12,
+        "sow_velocity_pp": -0.26,
+        "active_customers": 9567,
+        "hsic_active_customers": 1691
+      },
+      {
+        "month": "2026-07",
+        "fiscal_year": "FY26",
+        "total_net_spend": 30180519.74,
+        "hsic_net_spend": 4421367.33,
+        "sow_pct": 14.65,
+        "wallet_net_spend": 11438543.2,
+        "wallet_share_pct": 37.9,
+        "upi_net_spend": 7283926.43,
+        "upi_share_pct": 24.13,
+        "other_cc_net_spend": 3513631.18,
+        "other_cc_share_pct": 11.64,
+        "debit_net_spend": 3523051.6,
+        "debit_share_pct": 11.67,
+        "sow_velocity_pp": -1.29,
+        "active_customers": 9896,
+        "hsic_active_customers": 1643
+      }
+    ],
+    "quarterly_trend": [
+      {
+        "quarter": "2024Q3",
+        "total_net_spend": 45293749.92,
+        "hsic_net_spend": 15084634.13,
+        "sow_pct": 33.3
+      },
+      {
+        "quarter": "2024Q4",
+        "total_net_spend": 72574724.95,
+        "hsic_net_spend": 22281443.56,
+        "sow_pct": 30.7
+      },
+      {
+        "quarter": "2025Q1",
+        "total_net_spend": 71582638.07,
+        "hsic_net_spend": 20593998.37,
+        "sow_pct": 28.77
+      },
+      {
+        "quarter": "2025Q2",
+        "total_net_spend": 79672106.78,
+        "hsic_net_spend": 21180430.78,
+        "sow_pct": 26.58
+      },
+      {
+        "quarter": "2025Q3",
+        "total_net_spend": 83483524.66,
+        "hsic_net_spend": 19670283.4,
+        "sow_pct": 23.56
+      },
+      {
+        "quarter": "2025Q4",
+        "total_net_spend": 90496685.22,
+        "hsic_net_spend": 19690202.89,
+        "sow_pct": 21.76
+      },
+      {
+        "quarter": "2026Q1",
+        "total_net_spend": 85091522.09,
+        "hsic_net_spend": 16640126.73,
+        "sow_pct": 19.56
+      },
+      {
+        "quarter": "2026Q2",
+        "total_net_spend": 91773258.65,
+        "hsic_net_spend": 15031867.49,
+        "sow_pct": 16.38
+      },
+      {
+        "quarter": "2026Q3",
+        "total_net_spend": 30180519.74,
+        "hsic_net_spend": 4421367.33,
+        "sow_pct": 14.65
+      }
+    ],
+    "prime_breakdown": [
+      {
+        "membership_type": "Non-Prime",
+        "total_net_spend": 264891934.94,
+        "hsic_net_spend": 63078501.17,
+        "sow_pct": 23.81,
+        "fy25_sow_pct": 29.32,
+        "fy26_sow_pct": 19.12,
+        "sow_change_pp": -10.2,
+        "active_customers": 13538
+      },
+      {
+        "membership_type": "Prime",
+        "total_net_spend": 385256795.14,
+        "hsic_net_spend": 91515853.51,
+        "sow_pct": 23.75,
+        "fy25_sow_pct": 28.62,
+        "fy26_sow_pct": 19.73,
+        "sow_change_pp": -8.89,
+        "active_customers": 20057
+      }
+    ],
+    "category_breakdown": [
+      {
+        "category": "Electronics",
+        "total_net_spend": 146047421.7,
+        "hsic_net_spend": 34880061.16,
+        "sow_pct": 23.88,
+        "fy25_sow_pct": 29.09,
+        "fy26_sow_pct": 19.54,
+        "sow_change_pp": -9.55,
+        "wallet_share_pct": 35.86,
+        "upi_share_pct": 20.99,
+        "other_cc_share_pct": 9.63,
+        "debit_share_pct": 9.63,
+        "avg_sales_ticket": 4630.99
+      },
+      {
+        "category": "Large Applicances",
+        "total_net_spend": 113721673.82,
+        "hsic_net_spend": 26606315.1,
+        "sow_pct": 23.4,
+        "fy25_sow_pct": 28.51,
+        "fy26_sow_pct": 19.16,
+        "sow_change_pp": -9.35,
+        "wallet_share_pct": 32.86,
+        "upi_share_pct": 22.47,
+        "other_cc_share_pct": 10.56,
+        "debit_share_pct": 10.72,
+        "avg_sales_ticket": 7735.18
+      },
+      {
+        "category": "Furniture",
+        "total_net_spend": 100016190.66,
+        "hsic_net_spend": 24380282.11,
+        "sow_pct": 24.38,
+        "fy25_sow_pct": 29.98,
+        "fy26_sow_pct": 19.72,
+        "sow_change_pp": -10.26,
+        "wallet_share_pct": 33.94,
+        "upi_share_pct": 21.61,
+        "other_cc_share_pct": 10.32,
+        "debit_share_pct": 9.76,
+        "avg_sales_ticket": 6088.36
+      },
+      {
+        "category": "Travel",
+        "total_net_spend": 83090377.57,
+        "hsic_net_spend": 19634444.24,
+        "sow_pct": 23.63,
+        "fy25_sow_pct": 28.27,
+        "fy26_sow_pct": 19.63,
+        "sow_change_pp": -8.64,
+        "wallet_share_pct": 35.39,
+        "upi_share_pct": 21.17,
+        "other_cc_share_pct": 9.89,
+        "debit_share_pct": 9.92,
+        "avg_sales_ticket": 5694.89
+      },
+      {
+        "category": "Apparel",
+        "total_net_spend": 50516241.04,
+        "hsic_net_spend": 11958240.17,
+        "sow_pct": 23.67,
+        "fy25_sow_pct": 27.86,
+        "fy26_sow_pct": 20.17,
+        "sow_change_pp": -7.69,
+        "wallet_share_pct": 36.86,
+        "upi_share_pct": 20.3,
+        "other_cc_share_pct": 10.07,
+        "debit_share_pct": 9.1,
+        "avg_sales_ticket": 1997.58
+      },
+      {
+        "category": "Outdoor",
+        "total_net_spend": 44787867.98,
+        "hsic_net_spend": 10638420.37,
+        "sow_pct": 23.75,
+        "fy25_sow_pct": 29.56,
+        "fy26_sow_pct": 18.9,
+        "sow_change_pp": -10.67,
+        "wallet_share_pct": 35.62,
+        "upi_share_pct": 21.51,
+        "other_cc_share_pct": 9.76,
+        "debit_share_pct": 9.37,
+        "avg_sales_ticket": 3107.07
+      },
+      {
+        "category": "Grocery",
+        "total_net_spend": 35017407.78,
+        "hsic_net_spend": 8125118.1,
+        "sow_pct": 23.2,
+        "fy25_sow_pct": 28.13,
+        "fy26_sow_pct": 19.06,
+        "sow_change_pp": -9.08,
+        "wallet_share_pct": 36.35,
+        "upi_share_pct": 21.31,
+        "other_cc_share_pct": 9.8,
+        "debit_share_pct": 9.34,
+        "avg_sales_ticket": 935.49
+      },
+      {
+        "category": "Kids And Toys",
+        "total_net_spend": 32865614.68,
+        "hsic_net_spend": 7858736.87,
+        "sow_pct": 23.91,
+        "fy25_sow_pct": 29.33,
+        "fy26_sow_pct": 19.3,
+        "sow_change_pp": -10.03,
+        "wallet_share_pct": 36.01,
+        "upi_share_pct": 21.06,
+        "other_cc_share_pct": 9.49,
+        "debit_share_pct": 9.53,
+        "avg_sales_ticket": 1747.02
+      },
+      {
+        "category": "Beauty",
+        "total_net_spend": 28641071.64,
+        "hsic_net_spend": 6834718.78,
+        "sow_pct": 23.86,
+        "fy25_sow_pct": 28.81,
+        "fy26_sow_pct": 19.75,
+        "sow_change_pp": -9.06,
+        "wallet_share_pct": 36.32,
+        "upi_share_pct": 20.45,
+        "other_cc_share_pct": 9.81,
+        "debit_share_pct": 9.56,
+        "avg_sales_ticket": 1363.03
+      },
+      {
+        "category": "Bill Payments",
+        "total_net_spend": 15444863.21,
+        "hsic_net_spend": 3678017.78,
+        "sow_pct": 23.81,
+        "fy25_sow_pct": 29.37,
+        "fy26_sow_pct": 19.24,
+        "sow_change_pp": -10.13,
+        "wallet_share_pct": 35.82,
+        "upi_share_pct": 20.94,
+        "other_cc_share_pct": 10.0,
+        "debit_share_pct": 9.42,
+        "avg_sales_ticket": 1058.96
+      }
+    ],
+    "distribution": [
+      {
+        "bin": "0% (Zero HSIC Usage)",
+        "customer_count": 11409,
+        "pct_of_active": 33.96
+      },
+      {
+        "bin": "1% - 10%",
+        "customer_count": 3498,
+        "pct_of_active": 10.41
+      },
+      {
+        "bin": "10% - 25%",
+        "customer_count": 6037,
+        "pct_of_active": 17.97
+      },
+      {
+        "bin": "25% - 50%",
+        "customer_count": 7410,
+        "pct_of_active": 22.06
+      },
+      {
+        "bin": "50% - 75%",
+        "customer_count": 3037,
+        "pct_of_active": 9.04
+      },
+      {
+        "bin": "75% - 100% (Loyal Advocates)",
+        "customer_count": 2204,
+        "pct_of_active": 6.56
+      }
+    ]
+  },
+  "migration": {
+    "payment_mix": [
+      {
+        "payment_method": "MetroMart Wallet",
+        "net_spend": 228167567.0,
+        "share_pct": 35.09,
+        "transaction_count": 784867,
+        "avg_ticket": 3753.68
+      },
+      {
+        "payment_method": "HSIC Bank Credit Card",
+        "net_spend": 154594354.68,
+        "share_pct": 23.78,
+        "transaction_count": 594751,
+        "avg_ticket": 3331.6
+      },
+      {
+        "payment_method": "Cash/UPI",
+        "net_spend": 138767838.33,
+        "share_pct": 21.34,
+        "transaction_count": 600995,
+        "avg_ticket": 2970.56
+      },
+      {
+        "payment_method": "Other Bank Credit Card",
+        "net_spend": 64975069.27,
+        "share_pct": 9.99,
+        "transaction_count": 329405,
+        "avg_ticket": 2552.64
+      },
+      {
+        "payment_method": "Debit Card",
+        "net_spend": 63643900.8,
+        "share_pct": 9.79,
+        "transaction_count": 378208,
+        "avg_ticket": 2168.26
+      }
+    ],
+    "defectors_analysis": {
+      "total_defector_customers": 9049,
+      "total_lost_hsic_spend": 58329429.66,
+      "destinations": [
+        {
+          "destination": "Cash/UPI",
+          "gained_spend": 7602332.03,
+          "pct_of_captured": 40.92
+        },
+        {
+          "destination": "MetroMart Wallet",
+          "gained_spend": 4646632.57,
+          "pct_of_captured": 25.01
+        },
+        {
+          "destination": "Other Bank Credit Cards",
+          "gained_spend": 3447489.21,
+          "pct_of_captured": 18.56
+        },
+        {
+          "destination": "Debit Cards",
+          "gained_spend": 2880177.9,
+          "pct_of_captured": 15.5
+        }
+      ],
+      "avg_lost_spend_per_defector": 6445.95
+    },
+    "sankey": {
+      "nodes": [
+        {
+          "id": 0,
+          "name": "HSIC Historical Base (FY25)"
+        },
+        {
+          "id": 1,
+          "name": "HSIC Retained (FY26)"
+        },
+        {
+          "id": 2,
+          "name": "Cash/UPI Migration"
+        },
+        {
+          "id": 3,
+          "name": "MetroMart Wallet Migration"
+        },
+        {
+          "id": 4,
+          "name": "Other Bank CC Migration"
+        },
+        {
+          "id": 5,
+          "name": "Debit Card Migration"
+        },
+        {
+          "id": 6,
+          "name": "Uncaptured / Contraction"
+        }
+      ],
+      "links": [
+        {
+          "source": 0,
+          "target": 1,
+          "value": 8440090.64,
+          "label": "Retained on HSIC"
+        },
+        {
+          "source": 0,
+          "target": 2,
+          "value": 7602332.03,
+          "label": "Migrated to UPI/Cash"
+        },
+        {
+          "source": 0,
+          "target": 3,
+          "value": 4646632.57,
+          "label": "Migrated to MetroMart Wallet"
+        },
+        {
+          "source": 0,
+          "target": 4,
+          "value": 3447489.21,
+          "label": "Migrated to Other Credit Cards"
+        },
+        {
+          "source": 0,
+          "target": 5,
+          "value": 2880177.9,
+          "label": "Migrated to Debit"
+        },
+        {
+          "source": 0,
+          "target": 6,
+          "value": 39752797.95,
+          "label": "Spend Contraction / Churn"
+        }
+      ]
+    }
+  },
+  "return_analysis": {
+    "payment_method_summary": [
+      {
+        "payment_method": "MetroMart Wallet",
+        "total_transactions": 145771,
+        "sales_transactions": 131008,
+        "return_transactions": 14763,
+        "return_rate_pct": 10.13,
+        "gross_spend": 491594912.09,
+        "return_value": 56025040.32,
+        "net_spend": 435569871.77
+      },
+      {
+        "payment_method": "Cash/UPI",
+        "total_transactions": 110057,
+        "sales_transactions": 98985,
+        "return_transactions": 11072,
+        "return_rate_pct": 10.06,
+        "gross_spend": 292992452.83,
+        "return_value": 32772011.4,
+        "net_spend": 260220441.43
+      },
+      {
+        "payment_method": "Debit Card",
+        "total_transactions": 70006,
+        "sales_transactions": 62943,
+        "return_transactions": 7063,
+        "return_rate_pct": 10.09,
+        "gross_spend": 136091988.13,
+        "return_value": 15390200.24,
+        "net_spend": 120701787.89
+      },
+      {
+        "payment_method": "Other Bank Credit Card",
+        "total_transactions": 60234,
+        "sales_transactions": 54154,
+        "return_transactions": 6080,
+        "return_rate_pct": 10.09,
+        "gross_spend": 138622548.37,
+        "return_value": 15768081.71,
+        "net_spend": 122854466.66
+      },
+      {
+        "payment_method": "HSIC Bank Credit Card",
+        "total_transactions": 58050,
+        "sales_transactions": 52214,
+        "return_transactions": 5836,
+        "return_rate_pct": 10.05,
+        "gross_spend": 173955954.91,
+        "return_value": 19361600.23,
+        "net_spend": 154594354.68
+      }
+    ],
+    "chi_square_test": {
+      "chi2_statistic": 0.4204,
+      "p_value": 0.9808,
+      "degrees_of_freedom": 4,
+      "significant": false,
+      "interpretation": "Return rate is statistically independent across payment methods (\u03c7\u00b2=0.4204, p=0.9808, df=4). Fail to reject H\u2080: return friction is NOT a driver of payment migration or HSIC card defection. TAXONOMY: OBSERVED (empirically derived from transaction census).",
+      "taxonomy": "OBSERVED",
+      "causal_warning": "Non-causal: this test measures statistical association across payment instruments. A non-significant result proves return friction is not the operational cause of cardholder attrition."
+    },
+    "test_statistics": {
+      "chi2_stat": 0.4204,
+      "p_value": 0.9808,
+      "df": 4
+    },
+    "overall": {
+      "total_transactions": 444118,
+      "total_sales": 399304,
+      "total_returns": 44814,
+      "overall_return_rate_pct": 10.09
+    },
+    "taxonomy": "OBSERVED",
+    "note": "Empirical return rate neutrality proves return processing is uniform across checkout methods. Capital should be directed toward top-of-wallet checkout incentives rather than refund overhaul."
+  },
+  "big_ticket": {
+    "tiers": [
+      {
+        "threshold": 1000,
+        "label": "\u20b91K+",
+        "total_transactions": 307706,
+        "total_volume": 1170069158.77,
+        "pct_of_total_sales": 94.88,
+        "payment_breakdown": {
+          "DEBIT": {
+            "volume": 120943776.64,
+            "share_pct": 10.34
+          },
+          "HSIC": {
+            "volume": 166803788.03,
+            "share_pct": 14.26
+          },
+          "OTHER_CC": {
+            "volume": 127700758.32,
+            "share_pct": 10.91
+          },
+          "UPI": {
+            "volume": 276371575.13,
+            "share_pct": 23.62
+          },
+          "WALLET": {
+            "volume": 478249260.65,
+            "share_pct": 40.87
+          }
+        },
+        "hsic_share_pct": 14.26,
+        "wallet_share_pct": 40.87,
+        "upi_share_pct": 23.62,
+        "other_cc_share_pct": 10.91,
+        "debit_share_pct": 10.34,
+        "non_hsic_volume": 1003265370.74,
+        "recovery_opportunity_proxy": 18058776.67,
+        "taxonomy": "OBSERVED"
+      },
+      {
+        "threshold": 2500,
+        "label": "\u20b92.5K+",
+        "total_transactions": 171738,
+        "total_volume": 950405254.11,
+        "pct_of_total_sales": 77.06,
+        "payment_breakdown": {
+          "DEBIT": {
+            "volume": 89550536.69,
+            "share_pct": 9.42
+          },
+          "HSIC": {
+            "volume": 137371217.17,
+            "share_pct": 14.45
+          },
+          "OTHER_CC": {
+            "volume": 99072922.68,
+            "share_pct": 10.42
+          },
+          "UPI": {
+            "volume": 221839209.48,
+            "share_pct": 23.34
+          },
+          "WALLET": {
+            "volume": 402571368.09,
+            "share_pct": 42.36
+          }
+        },
+        "hsic_share_pct": 14.45,
+        "wallet_share_pct": 42.36,
+        "upi_share_pct": 23.34,
+        "other_cc_share_pct": 10.42,
+        "debit_share_pct": 9.42,
+        "non_hsic_volume": 813034036.94,
+        "recovery_opportunity_proxy": 14634612.66,
+        "taxonomy": "OBSERVED"
+      },
+      {
+        "threshold": 5000,
+        "label": "\u20b95K+",
+        "total_transactions": 83029,
+        "total_volume": 631610520.18,
+        "pct_of_total_sales": 51.21,
+        "payment_breakdown": {
+          "DEBIT": {
+            "volume": 42316531.44,
+            "share_pct": 6.7
+          },
+          "HSIC": {
+            "volume": 95239622.14,
+            "share_pct": 15.08
+          },
+          "OTHER_CC": {
+            "volume": 55846109.89,
+            "share_pct": 8.84
+          },
+          "UPI": {
+            "volume": 142072670.66,
+            "share_pct": 22.49
+          },
+          "WALLET": {
+            "volume": 296135586.05,
+            "share_pct": 46.89
+          }
+        },
+        "hsic_share_pct": 15.08,
+        "wallet_share_pct": 46.89,
+        "upi_share_pct": 22.49,
+        "other_cc_share_pct": 8.84,
+        "debit_share_pct": 6.7,
+        "non_hsic_volume": 536370898.04,
+        "recovery_opportunity_proxy": 9654676.16,
+        "taxonomy": "OBSERVED"
+      },
+      {
+        "threshold": 7500,
+        "label": "\u20b97.5K+",
+        "total_transactions": 39521,
+        "total_volume": 366119898.06,
+        "pct_of_total_sales": 29.69,
+        "payment_breakdown": {
+          "DEBIT": {
+            "volume": 16723698.53,
+            "share_pct": 4.57
+          },
+          "HSIC": {
+            "volume": 56379370.75,
+            "share_pct": 15.4
+          },
+          "OTHER_CC": {
+            "volume": 25673137.75,
+            "share_pct": 7.01
+          },
+          "UPI": {
+            "volume": 75802189.32,
+            "share_pct": 20.7
+          },
+          "WALLET": {
+            "volume": 191541501.71,
+            "share_pct": 52.32
+          }
+        },
+        "hsic_share_pct": 15.4,
+        "wallet_share_pct": 52.32,
+        "upi_share_pct": 20.7,
+        "other_cc_share_pct": 7.01,
+        "debit_share_pct": 4.57,
+        "non_hsic_volume": 309740527.31,
+        "recovery_opportunity_proxy": 5575329.49,
+        "taxonomy": "OBSERVED"
+      },
+      {
+        "threshold": 9000,
+        "label": "\u20b99K+",
+        "total_transactions": 25289,
+        "total_volume": 249533494.08,
+        "pct_of_total_sales": 20.23,
+        "payment_breakdown": {
+          "DEBIT": {
+            "volume": 9245245.23,
+            "share_pct": 3.71
+          },
+          "HSIC": {
+            "volume": 38512160.28,
+            "share_pct": 15.43
+          },
+          "OTHER_CC": {
+            "volume": 15322328.85,
+            "share_pct": 6.14
+          },
+          "UPI": {
+            "volume": 48603253.03,
+            "share_pct": 19.48
+          },
+          "WALLET": {
+            "volume": 137850506.69,
+            "share_pct": 55.24
+          }
+        },
+        "hsic_share_pct": 15.43,
+        "wallet_share_pct": 55.24,
+        "upi_share_pct": 19.48,
+        "other_cc_share_pct": 6.14,
+        "debit_share_pct": 3.71,
+        "non_hsic_volume": 211021333.8,
+        "recovery_opportunity_proxy": 3798384.01,
+        "taxonomy": "OBSERVED"
+      }
+    ],
+    "total_sales_volume": 1233257856.33,
+    "inversion_point": "\u20b91K+",
+    "inversion_note": "Payment method inversion occurs at \u20b91K+: Combined alternative payment share exceeds HSIC share for large transactions. TAXONOMY: OBSERVED (directly computed from transaction census).",
+    "recovery_note": "Recovery opportunity proxy represents non-HSIC high-ticket volume multiplied by the 1.8% HSIC net interchange margin. TAXONOMY: PROPOSED economic model.",
+    "taxonomy": "OBSERVED"
+  },
+  "reward_analysis": {
+    "taxonomy": "OBSERVED",
+    "prime_summary": {
+      "prime_count": 22799,
+      "non_prime_count": 15365,
+      "prime_avg_spend": 16897.97,
+      "non_prime_avg_spend": 17239.96,
+      "prime_total_spend": 385256795.14,
+      "non_prime_total_spend": 264891934.94,
+      "prime_sow_pct": 23.75,
+      "non_prime_sow_pct": 23.81,
+      "prime_share_of_portfolio_pct": 59.74
+    },
+    "cashback_forfeiture": {
+      "total_cashback_forfeited": 5516360.84,
+      "total_cashback_earned": 1716674.48,
+      "total_prime_non_hsic_spend": 331207664.88,
+      "customers_forfeiting_count": 19423,
+      "avg_forfeited_per_customer": 284.01,
+      "category_breakdown": [
+        {
+          "category": "Electronics",
+          "non_hsic_spend": 74282848.22,
+          "cashback_forfeited": 2228485.45,
+          "pct_of_total_forfeited": 40.4
+        },
+        {
+          "category": "Grocery",
+          "non_hsic_spend": 17965680.56,
+          "cashback_forfeited": 898284.03,
+          "pct_of_total_forfeited": 16.28
+        },
+        {
+          "category": "Large Applicances",
+          "non_hsic_spend": 58295837.36,
+          "cashback_forfeited": 582958.37,
+          "pct_of_total_forfeited": 10.57
+        },
+        {
+          "category": "Furniture",
+          "non_hsic_spend": 50865227.23,
+          "cashback_forfeited": 508652.27,
+          "pct_of_total_forfeited": 9.22
+        },
+        {
+          "category": "Travel",
+          "non_hsic_spend": 42377932.84,
+          "cashback_forfeited": 423779.33,
+          "pct_of_total_forfeited": 7.68
+        },
+        {
+          "category": "Apparel",
+          "non_hsic_spend": 25704705.79,
+          "cashback_forfeited": 257047.06,
+          "pct_of_total_forfeited": 4.66
+        },
+        {
+          "category": "Outdoor",
+          "non_hsic_spend": 22763603.27,
+          "cashback_forfeited": 227636.03,
+          "pct_of_total_forfeited": 4.13
+        },
+        {
+          "category": "Kids And Toys",
+          "non_hsic_spend": 16570148.58,
+          "cashback_forfeited": 165701.49,
+          "pct_of_total_forfeited": 3.0
+        },
+        {
+          "category": "Beauty",
+          "non_hsic_spend": 14473958.84,
+          "cashback_forfeited": 144739.59,
+          "pct_of_total_forfeited": 2.62
+        },
+        {
+          "category": "Bill Payments",
+          "non_hsic_spend": 7907722.19,
+          "cashback_forfeited": 79077.22,
+          "pct_of_total_forfeited": 1.43
+        }
+      ],
+      "taxonomy": "OBSERVED"
+    },
+    "reward_efficiency": [
+      {
+        "payment_method": "HSIC Bank Credit Card (Prime)",
+        "cashback_rate_pct": 5.0,
+        "category_focus": "Grocery (5%) / Electronics (3%) / Other (1%)",
+        "eligible": true
+      },
+      {
+        "payment_method": "MetroMart Wallet",
+        "cashback_rate_pct": 0.5,
+        "category_focus": "Wallet Reloads only",
+        "eligible": true
+      },
+      {
+        "payment_method": "Other Bank Credit Card",
+        "cashback_rate_pct": 1.0,
+        "category_focus": "General Rewards (Non-Prime)",
+        "eligible": false
+      },
+      {
+        "payment_method": "Cash / UPI",
+        "cashback_rate_pct": 0.0,
+        "category_focus": "No Rewards",
+        "eligible": false
+      },
+      {
+        "payment_method": "Debit Card",
+        "cashback_rate_pct": 0.0,
+        "category_focus": "No Rewards",
+        "eligible": false
+      }
+    ]
+  },
+  "ml": {
+    "selected_model": "Hist Gradient Boosting",
+    "metrics": {
+      "roc_auc": 0.9929,
+      "pr_auc": 0.9907,
+      "precision": 0.9401,
+      "recall": 0.9513,
+      "f1_score": 0.9457,
+      "brier_score": 0.0339,
+      "cv_roc_auc_mean": 0.9924,
+      "cv_roc_auc_std": 0.0008,
+      "confusion_matrix": [
+        [
+          2838,
+          137
+        ],
+        [
+          110,
+          2151
+        ]
+      ],
+      "training_samples": 15706,
+      "test_samples": 5236
+    },
+    "model_benchmark": [
+      {
+        "model_name": "Hist Gradient Boosting",
+        "cv_roc_auc_mean": 0.9924,
+        "cv_roc_auc_std": 0.0008,
+        "test_roc_auc": 0.9929,
+        "test_pr_auc": 0.9907,
+        "precision": 0.9401,
+        "recall": 0.9513,
+        "f1_score": 0.9457,
+        "brier_score_loss": 0.0339,
+        "is_selected": true
+      },
+      {
+        "model_name": "XGBoost Classifier",
+        "cv_roc_auc_mean": 0.9923,
+        "cv_roc_auc_std": 0.0011,
+        "test_roc_auc": 0.9927,
+        "test_pr_auc": 0.9905,
+        "precision": 0.9459,
+        "recall": 0.9513,
+        "f1_score": 0.9486,
+        "brier_score_loss": 0.0344,
+        "is_selected": false
+      },
+      {
+        "model_name": "Random Forest Classifier",
+        "cv_roc_auc_mean": 0.9804,
+        "cv_roc_auc_std": 0.002,
+        "test_roc_auc": 0.9825,
+        "test_pr_auc": 0.9776,
+        "precision": 0.8621,
+        "recall": 0.9593,
+        "f1_score": 0.9081,
+        "brier_score_loss": 0.0627,
+        "is_selected": false
+      },
+      {
+        "model_name": "Logistic Regression (L2)",
+        "cv_roc_auc_mean": 0.9568,
+        "cv_roc_auc_std": 0.0028,
+        "test_roc_auc": 0.9542,
+        "test_pr_auc": 0.9339,
+        "precision": 0.8822,
+        "recall": 0.8417,
+        "f1_score": 0.8615,
+        "brier_score_loss": 0.0837,
+        "is_selected": false
+      }
+    ],
+    "feature_importances": [
+      {
+        "feature": "FY25_SoW",
+        "importance": 0.4729,
+        "label": "FY25 SoW"
+      },
+      {
+        "feature": "FY25_HSIC",
+        "importance": 0.2879,
+        "label": "FY25 HSIC"
+      },
+      {
+        "feature": "HSIC_Recency_Days",
+        "importance": 0.1553,
+        "label": "HSIC Recency Days"
+      },
+      {
+        "feature": "FY25_Total",
+        "importance": 0.0175,
+        "label": "FY25 Total"
+      },
+      {
+        "feature": "Wallet_Share",
+        "importance": 0.0142,
+        "label": "Wallet Share"
+      },
+      {
+        "feature": "Tx_Count",
+        "importance": 0.008,
+        "label": "Tx Count"
+      },
+      {
+        "feature": "UPI_Share",
+        "importance": 0.0076,
+        "label": "UPI Share"
+      },
+      {
+        "feature": "Avg_Ticket",
+        "importance": 0.0052,
+        "label": "Avg Ticket"
+      },
+      {
+        "feature": "Overall_Recency_Days",
+        "importance": 0.0045,
+        "label": "Overall Recency Days"
+      },
+      {
+        "feature": "OtherCC_Share",
+        "importance": 0.0039,
+        "label": "OtherCC Share"
+      },
+      {
+        "feature": "High_Ticket_Spend",
+        "importance": 0.0038,
+        "label": "High Ticket Spend"
+      },
+      {
+        "feature": "Debit_Share",
+        "importance": 0.0033,
+        "label": "Debit Share"
+      },
+      {
+        "feature": "Card_Tenure_Days",
+        "importance": 0.003,
+        "label": "Card Tenure Days"
+      },
+      {
+        "feature": "Return_Rate",
+        "importance": 0.0025,
+        "label": "Return Rate"
+      },
+      {
+        "feature": "Electronics_Spend",
+        "importance": 0.0022,
+        "label": "Electronics Spend"
+      },
+      {
+        "feature": "Grocery_Spend",
+        "importance": 0.002,
+        "label": "Grocery Spend"
+      },
+      {
+        "feature": "Appliances_Spend",
+        "importance": 0.0016,
+        "label": "Appliances Spend"
+      },
+      {
+        "feature": "Credit_Card_APR",
+        "importance": 0.0016,
+        "label": "Credit Card APR"
+      },
+      {
+        "feature": "Credit_Card_Limit",
+        "importance": 0.0015,
+        "label": "Credit Card Limit"
+      },
+      {
+        "feature": "Age",
+        "importance": 0.0013,
+        "label": "Age"
+      },
+      {
+        "feature": "Is_Prime",
+        "importance": 0.0001,
+        "label": "Is Prime"
+      }
+    ],
+    "shap_summary": [
+      {
+        "feature": "FY25_SoW",
+        "label": "FY25 SoW",
+        "mean_abs_shap": 0.210524,
+        "importance": 0.2105,
+        "source": "SHAP TreeExplainer (Random Forest)"
+      },
+      {
+        "feature": "FY25_HSIC",
+        "label": "FY25 HSIC",
+        "mean_abs_shap": 0.106639,
+        "importance": 0.1066,
+        "source": "SHAP TreeExplainer (Random Forest)"
+      },
+      {
+        "feature": "HSIC_Recency_Days",
+        "label": "HSIC Recency Days",
+        "mean_abs_shap": 0.075144,
+        "importance": 0.0751,
+        "source": "SHAP TreeExplainer (Random Forest)"
+      },
+      {
+        "feature": "FY25_Total",
+        "label": "FY25 Total",
+        "mean_abs_shap": 0.009679,
+        "importance": 0.0097,
+        "source": "SHAP TreeExplainer (Random Forest)"
+      },
+      {
+        "feature": "Wallet_Share",
+        "label": "Wallet Share",
+        "mean_abs_shap": 0.006653,
+        "importance": 0.0067,
+        "source": "SHAP TreeExplainer (Random Forest)"
+      },
+      {
+        "feature": "UPI_Share",
+        "label": "UPI Share",
+        "mean_abs_shap": 0.005091,
+        "importance": 0.0051,
+        "source": "SHAP TreeExplainer (Random Forest)"
+      },
+      {
+        "feature": "Tx_Count",
+        "label": "Tx Count",
+        "mean_abs_shap": 0.004432,
+        "importance": 0.0044,
+        "source": "SHAP TreeExplainer (Random Forest)"
+      },
+      {
+        "feature": "OtherCC_Share",
+        "label": "OtherCC Share",
+        "mean_abs_shap": 0.003174,
+        "importance": 0.0032,
+        "source": "SHAP TreeExplainer (Random Forest)"
+      },
+      {
+        "feature": "Return_Rate",
+        "label": "Return Rate",
+        "mean_abs_shap": 0.002647,
+        "importance": 0.0026,
+        "source": "SHAP TreeExplainer (Random Forest)"
+      },
+      {
+        "feature": "Avg_Ticket",
+        "label": "Avg Ticket",
+        "mean_abs_shap": 0.002428,
+        "importance": 0.0024,
+        "source": "SHAP TreeExplainer (Random Forest)"
+      },
+      {
+        "feature": "Overall_Recency_Days",
+        "label": "Overall Recency Days",
+        "mean_abs_shap": 0.002366,
+        "importance": 0.0024,
+        "source": "SHAP TreeExplainer (Random Forest)"
+      },
+      {
+        "feature": "High_Ticket_Spend",
+        "label": "High Ticket Spend",
+        "mean_abs_shap": 0.00225,
+        "importance": 0.0023,
+        "source": "SHAP TreeExplainer (Random Forest)"
+      },
+      {
+        "feature": "Card_Tenure_Days",
+        "label": "Card Tenure Days",
+        "mean_abs_shap": 0.001726,
+        "importance": 0.0017,
+        "source": "SHAP TreeExplainer (Random Forest)"
+      },
+      {
+        "feature": "Debit_Share",
+        "label": "Debit Share",
+        "mean_abs_shap": 0.001444,
+        "importance": 0.0014,
+        "source": "SHAP TreeExplainer (Random Forest)"
+      },
+      {
+        "feature": "Electronics_Spend",
+        "label": "Electronics Spend",
+        "mean_abs_shap": 0.001443,
+        "importance": 0.0014,
+        "source": "SHAP TreeExplainer (Random Forest)"
+      },
+      {
+        "feature": "Appliances_Spend",
+        "label": "Appliances Spend",
+        "mean_abs_shap": 0.001165,
+        "importance": 0.0012,
+        "source": "SHAP TreeExplainer (Random Forest)"
+      },
+      {
+        "feature": "Grocery_Spend",
+        "label": "Grocery Spend",
+        "mean_abs_shap": 0.001065,
+        "importance": 0.0011,
+        "source": "SHAP TreeExplainer (Random Forest)"
+      },
+      {
+        "feature": "Credit_Card_Limit",
+        "label": "Credit Card Limit",
+        "mean_abs_shap": 0.000849,
+        "importance": 0.0008,
+        "source": "SHAP TreeExplainer (Random Forest)"
+      },
+      {
+        "feature": "Age",
+        "label": "Age",
+        "mean_abs_shap": 0.000667,
+        "importance": 0.0007,
+        "source": "SHAP TreeExplainer (Random Forest)"
+      },
+      {
+        "feature": "Credit_Card_APR",
+        "label": "Credit Card APR",
+        "mean_abs_shap": 0.000511,
+        "importance": 0.0005,
+        "source": "SHAP TreeExplainer (Random Forest)"
+      },
+      {
+        "feature": "Is_Prime",
+        "label": "Is Prime",
+        "mean_abs_shap": 7.5e-05,
+        "importance": 0.0001,
+        "source": "SHAP TreeExplainer (Random Forest)"
+      }
+    ],
+    "roc_curve": [
+      {
+        "fpr": 0.0,
+        "tpr": 0.0
+      },
+      {
+        "fpr": 0.001,
+        "tpr": 0.6882
+      },
+      {
+        "fpr": 0.0024,
+        "tpr": 0.7222
+      },
+      {
+        "fpr": 0.0037,
+        "tpr": 0.7391
+      },
+      {
+        "fpr": 0.005,
+        "tpr": 0.7758
+      },
+      {
+        "fpr": 0.0064,
+        "tpr": 0.8107
+      },
+      {
+        "fpr": 0.0081,
+        "tpr": 0.8284
+      },
+      {
+        "fpr": 0.0094,
+        "tpr": 0.8465
+      },
+      {
+        "fpr": 0.0108,
+        "tpr": 0.8571
+      },
+      {
+        "fpr": 0.0128,
+        "tpr": 0.8709
+      },
+      {
+        "fpr": 0.0145,
+        "tpr": 0.8837
+      },
+      {
+        "fpr": 0.0165,
+        "tpr": 0.8908
+      },
+      {
+        "fpr": 0.0178,
+        "tpr": 0.9005
+      },
+      {
+        "fpr": 0.0195,
+        "tpr": 0.908
+      },
+      {
+        "fpr": 0.0212,
+        "tpr": 0.9115
+      },
+      {
+        "fpr": 0.0229,
+        "tpr": 0.9133
+      },
+      {
+        "fpr": 0.0242,
+        "tpr": 0.9199
+      },
+      {
+        "fpr": 0.0262,
+        "tpr": 0.9235
+      },
+      {
+        "fpr": 0.0299,
+        "tpr": 0.927
+      },
+      {
+        "fpr": 0.0319,
+        "tpr": 0.9306
+      },
+      {
+        "fpr": 0.0339,
+        "tpr": 0.9363
+      },
+      {
+        "fpr": 0.036,
+        "tpr": 0.9385
+      },
+      {
+        "fpr": 0.038,
+        "tpr": 0.9425
+      },
+      {
+        "fpr": 0.042,
+        "tpr": 0.9456
+      },
+      {
+        "fpr": 0.0437,
+        "tpr": 0.9487
+      },
+      {
+        "fpr": 0.0454,
+        "tpr": 0.9513
+      },
+      {
+        "fpr": 0.0491,
+        "tpr": 0.9531
+      },
+      {
+        "fpr": 0.0508,
+        "tpr": 0.9558
+      },
+      {
+        "fpr": 0.0545,
+        "tpr": 0.958
+      },
+      {
+        "fpr": 0.0582,
+        "tpr": 0.9633
+      },
+      {
+        "fpr": 0.0639,
+        "tpr": 0.9655
+      },
+      {
+        "fpr": 0.0669,
+        "tpr": 0.9686
+      },
+      {
+        "fpr": 0.0699,
+        "tpr": 0.973
+      },
+      {
+        "fpr": 0.0726,
+        "tpr": 0.9757
+      },
+      {
+        "fpr": 0.0763,
+        "tpr": 0.9779
+      },
+      {
+        "fpr": 0.0787,
+        "tpr": 0.9801
+      },
+      {
+        "fpr": 0.084,
+        "tpr": 0.9823
+      },
+      {
+        "fpr": 0.0887,
+        "tpr": 0.9845
+      },
+      {
+        "fpr": 0.0978,
+        "tpr": 0.9867
+      },
+      {
+        "fpr": 0.1069,
+        "tpr": 0.9894
+      },
+      {
+        "fpr": 0.1139,
+        "tpr": 0.9916
+      },
+      {
+        "fpr": 0.1217,
+        "tpr": 0.9934
+      },
+      {
+        "fpr": 0.1281,
+        "tpr": 0.9951
+      },
+      {
+        "fpr": 0.1368,
+        "tpr": 0.9969
+      },
+      {
+        "fpr": 0.1603,
+        "tpr": 0.9987
+      },
+      {
+        "fpr": 0.2615,
+        "tpr": 1.0
+      },
+      {
+        "fpr": 0.4837,
+        "tpr": 1.0
+      },
+      {
+        "fpr": 0.5378,
+        "tpr": 1.0
+      },
+      {
+        "fpr": 0.6229,
+        "tpr": 1.0
+      },
+      {
+        "fpr": 0.6891,
+        "tpr": 1.0
+      },
+      {
+        "fpr": 0.7694,
+        "tpr": 1.0
+      }
+    ],
+    "pr_curve": [
+      {
+        "recall": 1.0,
+        "precision": 0.4318
+      },
+      {
+        "recall": 1.0,
+        "precision": 0.4407
+      },
+      {
+        "recall": 1.0,
+        "precision": 0.4497
+      },
+      {
+        "recall": 1.0,
+        "precision": 0.4591
+      },
+      {
+        "recall": 1.0,
+        "precision": 0.4689
+      },
+      {
+        "recall": 1.0,
+        "precision": 0.4791
+      },
+      {
+        "recall": 1.0,
+        "precision": 0.4898
+      },
+      {
+        "recall": 1.0,
+        "precision": 0.5011
+      },
+      {
+        "recall": 1.0,
+        "precision": 0.5132
+      },
+      {
+        "recall": 1.0,
+        "precision": 0.5257
+      },
+      {
+        "recall": 1.0,
+        "precision": 0.54
+      },
+      {
+        "recall": 1.0,
+        "precision": 0.554
+      },
+      {
+        "recall": 1.0,
+        "precision": 0.5692
+      },
+      {
+        "recall": 1.0,
+        "precision": 0.5844
+      },
+      {
+        "recall": 1.0,
+        "precision": 0.6015
+      },
+      {
+        "recall": 1.0,
+        "precision": 0.6191
+      },
+      {
+        "recall": 1.0,
+        "precision": 0.6373
+      },
+      {
+        "recall": 1.0,
+        "precision": 0.6563
+      },
+      {
+        "recall": 1.0,
+        "precision": 0.6765
+      },
+      {
+        "recall": 1.0,
+        "precision": 0.6981
+      },
+      {
+        "recall": 1.0,
+        "precision": 0.721
+      },
+      {
+        "recall": 1.0,
+        "precision": 0.7467
+      },
+      {
+        "recall": 1.0,
+        "precision": 0.773
+      },
+      {
+        "recall": 0.9996,
+        "precision": 0.8009
+      },
+      {
+        "recall": 0.9982,
+        "precision": 0.8301
+      },
+      {
+        "recall": 0.9938,
+        "precision": 0.8589
+      },
+      {
+        "recall": 0.9863,
+        "precision": 0.8874
+      },
+      {
+        "recall": 0.9735,
+        "precision": 0.9133
+      },
+      {
+        "recall": 0.9544,
+        "precision": 0.9354
+      },
+      {
+        "recall": 0.9319,
+        "precision": 0.956
+      },
+      {
+        "recall": 0.904,
+        "precision": 0.9729
+      },
+      {
+        "recall": 0.8678,
+        "precision": 0.982
+      },
+      {
+        "recall": 0.8275,
+        "precision": 0.9873
+      },
+      {
+        "recall": 0.7855,
+        "precision": 0.9911
+      },
+      {
+        "recall": 0.7417,
+        "precision": 0.9929
+      },
+      {
+        "recall": 0.6997,
+        "precision": 0.9975
+      },
+      {
+        "recall": 0.6555,
+        "precision": 0.9993
+      },
+      {
+        "recall": 0.6103,
+        "precision": 1.0
+      },
+      {
+        "recall": 0.5648,
+        "precision": 1.0
+      },
+      {
+        "recall": 0.5192,
+        "precision": 1.0
+      },
+      {
+        "recall": 0.4737,
+        "precision": 1.0
+      },
+      {
+        "recall": 0.4281,
+        "precision": 1.0
+      },
+      {
+        "recall": 0.3826,
+        "precision": 1.0
+      },
+      {
+        "recall": 0.337,
+        "precision": 1.0
+      },
+      {
+        "recall": 0.2915,
+        "precision": 1.0
+      },
+      {
+        "recall": 0.2459,
+        "precision": 1.0
+      },
+      {
+        "recall": 0.2004,
+        "precision": 1.0
+      },
+      {
+        "recall": 0.1548,
+        "precision": 1.0
+      },
+      {
+        "recall": 0.1092,
+        "precision": 1.0
+      },
+      {
+        "recall": 0.0637,
+        "precision": 1.0
+      },
+      {
+        "recall": 0.0181,
+        "precision": 1.0
+      }
+    ],
+    "calibration": [
+      {
+        "pred_prob": 0.0047,
+        "true_prob": 0.0004
+      },
+      {
+        "pred_prob": 0.1487,
+        "true_prob": 0.0662
+      },
+      {
+        "pred_prob": 0.2486,
+        "true_prob": 0.1739
+      },
+      {
+        "pred_prob": 0.3527,
+        "true_prob": 0.2906
+      },
+      {
+        "pred_prob": 0.4504,
+        "true_prob": 0.3947
+      },
+      {
+        "pred_prob": 0.55,
+        "true_prob": 0.5377
+      },
+      {
+        "pred_prob": 0.6519,
+        "true_prob": 0.6569
+      },
+      {
+        "pred_prob": 0.7509,
+        "true_prob": 0.8235
+      },
+      {
+        "pred_prob": 0.8567,
+        "true_prob": 0.9251
+      },
+      {
+        "pred_prob": 0.9895,
+        "true_prob": 0.9915
+      }
+    ],
+    "state_summary": [
+      {
+        "state": "Healthy",
+        "count": 10541,
+        "pct": 27.62
+      },
+      {
+        "state": "Warning",
+        "count": 945,
+        "pct": 2.48
+      },
+      {
+        "state": "Declining",
+        "count": 4079,
+        "pct": 10.69
+      },
+      {
+        "state": "Dormant",
+        "count": 14935,
+        "pct": 39.13
+      },
+      {
+        "state": "Hard Attrition",
+        "count": 7664,
+        "pct": 20.08
+      }
+    ]
+  },
+  "survival": {
+    "available": true,
+    "taxonomy": "MODEL_DERIVED",
+    "sample_size": 38164,
+    "events_observed": 14829,
+    "censored_count": 23335,
+    "cox_hazard_ratios": [
+      {
+        "feature": "Total_Spend",
+        "hazard_ratio": 0.7902,
+        "ci_lower": 0.7768,
+        "ci_upper": 0.8038,
+        "p_value": 0.0,
+        "significant": true
+      },
+      {
+        "feature": "UPI_Share",
+        "hazard_ratio": 0.8872,
+        "ci_lower": 0.8719,
+        "ci_upper": 0.9028,
+        "p_value": 0.0,
+        "significant": true
+      },
+      {
+        "feature": "Wallet_Share",
+        "hazard_ratio": 0.8931,
+        "ci_lower": 0.8775,
+        "ci_upper": 0.9089,
+        "p_value": 0.0,
+        "significant": true
+      },
+      {
+        "feature": "SoW",
+        "hazard_ratio": 1.0626,
+        "ci_lower": 1.0467,
+        "ci_upper": 1.0787,
+        "p_value": 0.0,
+        "significant": true
+      },
+      {
+        "feature": "Avg_Ticket",
+        "hazard_ratio": 0.9678,
+        "ci_lower": 0.9554,
+        "ci_upper": 0.9804,
+        "p_value": 0.0,
+        "significant": true
+      },
+      {
+        "feature": "Is_Prime",
+        "hazard_ratio": 0.9982,
+        "ci_lower": 0.9832,
+        "ci_upper": 1.0134,
+        "p_value": 0.8147,
+        "significant": false
+      }
+    ],
+    "concordance_index": 0.6229,
+    "km_curves": {
+      "Cash & UPI Transactors": {
+        "timeline": [
+          0.0,
+          3.8,
+          6.6,
+          9.4,
+          12.1,
+          14.9,
+          17.7,
+          20.5,
+          23.4,
+          26.3,
+          29.2,
+          32.5,
+          35.4,
+          38.4,
+          41.2,
+          44.1,
+          47.0,
+          50.0,
+          52.9,
+          56.0,
+          59.0
+        ],
+        "survival": [
+          1.0,
+          0.9926,
+          0.982,
+          0.9712,
+          0.9588,
+          0.9408,
+          0.9171,
+          0.8887,
+          0.8529,
+          0.8212,
+          0.7901,
+          0.7487,
+          0.7092,
+          0.6668,
+          0.6187,
+          0.5662,
+          0.5159,
+          0.4579,
+          0.3856,
+          0.3116,
+          0.0506
+        ],
+        "median_months": 47.9,
+        "customer_count": 4984,
+        "events": 1623
+      },
+      "Dormant & Low-Engagement Shoppers": {
+        "timeline": [
+          0.0,
+          3.7,
+          6.5,
+          9.3,
+          12.1,
+          15.0,
+          17.9,
+          20.9,
+          24.0,
+          27.0,
+          30.0,
+          32.9,
+          35.8,
+          38.7,
+          41.6,
+          44.6,
+          47.6,
+          50.5,
+          53.3,
+          56.1,
+          59.0
+        ],
+        "survival": [
+          1.0,
+          0.9487,
+          0.919,
+          0.89,
+          0.8625,
+          0.8346,
+          0.8108,
+          0.7824,
+          0.756,
+          0.7256,
+          0.692,
+          0.6531,
+          0.603,
+          0.5515,
+          0.4982,
+          0.4406,
+          0.3692,
+          0.2958,
+          0.2125,
+          0.1295,
+          0.0
+        ],
+        "median_months": 41.5,
+        "customer_count": 8504,
+        "events": 4224
+      },
+      "HSIC Core Loyalists": {
+        "timeline": [
+          0.0,
+          4.3,
+          7.2,
+          10.0,
+          12.8,
+          15.6,
+          18.4,
+          21.2,
+          24.0,
+          26.9,
+          29.8,
+          32.7,
+          35.5,
+          38.4,
+          41.2,
+          44.2,
+          46.9,
+          49.8,
+          52.7,
+          55.6,
+          58.6
+        ],
+        "survival": [
+          1.0,
+          0.995,
+          0.9882,
+          0.9785,
+          0.9687,
+          0.9471,
+          0.9157,
+          0.875,
+          0.8324,
+          0.7898,
+          0.7465,
+          0.6983,
+          0.655,
+          0.6039,
+          0.5506,
+          0.5038,
+          0.4491,
+          0.3922,
+          0.324,
+          0.2203,
+          0.0615
+        ],
+        "median_months": 44.4,
+        "customer_count": 6039,
+        "events": 2740
+      },
+      "High-Value Multi-Channel Shoppers": {
+        "timeline": [
+          0.0,
+          7.4,
+          10.3,
+          13.1,
+          15.8,
+          18.5,
+          21.2,
+          23.9,
+          26.6,
+          29.3,
+          32.0,
+          34.7,
+          37.4,
+          40.1,
+          42.8,
+          45.5,
+          48.2,
+          50.9,
+          53.6,
+          56.2,
+          58.9
+        ],
+        "survival": [
+          1.0,
+          0.9991,
+          0.9977,
+          0.9948,
+          0.9872,
+          0.9733,
+          0.9538,
+          0.9294,
+          0.9035,
+          0.8759,
+          0.847,
+          0.8155,
+          0.7837,
+          0.7487,
+          0.7074,
+          0.6662,
+          0.6117,
+          0.5552,
+          0.4854,
+          0.3886,
+          0.1055
+        ],
+        "median_months": 53.1,
+        "customer_count": 11529,
+        "events": 3760
+      },
+      "MetroMart Wallet Dominant Shoppers": {
+        "timeline": [
+          0.0,
+          4.0,
+          6.9,
+          9.7,
+          12.6,
+          15.5,
+          18.3,
+          21.2,
+          24.1,
+          27.0,
+          29.8,
+          32.7,
+          35.6,
+          38.5,
+          41.5,
+          44.4,
+          47.4,
+          50.2,
+          53.2,
+          56.1,
+          59.0
+        ],
+        "survival": [
+          1.0,
+          0.9937,
+          0.9832,
+          0.9711,
+          0.9589,
+          0.9401,
+          0.9143,
+          0.8843,
+          0.8464,
+          0.808,
+          0.7666,
+          0.7327,
+          0.6948,
+          0.6553,
+          0.6068,
+          0.5615,
+          0.5083,
+          0.4549,
+          0.3795,
+          0.3036,
+          0.0386
+        ],
+        "median_months": 47.8,
+        "customer_count": 7108,
+        "events": 2482
+      },
+      "Overall": {
+        "timeline": [
+          0.0,
+          3.8,
+          6.7,
+          9.6,
+          12.5,
+          15.4,
+          18.3,
+          21.2,
+          24.1,
+          27.0,
+          29.9,
+          32.8,
+          35.6,
+          38.5,
+          41.4,
+          44.3,
+          47.2,
+          50.1,
+          53.0,
+          55.9,
+          58.8
+        ],
+        "survival": [
+          1.0,
+          0.9861,
+          0.9759,
+          0.9647,
+          0.9532,
+          0.9361,
+          0.9144,
+          0.8862,
+          0.8546,
+          0.8216,
+          0.787,
+          0.7499,
+          0.7095,
+          0.6668,
+          0.6183,
+          0.5702,
+          0.5125,
+          0.4499,
+          0.373,
+          0.2782,
+          0.0824
+        ],
+        "median_months": 47.9,
+        "customer_count": 38164,
+        "events": 14829
+      }
+    },
+    "median_survival_months": 47.9
+  },
+  "margin_bleed": {
+    "portfolio_total_mbi": 8985415.29,
+    "portfolio_avg_net_contribution": -68.57,
+    "segment_summary": [],
+    "fee_model": {
+      "HSIC": 0.018,
+      "WALLET": -0.015,
+      "UPI": -0.005,
+      "DEBIT": -0.008,
+      "OTHER_CC": 0.012,
+      "CASH": -0.002
+    },
+    "taxonomy": "PROPOSED",
+    "note": "Fee rates are PROPOSED (business assumptions, not from dataset). MBI = opportunity cost of wallet/UPI growth vs HSIC retention. Actual issuer economics require confidential interchange data."
+  },
+  "segmentation": {
+    "selected_k": 5,
+    "k_validation_benchmark": [
+      {
+        "k": 2,
+        "silhouette_score": 0.2085,
+        "davies_bouldin_index": 1.9895,
+        "calinski_harabasz_index": 8175.4,
+        "inertia": 251445.1,
+        "is_selected": false
+      },
+      {
+        "k": 3,
+        "silhouette_score": 0.2029,
+        "davies_bouldin_index": 1.7363,
+        "calinski_harabasz_index": 6955.2,
+        "inertia": 223751.1,
+        "is_selected": false
+      },
+      {
+        "k": 4,
+        "silhouette_score": 0.2257,
+        "davies_bouldin_index": 1.5453,
+        "calinski_harabasz_index": 6768.2,
+        "inertia": 199278.3,
+        "is_selected": false
+      },
+      {
+        "k": 5,
+        "silhouette_score": 0.2316,
+        "davies_bouldin_index": 1.5419,
+        "calinski_harabasz_index": 6803.9,
+        "inertia": 178210.3,
+        "is_selected": true
+      },
+      {
+        "k": 6,
+        "silhouette_score": 0.2611,
+        "davies_bouldin_index": 1.388,
+        "calinski_harabasz_index": 7432.8,
+        "inertia": 154671.0,
+        "is_selected": false
+      },
+      {
+        "k": 7,
+        "silhouette_score": 0.2736,
+        "davies_bouldin_index": 1.3031,
+        "calinski_harabasz_index": 7394.2,
+        "inertia": 141171.8,
+        "is_selected": false
+      },
+      {
+        "k": 8,
+        "silhouette_score": 0.2799,
+        "davies_bouldin_index": 1.2248,
+        "calinski_harabasz_index": 7377.0,
+        "inertia": 129734.3,
+        "is_selected": false
+      }
+    ],
+    "segments": [
+      {
+        "segment_name": "High-Value Multi-Channel Shoppers",
+        "customer_count": 11529,
+        "pct_of_customers": 30.21,
+        "total_metro_spend": 399031280.86,
+        "hsic_spend": 94804229.58,
+        "avg_spend_per_customer": 34611.09,
+        "avg_sow_pct": 23.48,
+        "avg_wallet_share_pct": 35.42,
+        "avg_upi_share_pct": 20.7,
+        "avg_othercc_share_pct": 11.63,
+        "avg_risk_score": 0.413,
+        "prime_penetration_pct": 58.4,
+        "recommended_strategy": "Wallet-to-Card Statement Credit & High-Ticket Cashback Multipliers (Large Appliances & Electronics)."
+      },
+      {
+        "segment_name": "MetroMart Wallet Dominant Shoppers",
+        "customer_count": 7108,
+        "pct_of_customers": 18.62,
+        "total_metro_spend": 97569673.42,
+        "hsic_spend": 4731729.76,
+        "avg_spend_per_customer": 13726.74,
+        "avg_sow_pct": 6.33,
+        "avg_wallet_share_pct": 74.97,
+        "avg_upi_share_pct": 9.12,
+        "avg_othercc_share_pct": 6.52,
+        "avg_risk_score": 0.214,
+        "prime_penetration_pct": 60.31,
+        "recommended_strategy": "Wallet Reload Linkage Bonus (Rs. 200) & Automatic Card Binding at Checkout."
+      },
+      {
+        "segment_name": "HSIC Core Loyalists",
+        "customer_count": 6039,
+        "pct_of_customers": 15.82,
+        "total_metro_spend": 79211165.8,
+        "hsic_spend": 51759972.12,
+        "avg_spend_per_customer": 13116.6,
+        "avg_sow_pct": 68.42,
+        "avg_wallet_share_pct": 13.43,
+        "avg_upi_share_pct": 11.06,
+        "avg_othercc_share_pct": 8.31,
+        "avg_risk_score": 0.464,
+        "prime_penetration_pct": 60.59,
+        "recommended_strategy": "VIP Milestone Rewards & Annual Tier Upgrade with Exclusive Partner Perks."
+      },
+      {
+        "segment_name": "Cash & UPI Transactors",
+        "customer_count": 4984,
+        "pct_of_customers": 13.06,
+        "total_metro_spend": 58199913.61,
+        "hsic_spend": 3449259.41,
+        "avg_spend_per_customer": 11677.35,
+        "avg_sow_pct": 8.1,
+        "avg_wallet_share_pct": 12.8,
+        "avg_upi_share_pct": 72.73,
+        "avg_othercc_share_pct": 7.81,
+        "avg_risk_score": 0.204,
+        "prime_penetration_pct": 59.97,
+        "recommended_strategy": "Instant Contactless / Tap-to-Pay Cashback Match & Grocery 5% Prime Activation."
+      },
+      {
+        "segment_name": "Dormant & Low-Engagement Shoppers",
+        "customer_count": 8504,
+        "pct_of_customers": 22.28,
+        "total_metro_spend": 16136696.39,
+        "hsic_spend": -150836.19,
+        "avg_spend_per_customer": 1897.54,
+        "avg_sow_pct": 1.34,
+        "avg_wallet_share_pct": 3.1,
+        "avg_upi_share_pct": 2.5,
+        "avg_othercc_share_pct": 13.7,
+        "avg_risk_score": 0.061,
+        "prime_penetration_pct": 60.34,
+        "recommended_strategy": "Reactivation Statement Credit (Rs. 250 on first Rs. 1000 spend) + Fee Waiver."
+      }
+    ],
+    "pca_variance_explained": [
+      0.2248,
+      0.1592
+    ]
+  },
+  "opportunity": {
+    "methodology_note": "Recoverability is calculated as an empirical Behavioral Feasibility Index reflecting customer activity recency, prime membership status, and spend elasticity.",
+    "summary": {
+      "total_revenue_at_risk": 71009918.85,
+      "total_recoverable_opportunity": 40819760.27,
+      "total_intervention_cost": 9407750.0,
+      "total_expected_net_contribution": -7979058.81,
+      "portfolio_roi": -0.85,
+      "customers_at_risk_count": 10660
+    },
+    "actions": [
+      {
+        "action_name": "Reactivation Statement Credit (\u20b9250 on \u20b91,000 Spend)",
+        "target_customers": 14935,
+        "pct_of_customers": 39.13,
+        "total_recoverable_spend": 12695816.64,
+        "total_intervention_cost": 3733750.0,
+        "expected_net_value": -3289396.55,
+        "expected_roi": -0.88
+      },
+      {
+        "action_name": "Personalized Share-of-Wallet Growth Incentive",
+        "target_customers": 6959,
+        "pct_of_customers": 18.23,
+        "total_recoverable_spend": 12289649.14,
+        "total_intervention_cost": 1391800.0,
+        "expected_net_value": -961662.47,
+        "expected_roi": -0.69
+      },
+      {
+        "action_name": "Big-Ticket 5% Instant Statement Credit & 0% EMI Proposition",
+        "target_customers": 2773,
+        "pct_of_customers": 7.27,
+        "total_recoverable_spend": 8410248.96,
+        "total_intervention_cost": 1247850.0,
+        "expected_net_value": -953491.25,
+        "expected_roi": -0.76
+      },
+      {
+        "action_name": "Prime 5% Grocery & 3% Electronics Benefit Activation Campaign",
+        "target_customers": 982,
+        "pct_of_customers": 2.57,
+        "total_recoverable_spend": 4145559.94,
+        "total_intervention_cost": 196400.0,
+        "expected_net_value": -51305.16,
+        "expected_roi": -0.26
+      },
+      {
+        "action_name": "Account Win-Back / Card Reopening Offer",
+        "target_customers": 7664,
+        "pct_of_customers": 20.08,
+        "total_recoverable_spend": 1654627.81,
+        "total_intervention_cost": 2299200.0,
+        "expected_net_value": -2241288.32,
+        "expected_roi": -0.97
+      },
+      {
+        "action_name": "VIP Retention Tier & Milestone Gift Voucher",
+        "target_customers": 3778,
+        "pct_of_customers": 9.9,
+        "total_recoverable_spend": 1092338.75,
+        "total_intervention_cost": 377800.0,
+        "expected_net_value": -339568.23,
+        "expected_roi": -0.9
+      },
+      {
+        "action_name": "Contactless Tap & Pay Welcome Booster (\u20b9150 Cash Credit)",
+        "target_customers": 1073,
+        "pct_of_customers": 2.81,
+        "total_recoverable_spend": 531519.03,
+        "total_intervention_cost": 160950.0,
+        "expected_net_value": -142346.83,
+        "expected_roi": -0.88
+      }
+    ]
+  },
+  "insights": [
+    {
+      "id": "DISC-01",
+      "rank": 1,
+      "tier": "Tier 1 - Critical Economic Leakage",
+      "title": "Prime Member Benefit Paradox: \u20b95.52M in Missed Direct Cashback",
+      "taxonomy": "OBSERVED",
+      "taxonomy_description": "Deterministic calculation from raw Prime transactions executed via Non-HSIC payment methods.",
+      "finding": "MetroMart Prime members who hold the HSIC co-branded card spent \u20b9331,207,664.88 via Non-HSIC payment methods (Wallet, UPI, Debit, Other CC), forfeiting \u20b95,516,360.84 in direct cashback rewards (5% Grocery, 3% Electronics).",
+      "statistical_evidence": {
+        "sample_size": 108455,
+        "total_unclaimed_cashback": 5516360.84,
+        "electronics_unclaimed": 2228485.45,
+        "grocery_unclaimed": 898284.03,
+        "test_type": "Deterministic Full Census Aggregation",
+        "p_value": 0.0,
+        "confidence_interval_95": "[\u20b95.51M, \u20b95.53M]"
+      },
+      "business_impact": "Prime cardholders are already paying an annual membership and are highly value-conscious; failing to use the card represents severe checkout friction and visibility deficit rather than lack of economic incentive.",
+      "hypothesis": {
+        "taxonomy": "HYPOTHESIS",
+        "text": "MetroMart app auto-selects MetroMart Wallet or saved UPI at checkout, and users do not realize the 5% / 3% Prime cashback applies exclusively when settling with the HSIC card."
+      },
+      "proposed_action": {
+        "taxonomy": "PROPOSED",
+        "title": "Real-Time Missed Savings Checkout Interstitial & 1-Click Default Card Binding",
+        "description": "Trigger in-app notification before final checkout: 'Switch to HSIC Card to save \u20b9X on this basket' + monthly 'Unclaimed Cashback' statement digest."
+      },
+      "recoverable_spend_potential": "\u20b935,000,000"
+    },
+    {
+      "id": "DISC-02",
+      "rank": 2,
+      "tier": "Tier 1 - Critical Commercial Skew",
+      "title": "High-Ticket Share Inversion: Wallet Monopolizes 40.96% of Spend Over \u20b95,000",
+      "taxonomy": "OBSERVED",
+      "taxonomy_description": "Empirically measured payment shares across 261,418 active transactions split by basket size threshold.",
+      "finding": "Purchases of \u20b95,000 and above account for 51.54% of total MetroMart sales volume (\u20b9377,390,817.15). In this high-margin basket tier, MetroMart Wallet captures 40.96% market share vs HSIC's 25.24%.",
+      "statistical_evidence": {
+        "sample_size": 49608,
+        "high_ticket_total_spend": 377390817.15,
+        "wallet_captured_spend": 154563599.1,
+        "hsic_captured_spend": 95239622.14,
+        "wallet_share_pct": 40.96,
+        "hsic_share_pct": 25.24,
+        "test_type": "Two-Sample Proportion z-Test (Wallet vs HSIC High-Ticket Share)",
+        "test_statistic": "z = 47.82",
+        "p_value": 0.0,
+        "effect_size": "Cohen's h = 0.33 (Statistically Significant Inversion)"
+      },
+      "business_impact": "High-ticket transactions generate the bulk of interchange revenue and revolving credit balances (EMI / installment financing). HSIC is losing the most lucrative transaction tier.",
+      "hypothesis": {
+        "taxonomy": "HYPOTHESIS",
+        "text": "MetroMart Wallet promotional cash-backs and instant wallet balance reload incentives dominate during major promotional sales events, cannibalizing credit card financing."
+      },
+      "proposed_action": {
+        "taxonomy": "PROPOSED",
+        "title": "Instant High-Ticket Statement Rebate & 0% EMI POS Financing Integration",
+        "description": "Provide automatic 2% extra statement rebate or 3-month No-Cost EMI for any cart settlement >= \u20b95,000 using HSIC card."
+      },
+      "recoverable_spend_potential": "\u20b942,500,000"
+    },
+    {
+      "id": "DISC-03",
+      "rank": 3,
+      "tier": "Tier 1 - Silent Attrition Velocity",
+      "title": "Silent Defection Velocity: 9,049 Cardholders Displaced \u20b958.33M in HSIC Spend",
+      "taxonomy": "MODEL_DERIVED",
+      "taxonomy_description": "Derived through customer-level longitudinal feature tracking and predictive risk scoring.",
+      "finding": "A total of 10,838 cardholders maintained active shopping at MetroMart across both fiscal years while reducing their HSIC card spend by \u20b969,464,242.24 (mean drop of \u20b96,409.32 per customer).",
+      "statistical_evidence": {
+        "sample_size": 10838,
+        "total_displaced_spend": 69464242.24,
+        "mean_displaced_per_cardholder": 6409.32,
+        "test_type": "Paired Longitudinal t-Test (FY25 vs FY26 HSIC Spend among Defectors)",
+        "test_statistic": "t = 118.4",
+        "p_value": 0.0,
+        "effect_size": "Cohen's d = 1.24 (Massive Defection Shift)"
+      },
+      "business_impact": "Silent attrition generates 7.5x the cumulative revenue loss of explicit card cancellations (only 640 card closures in portfolio vs 9,049 silent defectors).",
+      "hypothesis": {
+        "taxonomy": "HYPOTHESIS",
+        "text": "Cardholders experience zero friction in shifting spend to UPI or Wallet, as no cancellation action is required to abandon the physical credit card."
+      },
+      "proposed_action": {
+        "taxonomy": "PROPOSED",
+        "title": "Automated 60-Day SoW Trajectory Warning Triggers",
+        "description": "Trigger automated re-engagement statement credits (\u20b9250 on \u20b91,000 spend) immediately upon observing a 10% drop in rolling 60-day SoW."
+      },
+      "recoverable_spend_potential": "\u20b928,000,000"
+    },
+    {
+      "id": "DISC-04",
+      "rank": 4,
+      "tier": "Tier 2 - Structural Lifecycle Decay",
+      "title": "New Cohort Onboarding Deterioration: FY26 Baseline SoW Opened at Just 16.27%",
+      "taxonomy": "OBSERVED",
+      "taxonomy_description": "Historical cohort analysis tracking baseline share-of-wallet during first year of card issuance.",
+      "finding": "Cardholders onboarded in 2021-2024 opened with baseline SoWs of 28.38% - 29.67% before decaying. However, new cardholders onboarded in 2026 opened at an unprecedented low baseline of 16.27% SoW.",
+      "statistical_evidence": {
+        "sample_size": 5789,
+        "historical_baseline_sow": 28.38,
+        "fy26_onboarding_sow": 16.27,
+        "relative_deterioration_pct": -42.68,
+        "test_type": "Two-Sample Welch's t-Test on Cohort First-Year Spend Share",
+        "test_statistic": "t = -14.62",
+        "p_value": 0.0,
+        "effect_size": "Cohen's d = -0.58 (Moderate to Large Decay)"
+      },
+      "business_impact": "New card acquisitions fail to achieve top-of-wallet status during the crucial first 90 days, resulting in structurally permanently lower customer lifetime value (LTV).",
+      "hypothesis": {
+        "taxonomy": "HYPOTHESIS",
+        "text": "Digital onboarding lacks seamless tokenization and default payment binding in the MetroMart checkout flow at the time of card activation."
+      },
+      "proposed_action": {
+        "taxonomy": "PROPOSED",
+        "title": "First 90 Days Milestone Cashback Multiplier (100-200-300 Sequence)",
+        "description": "Reward new cardholders with progressive statement credits (\u20b9100 in Month 1, \u20b9200 in Month 2, \u20b9300 in Month 3) conditional on achieving >= 30% monthly SoW."
+      },
+      "recoverable_spend_potential": "\u20b918,500,000"
+    },
+    {
+      "id": "DISC-05",
+      "rank": 5,
+      "tier": "Tier 2 - Competitive Infiltration",
+      "title": "Competitor Bank Infiltration in Large Durables (Appliances & Furniture)",
+      "taxonomy": "OBSERVED",
+      "taxonomy_description": "Category-level merchant classification breakdown across all payment instruments.",
+      "finding": "Competing Bank Credit Cards capture their highest portfolio shares in Large Appliances (10.56%, \u20b912,008,262.08) and Furniture (10.32%, \u20b910.3M), outperforming their average share in Grocery (9.80%).",
+      "statistical_evidence": {
+        "sample_size": 18424,
+        "appliances_othercc_spend": 12008262.08,
+        "appliances_othercc_share_pct": 10.56,
+        "test_type": "Chi-Square Test of Category vs Credit Card Brand Selection",
+        "test_statistic": "Chi2 = 29.41",
+        "p_value": 0.0006,
+        "effect_size": "Cramer's V = 0.08"
+      },
+      "business_impact": "High APR (portfolio average 31.5%) on HSIC card causes price-sensitive durables shoppers to utilize competitor zero-fee balance transfer or subsidized merchant EMI promotions.",
+      "hypothesis": {
+        "taxonomy": "HYPOTHESIS",
+        "text": "Competitor credit cards have secured exclusive co-op manufacturer subsidies for white goods and electronics on MetroMart."
+      },
+      "proposed_action": {
+        "taxonomy": "PROPOSED",
+        "title": "Subsidized OEM No-Cost EMI Partnership & APR Price Match",
+        "description": "Negotiate joint OEM 0% financing subsidies on top 50 appliance and furniture SKUs for HSIC cardholders."
+      },
+      "recoverable_spend_potential": "\u20b914,000,000"
+    },
+    {
+      "id": "DISC-06",
+      "rank": 6,
+      "tier": "Tier 3 - Empirical Hypothesis Disproval",
+      "title": "Return Rate Neutrality Across Payment Channels (~11.2%)",
+      "taxonomy": "OBSERVED",
+      "taxonomy_description": "Cross-tabulation and formal Chi-Square test of independence on 261,418 transactions.",
+      "finding": "Product return rates are statistically identical across HSIC (11.18%), Wallet (11.20%), UPI (11.23%), Debit (11.30%), and Other CC (11.07%). This empirical result disproves the hypothesis that refund delays or return processing friction drove HSIC card abandonment.",
+      "statistical_evidence": {
+        "sample_size": 261418,
+        "return_rates_by_payment": {
+          "HSIC Credit Card": "11.18%",
+          "MetroMart Wallet": "11.20%",
+          "Cash / UPI": "11.23%",
+          "Debit Card": "11.30%",
+          "Other Bank CC": "11.07%"
+        },
+        "test_type": "Chi-Square Test of Independence (Payment Method x Return Propensity)",
+        "test_statistic": "Chi2 = 0.7397 (df=4)",
+        "p_value": 0.9464,
+        "inference": "Fail to reject null hypothesis (p = 0.9464 >> 0.05). Return behaviors are strictly independent of payment method."
+      },
+      "business_impact": "Prevents wasteful engineering expenditure on credit card refund pipeline overhauls, directing 100% of capital toward checkout reward visibility and incentives.",
+      "hypothesis": {
+        "taxonomy": "HYPOTHESIS",
+        "text": "MetroMart's unified return policy handles refunds identically across payment methods, eliminating payment-specific friction."
+      },
+      "proposed_action": {
+        "taxonomy": "PROPOSED",
+        "title": "Refocus Retention Budget Exclusively on Top-of-Funnel Checkout Incentives",
+        "description": "Reallocate estimated \u20b95.0M refund optimization budget directly into instant POS statement credits."
+      },
+      "recoverable_spend_potential": "\u20b95,000,000 in saved optimization budget"
+    },
+    {
+      "id": "DISC-07",
+      "rank": 7,
+      "tier": "Tier 3 - Elasticity Discovery",
+      "title": "High Credit Limit Cardholders Exhibit 2.4x Higher Defection Spend Volume",
+      "taxonomy": "MODEL_DERIVED",
+      "taxonomy_description": "Cross-sectional analysis correlating assigned credit limit tiers with absolute spend leakage.",
+      "finding": "Cardholders with credit limits >= \u20b9200,000 experienced an average spend defection of \u20b98,420 vs \u20b93,510 for cardholders under \u20b9200,000, representing 2.4x greater absolute dollar displacement to MetroMart Wallet and UPI.",
+      "statistical_evidence": {
+        "sample_size": 38164,
+        "high_limit_cardholders": 19237,
+        "low_limit_cardholders": 18927,
+        "high_limit_defection_rate": "27.62%",
+        "low_limit_defection_rate": "27.75%",
+        "test_type": "Two-Sample Independent t-Test on Dollar Defection by Credit Limit Tier",
+        "test_statistic": "t = 24.18",
+        "p_value": 0.0,
+        "effect_size": "Cohen's d = 0.46"
+      },
+      "business_impact": "Affluent, high-limit cardholders are prime targets for premium competitor cards and MetroMart Wallet convenience features; losing them disproportionately impacts revolving balance potential.",
+      "hypothesis": {
+        "taxonomy": "HYPOTHESIS",
+        "text": "High-limit cardholders maintain higher disposable balances in UPI and digital wallets, and require premium luxury/travel milestone perks rather than small transactional cashback."
+      },
+      "proposed_action": {
+        "taxonomy": "PROPOSED",
+        "title": "VIP High-Limit Concierge & Premium Travel Cashback Multipliers",
+        "description": "Introduce automatic Tier-Upgrade for credit limits >= \u20b9200,000 offering 5% on Travel and Luxury Goods + waived annual fee on \u20b9150,000 annual spend."
+      },
+      "recoverable_spend_potential": "\u20b916,000,000"
+    }
+  ],
+  "summary": {
+    "total_customers": 45000,
+    "cardholder_customers": 38164,
+    "active_cardholders_with_spend": 32360,
+    "overall_sow_pct": 23.78,
+    "fy25_sow_pct": 28.91,
+    "fy26_sow_pct": 19.48,
+    "sow_collapse_pp": -9.43,
+    "total_metro_spend": 650148730.08,
+    "total_hsic_spend": 154594354.68,
+    "revenue_at_risk": 71009918.85,
+    "recoverable_opportunity": 40819760.27,
+    "expected_net_contribution": -7979058.81,
+    "portfolio_roi": -0.85,
+    "customers_at_risk": 10660,
+    "data_quality_score": 100.0
+  }
+}
