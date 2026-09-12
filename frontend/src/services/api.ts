@@ -1,8 +1,41 @@
 import type { FilterParams } from "../types";
 
-export const API_BASE = (import.meta.env.VITE_API_URL as string) || "http://127.0.0.1:8000";
-const API_ENDPOINT = `${API_BASE}/api`;
-const API_V1_ENDPOINT = `${API_BASE}/api/v1`;
+const resolveApiBase = (): string => {
+  if (import.meta.env.VITE_API_URL) {
+    return (import.meta.env.VITE_API_URL as string).replace(/\/+$/, "");
+  }
+  if (typeof window !== "undefined") {
+    const host = window.location.hostname;
+    if (!host.includes("localhost") && !host.includes("127.0.0.1")) {
+      return "https://sharepulse-ai.onrender.com";
+    }
+  }
+  return "http://127.0.0.1:8000";
+};
+
+export const API_BASE = resolveApiBase();
+export const API_ENDPOINT = `${API_BASE}/api`;
+export const API_V1_ENDPOINT = `${API_BASE}/api/v1`;
+
+async function safeFetch(url: string, options?: RequestInit, retries = 2): Promise<Response> {
+  let lastError: Error | null = null;
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      const res = await fetch(url, options);
+      if (res.status === 503 && attempt < retries) {
+        await new Promise((r) => setTimeout(r, 1500 * (attempt + 1)));
+        continue;
+      }
+      return res;
+    } catch (err: any) {
+      lastError = err;
+      if (attempt < retries) {
+        await new Promise((r) => setTimeout(r, 1500 * (attempt + 1)));
+      }
+    }
+  }
+  throw lastError || new Error(`Network request failed for ${url}`);
+}
 
 function buildFilterQuery(filters?: FilterParams): string {
   if (!filters) return "";
@@ -18,28 +51,28 @@ function buildFilterQuery(filters?: FilterParams): string {
 // Case-Study API Methods
 export async function fetchOverview(filters?: FilterParams) {
   const q = buildFilterQuery(filters);
-  const res = await fetch(`${API_ENDPOINT}/overview${q}`);
+  const res = await safeFetch(`${API_ENDPOINT}/overview${q}`);
   if (!res.ok) throw new Error("Failed to fetch overview");
   return res.json();
 }
 
 export async function fetchSoW(filters?: FilterParams) {
   const q = buildFilterQuery(filters);
-  const res = await fetch(`${API_ENDPOINT}/sow${q}`);
+  const res = await safeFetch(`${API_ENDPOINT}/sow${q}`);
   if (!res.ok) throw new Error("Failed to fetch SoW data");
   return res.json();
 }
 
 export async function fetchMigration(filters?: FilterParams) {
   const q = buildFilterQuery(filters);
-  const res = await fetch(`${API_ENDPOINT}/migration${q}`);
+  const res = await safeFetch(`${API_ENDPOINT}/migration${q}`);
   if (!res.ok) throw new Error("Failed to fetch migration data");
   return res.json();
 }
 
 export async function fetchAttrition(filters?: FilterParams) {
   const q = buildFilterQuery(filters);
-  const res = await fetch(`${API_ENDPOINT}/attrition${q}`);
+  const res = await safeFetch(`${API_ENDPOINT}/attrition${q}`);
   if (!res.ok) throw new Error("Failed to fetch attrition data");
   return res.json();
 }
@@ -64,13 +97,13 @@ export async function fetchCustomers(params: {
   if (params.sortBy) query.append("sort_by", params.sortBy);
   if (params.sortOrder) query.append("sort_order", params.sortOrder);
   
-  const res = await fetch(`${API_ENDPOINT}/customers?${query.toString()}`);
+  const res = await safeFetch(`${API_ENDPOINT}/customers?${query.toString()}`);
   if (!res.ok) throw new Error("Failed to fetch customer directory");
   return res.json();
 }
 
 export async function fetchCustomerProfile(customerId: number) {
-  const res = await fetch(`${API_ENDPOINT}/customers/${customerId}`);
+  const res = await safeFetch(`${API_ENDPOINT}/customers/${customerId}`);
   if (!res.ok) throw new Error(`Failed to fetch customer profile for ID: ${customerId}`);
   return res.json();
 }
@@ -78,14 +111,14 @@ export const fetchCustomerDetail = fetchCustomerProfile;
 
 export async function fetchSegmentation(filters?: FilterParams) {
   const q = buildFilterQuery(filters);
-  const res = await fetch(`${API_ENDPOINT}/segmentation${q}`);
+  const res = await safeFetch(`${API_ENDPOINT}/segmentation${q}`);
   if (!res.ok) throw new Error("Failed to fetch segmentation data");
   return res.json();
 }
 
 export async function fetchOpportunity(filters?: FilterParams) {
   const q = buildFilterQuery(filters);
-  const res = await fetch(`${API_ENDPOINT}/opportunity${q}`);
+  const res = await safeFetch(`${API_ENDPOINT}/opportunity${q}`);
   if (!res.ok) throw new Error("Failed to fetch opportunity data");
   return res.json();
 }
@@ -94,28 +127,28 @@ export const fetchNextBestAction = fetchOpportunity;
 
 export async function fetchReturnAnalysis(filters?: FilterParams) {
   const q = buildFilterQuery(filters);
-  const res = await fetch(`${API_ENDPOINT}/return-analysis${q}`);
+  const res = await safeFetch(`${API_ENDPOINT}/return-analysis${q}`);
   if (!res.ok) throw new Error("Failed to fetch return analysis");
   return res.json();
 }
 
 export async function fetchBigTicket(filters?: FilterParams) {
   const q = buildFilterQuery(filters);
-  const res = await fetch(`${API_ENDPOINT}/big-ticket${q}`);
+  const res = await safeFetch(`${API_ENDPOINT}/big-ticket${q}`);
   if (!res.ok) throw new Error("Failed to fetch big-ticket analysis");
   return res.json();
 }
 
 export async function fetchRewardAnalysis(filters?: FilterParams) {
   const q = buildFilterQuery(filters);
-  const res = await fetch(`${API_ENDPOINT}/reward-analysis${q}`);
+  const res = await safeFetch(`${API_ENDPOINT}/reward-analysis${q}`);
   if (!res.ok) throw new Error("Failed to fetch reward analysis");
   return res.json();
 }
 
 export async function fetchSurvival(filters?: FilterParams) {
   const q = buildFilterQuery(filters);
-  const res = await fetch(`${API_ENDPOINT}/survival${q}`);
+  const res = await safeFetch(`${API_ENDPOINT}/survival${q}`);
   if (!res.ok) throw new Error("Failed to fetch survival analysis");
   return res.json();
 }
@@ -123,7 +156,7 @@ export const fetchExplainability = fetchSurvival;
 
 export async function fetchMarginBleed(filters?: FilterParams) {
   const q = buildFilterQuery(filters);
-  const res = await fetch(`${API_ENDPOINT}/margin-bleed${q}`);
+  const res = await safeFetch(`${API_ENDPOINT}/margin-bleed${q}`);
   if (!res.ok) throw new Error("Failed to fetch margin bleed data");
   return res.json();
 }
@@ -131,34 +164,34 @@ export const fetchLeakage = fetchMarginBleed;
 
 export async function fetchAIDiscovery(filters?: FilterParams) {
   const q = buildFilterQuery(filters);
-  const res = await fetch(`${API_ENDPOINT}/ai-discovery${q}`);
+  const res = await safeFetch(`${API_ENDPOINT}/ai-discovery${q}`);
   if (!res.ok) throw new Error("Failed to fetch AI discovered insights");
   return res.json();
 }
 export const fetchInsights = fetchAIDiscovery;
 
 export async function fetchDatasetSummary() {
-  const res = await fetch(`${API_ENDPOINT}/dataset/summary`);
+  const res = await safeFetch(`${API_ENDPOINT}/dataset/summary`);
   if (!res.ok) throw new Error("Failed to fetch dataset summary");
   return res.json();
 }
 
 export async function fetchGovernanceAudit(filters?: FilterParams) {
   const q = buildFilterQuery(filters);
-  const res = await fetch(`${API_ENDPOINT}/governance/audit${q}`);
+  const res = await safeFetch(`${API_ENDPOINT}/governance/audit${q}`);
   if (!res.ok) throw new Error("Failed to fetch governance audit");
   return res.json();
 }
 export const fetchGovernance = fetchGovernanceAudit;
 
 export async function fetchFilters() {
-  const res = await fetch(`${API_ENDPOINT}/filters`);
+  const res = await safeFetch(`${API_ENDPOINT}/filters`);
   if (!res.ok) throw new Error("Failed to fetch filter options");
   return res.json();
 }
 
 export async function simulateStrategy(payload: any) {
-  const res = await fetch(`${API_ENDPOINT}/strategy/simulate`, {
+  const res = await safeFetch(`${API_ENDPOINT}/strategy/simulate`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
@@ -170,7 +203,7 @@ export const runSimulation = simulateStrategy;
 
 export async function fetchExperiments(filters?: FilterParams) {
   const q = buildFilterQuery(filters);
-  const res = await fetch(`${API_ENDPOINT}/experiments${q}`);
+  const res = await safeFetch(`${API_ENDPOINT}/experiments${q}`);
   if (!res.ok) {
     return fetchSurvival(filters);
   }
@@ -178,7 +211,7 @@ export async function fetchExperiments(filters?: FilterParams) {
 }
 
 export async function postChatMessage(payload: { message: string; customer_id?: number }) {
-  const res = await fetch(`${API_ENDPOINT}/ai/chat`, {
+  const res = await safeFetch(`${API_ENDPOINT}/ai/chat`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
@@ -189,7 +222,7 @@ export async function postChatMessage(payload: { message: string; customer_id?: 
 export const sendChatMessage = postChatMessage;
 
 export async function fetchExecutiveBrief() {
-  const res = await fetch(`${API_V1_ENDPOINT}/executive-brief`);
+  const res = await safeFetch(`${API_V1_ENDPOINT}/executive-brief`);
   if (!res.ok) throw new Error("Failed to fetch executive brief");
   return res.json();
 }
@@ -197,25 +230,25 @@ export const fetchReport = fetchExecutiveBrief;
 
 // Enterprise API v1 Methods
 export async function fetchBusinessPulse(horizon: string = "24h") {
-  const res = await fetch(`${API_V1_ENDPOINT}/business-pulse?horizon=${horizon}`);
+  const res = await safeFetch(`${API_V1_ENDPOINT}/business-pulse?horizon=${horizon}`);
   if (!res.ok) throw new Error("Failed to fetch business pulse");
   return res.json();
 }
 
 export async function fetchAnomalies(limit: number = 20) {
-  const res = await fetch(`${API_V1_ENDPOINT}/anomalies?limit=${limit}`);
+  const res = await safeFetch(`${API_V1_ENDPOINT}/anomalies?limit=${limit}`);
   if (!res.ok) throw new Error("Failed to fetch anomalies");
   return res.json();
 }
 
 export async function fetchAlerts() {
-  const res = await fetch(`${API_V1_ENDPOINT}/alerts`);
+  const res = await safeFetch(`${API_V1_ENDPOINT}/alerts`);
   if (!res.ok) throw new Error("Failed to fetch alerts");
   return res.json();
 }
 
 export async function acknowledgeAlert(alertId: string, user: string = "Admin User") {
-  const res = await fetch(`${API_V1_ENDPOINT}/alerts/${alertId}/acknowledge`, {
+  const res = await safeFetch(`${API_V1_ENDPOINT}/alerts/${alertId}/acknowledge`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ user }),
@@ -225,7 +258,7 @@ export async function acknowledgeAlert(alertId: string, user: string = "Admin Us
 }
 
 export async function resolveAlert(alertId: string, user: string = "Admin User") {
-  const res = await fetch(`${API_V1_ENDPOINT}/alerts/${alertId}/resolve`, {
+  const res = await safeFetch(`${API_V1_ENDPOINT}/alerts/${alertId}/resolve`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ user }),
@@ -235,13 +268,13 @@ export async function resolveAlert(alertId: string, user: string = "Admin User")
 }
 
 export async function fetchConnections() {
-  const res = await fetch(`${API_V1_ENDPOINT}/connections`);
+  const res = await safeFetch(`${API_V1_ENDPOINT}/connections`);
   if (!res.ok) throw new Error("Failed to fetch connections");
   return res.json();
 }
 
 export async function toggleConnection(connectorId: string, action: "connect" | "pause") {
-  const res = await fetch(`${API_V1_ENDPOINT}/connections/${connectorId}/toggle`, {
+  const res = await safeFetch(`${API_V1_ENDPOINT}/connections/${connectorId}/toggle`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ action }),
@@ -251,7 +284,7 @@ export async function toggleConnection(connectorId: string, action: "connect" | 
 }
 
 export async function testConnection(connectorId: string) {
-  const res = await fetch(`${API_V1_ENDPOINT}/connections/${connectorId}/test`, {
+  const res = await safeFetch(`${API_V1_ENDPOINT}/connections/${connectorId}/test`, {
     method: "POST",
   });
   if (!res.ok) throw new Error("Failed to test connection");
@@ -259,7 +292,7 @@ export async function testConnection(connectorId: string) {
 }
 
 export async function ingestEvent(eventPayload: any) {
-  const res = await fetch(`${API_V1_ENDPOINT}/events`, {
+  const res = await safeFetch(`${API_V1_ENDPOINT}/events`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(eventPayload),
@@ -269,7 +302,7 @@ export async function ingestEvent(eventPayload: any) {
 }
 
 export async function replayEvents(count: number = 25) {
-  const res = await fetch(`${API_V1_ENDPOINT}/events/replay?count=${count}`, {
+  const res = await safeFetch(`${API_V1_ENDPOINT}/events/replay?count=${count}`, {
     method: "POST",
   });
   if (!res.ok) throw new Error("Event replay failed");
@@ -277,31 +310,31 @@ export async function replayEvents(count: number = 25) {
 }
 
 export async function fetchDataHealth() {
-  const res = await fetch(`${API_V1_ENDPOINT}/data-health`);
+  const res = await safeFetch(`${API_V1_ENDPOINT}/data-health`);
   if (!res.ok) throw new Error("Failed to fetch data health");
   return res.json();
 }
 
 export async function fetchRootCause(anomalyId: string) {
-  const res = await fetch(`${API_V1_ENDPOINT}/root-cause/${anomalyId}`);
+  const res = await safeFetch(`${API_V1_ENDPOINT}/root-cause/${anomalyId}`);
   if (!res.ok) throw new Error("Failed to fetch root cause analysis");
   return res.json();
 }
 
 export async function fetchDecisions(limit: number = 50) {
-  const res = await fetch(`${API_V1_ENDPOINT}/decisions?limit=${limit}`);
+  const res = await safeFetch(`${API_V1_ENDPOINT}/decisions?limit=${limit}`);
   if (!res.ok) throw new Error("Failed to fetch decisions matrix");
   return res.json();
 }
 
 export async function fetchAutomations() {
-  const res = await fetch(`${API_V1_ENDPOINT}/automations`);
+  const res = await safeFetch(`${API_V1_ENDPOINT}/automations`);
   if (!res.ok) throw new Error("Failed to fetch automations");
   return res.json();
 }
 
 export async function toggleAutomationRule(ruleId: string, enabled: boolean) {
-  const res = await fetch(`${API_V1_ENDPOINT}/automations/${ruleId}/toggle`, {
+  const res = await safeFetch(`${API_V1_ENDPOINT}/automations/${ruleId}/toggle`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ enabled }),
@@ -311,7 +344,7 @@ export async function toggleAutomationRule(ruleId: string, enabled: boolean) {
 }
 
 export async function submitAutomationApproval(requestId: string, decision: "APPROVED" | "REJECTED", reason?: string) {
-  const res = await fetch(`${API_V1_ENDPOINT}/automations/approval`, {
+  const res = await safeFetch(`${API_V1_ENDPOINT}/automations/approval`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ request_id: requestId, decision, reason }),
@@ -321,25 +354,25 @@ export async function submitAutomationApproval(requestId: string, decision: "APP
 }
 
 export async function fetchLineage() {
-  const res = await fetch(`${API_V1_ENDPOINT}/lineage`);
+  const res = await safeFetch(`${API_V1_ENDPOINT}/lineage`);
   if (!res.ok) throw new Error("Failed to fetch data lineage");
   return res.json();
 }
 
 export async function fetchModelHealth() {
-  const res = await fetch(`${API_V1_ENDPOINT}/model-health`);
+  const res = await safeFetch(`${API_V1_ENDPOINT}/model-health`);
   if (!res.ok) throw new Error("Failed to fetch model health");
   return res.json();
 }
 
 export async function fetchSystemHealth() {
-  const res = await fetch(`${API_V1_ENDPOINT}/system/health`);
+  const res = await safeFetch(`${API_V1_ENDPOINT}/system/health`);
   if (!res.ok) throw new Error("Failed to fetch system health");
   return res.json();
 }
 
 export async function fetchDeadLetterQueue() {
-  const res = await fetch(`${API_V1_ENDPOINT}/events/dead-letter`);
+  const res = await safeFetch(`${API_V1_ENDPOINT}/events/dead-letter`);
   if (!res.ok) throw new Error("Failed to fetch dead letter queue");
   return res.json();
 }
@@ -354,19 +387,19 @@ export async function fetchLiveThroughput() {
 }
 
 export async function fetchLiveStreamTelemetry() {
-  const res = await fetch(`${API_V1_ENDPOINT}/live-stream/metrics`);
+  const res = await safeFetch(`${API_V1_ENDPOINT}/live-stream/metrics`);
   if (!res.ok) throw new Error("Failed to fetch live stream telemetry");
   return res.json();
 }
 
 export async function clearLiveStreamDatabase() {
-  const res = await fetch(`${API_V1_ENDPOINT}/live-stream/clear`, { method: "POST" });
+  const res = await safeFetch(`${API_V1_ENDPOINT}/live-stream/clear`, { method: "POST" });
   if (!res.ok) throw new Error("Failed to clear live stream database");
   return res.json();
 }
 
 export async function generateLiveStreamTraffic(count: number = 5, anomaly: boolean = false) {
-  const res = await fetch(`${API_V1_ENDPOINT}/live-stream/generate`, {
+  const res = await safeFetch(`${API_V1_ENDPOINT}/live-stream/generate`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ count, anomaly }),

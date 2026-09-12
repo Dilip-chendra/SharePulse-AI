@@ -1,10 +1,11 @@
 import React from 'react';
 
-interface BrandLogoProps {
+export interface BrandLogoProps {
   size?: 'sm' | 'md' | 'lg' | 'xl';
   showText?: boolean;
   tagline?: string;
   className?: string;
+  variant?: 'primary' | 'compact' | 'icon' | 'light';
   animate?: boolean;
 }
 
@@ -13,143 +14,142 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
   showText = true,
   tagline,
   className = '',
-  animate = true
+  variant = 'primary',
+  animate = true,
 }) => {
   const sizeMap = {
-    sm: { icon: 28, text: 'text-base', badge: 'text-[9px] px-1.5 py-0.5', gap: 'gap-2.5' },
+    sm: { icon: 26, text: 'text-base', badge: 'text-[9px] px-1.5 py-0.2', gap: 'gap-2' },
     md: { icon: 34, text: 'text-lg', badge: 'text-[9px] px-2 py-0.5', gap: 'gap-2.5' },
     lg: { icon: 42, text: 'text-2xl', badge: 'text-xs px-2.5 py-0.5', gap: 'gap-3.5' },
-    xl: { icon: 52, text: 'text-3xl', badge: 'text-xs px-3 py-1', gap: 'gap-4' }
+    xl: { icon: 54, text: 'text-3xl', badge: 'text-xs px-3 py-1', gap: 'gap-4' },
   };
 
   const current = sizeMap[size];
+  const isLight = variant === 'light';
 
   return (
     <div className={`inline-flex items-center ${current.gap} ${className} select-none group`}>
-      {/* Precision Apex Pulse Catalyst Emblem */}
-      <div 
+      {/* Apex Finmark Sigil Icon */}
+      <div
         className="relative flex items-center justify-center shrink-0"
         style={{ width: current.icon, height: current.icon }}
       >
-        {/* Ambient Gradient Glow Aura */}
-        <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-indigo-600 via-cyan-400 to-emerald-400 blur-[9px] opacity-40 group-hover:opacity-75 transition-opacity duration-500" />
-        
-        {/* Emblem SVG */}
-        <svg 
-          width={current.icon} 
-          height={current.icon} 
-          viewBox="0 0 48 48" 
-          fill="none" 
+        {/* Ambient Precision Glow */}
+        <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-indigo-500 via-cyan-400 to-emerald-400 blur-[8px] opacity-35 group-hover:opacity-65 transition-opacity duration-300" />
+
+        {/* Vector SVG Mark */}
+        <svg
+          width={current.icon}
+          height={current.icon}
+          viewBox="0 0 48 48"
+          fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="relative z-10 transition-transform duration-500 group-hover:scale-105"
+          className="relative z-10 transition-transform duration-300 group-hover:scale-[1.03]"
         >
           <defs>
-            {/* Primary Neon Prismatic Gradient */}
-            <linearGradient id="sp-prismatic-apex" x1="2" y1="2" x2="46" y2="46" gradientUnits="userSpaceOnUse">
+            {/* Primary Prismatic Wave Gradient */}
+            <linearGradient id="sp-grad-primary" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stopColor="#818CF8" />
-              <stop offset="35%" stopColor="#6366F1" />
-              <stop offset="70%" stopColor="#06B6D4" />
+              <stop offset="45%" stopColor="#06B6D4" />
               <stop offset="100%" stopColor="#10B981" />
             </linearGradient>
 
-            {/* Core Pulse Flare Gradient */}
-            <linearGradient id="sp-pulse-flare" x1="12" y1="12" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+            {/* Counter-Pulse Financial Flow Gradient */}
+            <linearGradient id="sp-grad-counter" x1="44" y1="4" x2="4" y2="44" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stopColor="#38BDF8" />
-              <stop offset="50%" stopColor="#818CF8" />
-              <stop offset="100%" stopColor="#C084FC" />
+              <stop offset="50%" stopColor="#6366F1" />
+              <stop offset="100%" stopColor="#A855F7" />
             </linearGradient>
 
-            {/* Deep Obsidian Background */}
-            <linearGradient id="sp-obsidian-bg" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#0C101C" />
-              <stop offset="100%" stopColor="#05070D" />
+            {/* Shield Obsidian Gradient */}
+            <linearGradient id="sp-grad-shield" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor={isLight ? "#F8FAFC" : "#0A0E1A"} />
+              <stop offset="100%" stopColor={isLight ? "#EDF2F7" : "#04060B"} />
             </linearGradient>
 
-            {/* Specular Rim Highlight */}
-            <linearGradient id="sp-rim-specular" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.45" />
-              <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+            {/* Precision Rim Stroke */}
+            <linearGradient id="sp-grad-rim" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#FFFFFF" stopOpacity={isLight ? "0.8" : "0.35"} />
+              <stop offset="50%" stopColor="#06B6D4" stopOpacity="0.5" />
+              <stop offset="100%" stopColor="#10B981" stopOpacity={isLight ? "0.6" : "0.2"} />
             </linearGradient>
 
-            {/* Glow Filter */}
-            <filter id="sp-neon-glow" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="1.2" result="blur" />
+            {/* Crisp Filter Glow */}
+            <filter id="sp-sigil-glow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="0.8" result="blur" />
               <feComposite in="SourceGraphic" in2="blur" operator="over" />
             </filter>
           </defs>
 
-          {/* Outer Squircle Container with Precision Chamfer */}
-          <rect 
-            x="2" 
-            y="2" 
-            width="44" 
-            height="44" 
-            rx="13" 
-            fill="url(#sp-obsidian-bg)" 
-            stroke="url(#sp-prismatic-apex)" 
-            strokeWidth="1.75" 
-          />
-
-          {/* Inner Specular Rim */}
-          <rect 
-            x="3.5" 
-            y="3.5" 
-            width="41" 
-            height="41" 
-            rx="11.5" 
-            fill="none" 
-            stroke="url(#sp-rim-specular)" 
-            strokeWidth="1" 
-          />
-
-          {/* Dynamic Interlocking 'S-Pulse' Path 1 (Ascending Wave) */}
+          {/* Faceted Hex-Shield Precision Container */}
           <path
-            d="M12 32C14 32 17 28 20 22C22.5 17 25 15 28 15C32 15 36 18 36 22C36 26 31 29 27 30C23 31 16 31 12 35"
-            stroke="url(#sp-prismatic-apex)"
-            strokeWidth="3.2"
+            d="M24 3L43 10V25C43 35.5 35 43.5 24 46C13 43.5 5 35.5 5 25V10L24 3Z"
+            fill="url(#sp-grad-shield)"
+            stroke="url(#sp-grad-rim)"
+            strokeWidth="1.6"
+            strokeLinejoin="round"
+          />
+
+          {/* Interlocking SOW Pulse Wave Stream (Upper Loop) */}
+          <path
+            d="M13 22C13 16 18 13.5 23 14C27.5 14.5 31 17.5 34 21C36.5 24 37 28 35 32C33 36 28 37 24 36.5C18.5 35.8 14 31 14 26"
+            stroke="url(#sp-grad-primary)"
+            strokeWidth="2.8"
             strokeLinecap="round"
             strokeLinejoin="round"
-            filter="url(#sp-neon-glow)"
+            filter="url(#sp-sigil-glow)"
           />
 
-          {/* Intersecting Pulse Stream (Descending Counter-Wave) */}
+          {/* Inner Financial Trajectory Catalyst Curve (Intersecting Flow) */}
           <path
-            d="M36 16C34 16 31 20 28 26C25.5 31 23 33 20 33C16 33 12 30 12 26C12 22 17 19 21 18C25 17 32 17 36 13"
-            stroke="url(#sp-pulse-flare)"
-            strokeWidth="2.4"
+            d="M35 26C35 21 31 18 27 18C23 18 19 21 16 25C14 28 14 31 16 33C18 35 22 35 25 33C29 30.5 34 26 35 21"
+            stroke="url(#sp-grad-counter)"
+            strokeWidth="2.0"
             strokeLinecap="round"
             strokeLinejoin="round"
-            opacity="0.9"
+            opacity="0.85"
           />
 
-          {/* Center Catalyst Diamond Core */}
+          {/* Precision Apex Diamond Center Core */}
           <path
-            d="M24 18.5L28.5 24L24 29.5L19.5 24L24 18.5Z"
+            d="M24 19L28 24L24 29L20 24L24 19Z"
             fill="#FFFFFF"
             className={animate ? "animate-pulse" : ""}
           />
-          <circle cx="24" cy="24" r="2" fill="#38BDF8" />
+          <circle cx="24" cy="24" r="1.8" fill="#06B6D4" />
 
-          {/* Satellite Data Nodes */}
-          <circle cx="12" cy="24" r="2" fill="#818CF8" />
-          <circle cx="36" cy="24" r="2" fill="#10B981" />
+          {/* Micro Telemetry Convergence Nodes */}
+          <circle cx="16" cy="18" r="1.5" fill="#818CF8" />
+          <circle cx="32" cy="30" r="1.5" fill="#10B981" />
         </svg>
       </div>
 
-      {/* Typography Lockup */}
+      {/* Typography Wordmark */}
       {showText && (
         <div className="flex flex-col">
           <div className="flex items-center gap-2">
-            <span className={`font-sans font-bold tracking-tight text-white ${current.text} leading-none flex items-center`}>
-              Share<span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-cyan-200 to-emerald-300 font-extrabold">Pulse</span>
+            <span
+              className={`font-sans font-extrabold tracking-tight leading-none flex items-center ${current.text} ${
+                isLight ? "text-slate-900" : "text-white"
+              }`}
+            >
+              SHARE<span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-cyan-300 to-emerald-400">PULSE</span>
             </span>
-            <span className={`inline-flex items-center gap-1 font-sans font-semibold rounded-md bg-gradient-to-r from-indigo-950/90 via-slate-900/90 to-cyan-950/90 border border-indigo-500/30 text-indigo-300 ${current.badge} shadow-sm shadow-indigo-950/50`}>
+            <span
+              className={`inline-flex items-center gap-1 font-mono font-bold rounded-md uppercase tracking-wider ${
+                current.badge
+              } ${
+                isLight
+                  ? "bg-slate-100 text-indigo-700 border border-indigo-200"
+                  : "bg-slate-900/90 border border-indigo-500/40 text-indigo-300 shadow-sm shadow-indigo-950"
+              }`}
+            >
               <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
               AI
             </span>
           </div>
           {tagline && (
-            <span className="text-[10px] font-medium text-slate-400 tracking-wider uppercase mt-0.5">
+            <span className={`text-[10px] font-medium tracking-wider uppercase mt-0.5 ${isLight ? "text-slate-500" : "text-slate-400"}`}>
               {tagline}
             </span>
           )}

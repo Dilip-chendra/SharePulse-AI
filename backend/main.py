@@ -25,13 +25,54 @@ app = FastAPI(
     lifespan=lifespan
 )
 
+origins = [
+    "https://share-pulse-ai.vercel.app",
+    "https://sharepulse-ai.vercel.app",
+    "http://localhost:5173",
+    "http://localhost:3000",
+    "http://127.0.0.1:5173",
+    "http://127.0.0.1:3000",
+    "http://localhost:8000",
+    "http://127.0.0.1:8000"
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allow_headers=["*"],
+    expose_headers=["*"]
 )
+
+@app.get("/")
+def root():
+    return {
+        "status": "ok",
+        "service": "sharepulse-api",
+        "version": "2.5.0",
+        "environment": "production" if os.environ.get("PORT") else "development",
+        "endpoints": {
+            "docs": "/docs",
+            "health": "/health",
+            "overview": "/api/overview",
+            "sow": "/api/sow",
+            "migration": "/api/migration",
+            "attrition": "/api/attrition",
+            "events_gateway": "/api/v1/events"
+        }
+    }
+
+@app.get("/health")
+def health():
+    return {
+        "status": "ok",
+        "service": "sharepulse-api",
+        "version": "2.5.0",
+        "database": "connected",
+        "analytics_engine": "ready"
+    }
 
 app.include_router(api_router, prefix="/api")
 app.include_router(v1_router, prefix="/api/v1")

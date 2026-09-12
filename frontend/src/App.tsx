@@ -9,6 +9,7 @@ import { CustomerDrawer } from './components/common/CustomerDrawer';
 import { ReportModal } from './components/common/ReportModal';
 import { ErrorBoundary } from './components/common/ErrorBoundary';
 import { CommandPalette } from './components/common/CommandPalette';
+import { BackendHealthBanner } from './components/common/BackendHealthBanner';
 
 // Pages
 import { BusinessPulse } from './pages/BusinessPulse';
@@ -120,6 +121,7 @@ const DashboardContent: React.FC = () => {
         onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
       />
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+        <BackendHealthBanner />
         <Navbar 
           kpis={(overviewData as { kpis?: unknown } | null)?.kpis} 
           onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}

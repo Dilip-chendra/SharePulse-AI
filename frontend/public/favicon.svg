@@ -1,39 +1,40 @@
 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="sp-fav-prism" x1="2" y1="2" x2="46" y2="46" gradientUnits="userSpaceOnUse">
+    <linearGradient id="sp-fav-prim" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stopColor="#818CF8" />
-      <stop offset="35%" stopColor="#6366F1" />
-      <stop offset="70%" stopColor="#06B6D4" />
+      <stop offset="45%" stopColor="#06B6D4" />
       <stop offset="100%" stopColor="#10B981" />
     </linearGradient>
-    <linearGradient id="sp-fav-pulse" x1="12" y1="12" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+    <linearGradient id="sp-fav-count" x1="44" y1="4" x2="4" y2="44" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stopColor="#38BDF8" />
-      <stop offset="50%" stopColor="#818CF8" />
-      <stop offset="100%" stopColor="#C084FC" />
+      <stop offset="50%" stopColor="#6366F1" />
+      <stop offset="100%" stopColor="#A855F7" />
     </linearGradient>
     <linearGradient id="sp-fav-bg" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stopColor="#0C101C" />
-      <stop offset="100%" stopColor="#05070D" />
+      <stop offset="0%" stopColor="#0A0E1A" />
+      <stop offset="100%" stopColor="#04060B" />
     </linearGradient>
-    <linearGradient id="sp-fav-spec" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.5" />
-      <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+    <linearGradient id="sp-fav-rim" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.45" />
+      <stop offset="50%" stopColor="#06B6D4" stopOpacity="0.6" />
+      <stop offset="100%" stopColor="#10B981" stopOpacity="0.3" />
     </linearGradient>
   </defs>
 
-  <!-- Squircle Base with Chamfer -->
-  <rect x="2" y="2" width="44" height="44" rx="13" fill="url(#sp-fav-bg)" stroke="url(#sp-fav-prism)" stroke-width="2" />
-  <rect x="3.5" y="3.5" width="41" height="41" rx="11.5" fill="none" stroke="url(#sp-fav-spec)" stroke-width="1" />
+  <!-- Faceted Hex-Shield Base -->
+  <path d="M24 3L43 10V25C43 35.5 35 43.5 24 46C13 43.5 5 35.5 5 25V10L24 3Z" fill="url(#sp-fav-bg)" stroke="url(#sp-fav-rim)" stroke-width="2" stroke-linejoin="round" />
 
-  <!-- Dual Pulse Wave Streams -->
-  <path d="M12 32C14 32 17 28 20 22C22.5 17 25 15 28 15C32 15 36 18 36 22C36 26 31 29 27 30C23 31 16 31 12 35" stroke="url(#sp-fav-prism)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
-  <path d="M36 16C34 16 31 20 28 26C25.5 31 23 33 20 33C16 33 12 30 12 26C12 22 17 19 21 18C25 17 32 17 36 13" stroke="url(#sp-fav-pulse)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" />
+  <!-- SOW Pulse Wave Stream -->
+  <path d="M13 22C13 16 18 13.5 23 14C27.5 14.5 31 17.5 34 21C36.5 24 37 28 35 32C33 36 28 37 24 36.5C18.5 35.8 14 31 14 26" stroke="url(#sp-fav-prim)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
 
-  <!-- Center Catalyst Spark -->
-  <path d="M24 18.5L28.5 24L24 29.5L19.5 24L24 18.5Z" fill="#FFFFFF" />
-  <circle cx="24" cy="24" r="2" fill="#38BDF8" />
+  <!-- Inner Flow Trajectory -->
+  <path d="M35 26C35 21 31 18 27 18C23 18 19 21 16 25C14 28 14 31 16 33C18 35 22 35 25 33C29 30.5 34 26 35 21" stroke="url(#sp-fav-count)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" />
 
-  <!-- Satellites -->
-  <circle cx="12" cy="24" r="2.2" fill="#818CF8" />
-  <circle cx="36" cy="24" r="2.2" fill="#10B981" />
+  <!-- Apex Catalyst Core -->
+  <path d="M24 19L28 24L24 29L20 24L24 19Z" fill="#FFFFFF" />
+  <circle cx="24" cy="24" r="2" fill="#06B6D4" />
+
+  <!-- Telemetry Nodes -->
+  <circle cx="16" cy="18" r="1.8" fill="#818CF8" />
+  <circle cx="32" cy="30" r="1.8" fill="#10B981" />
 </svg>
