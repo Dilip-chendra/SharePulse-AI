@@ -130,7 +130,7 @@ export const CTAScene: React.FC = () => {
         {/* Footer note */}
         <div className="mt-10 flex flex-col items-center gap-1.5">
           <div className="text-xs text-slate-400 font-mono">
-            Deployed on Vercel · Backend on Railway · Auth by Clerk
+            Deployed on Vercel · Backend on Render · Auth by Clerk
           </div>
           <div className="text-xs text-slate-500 font-mono">
             Deterministic zero-assumption analytics across 444,000+ transactions

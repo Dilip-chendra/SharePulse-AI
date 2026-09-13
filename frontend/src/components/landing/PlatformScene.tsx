@@ -127,7 +127,7 @@ export const PlatformScene: React.FC = () => {
         <div className="mt-8 p-4 rounded-xl border border-slate-800/80 bg-slate-900/40 backdrop-blur-md">
           <div className="text-[10px] font-mono text-slate-400 uppercase tracking-wider mb-2 font-bold">Enterprise Tech Stack</div>
           <div className="flex flex-wrap gap-2">
-            {['Python · FastAPI', 'React · TypeScript', 'Pandas · Scikit-learn', 'PostgreSQL', 'Clerk Auth', 'Vercel · Railway', 'Recharts · Tailwind CSS'].map((tech) => (
+            {['Python · FastAPI', 'React · TypeScript', 'Pandas · Scikit-learn', 'PostgreSQL', 'Clerk Auth', 'Vercel · Render', 'Recharts · Tailwind CSS'].map((tech) => (
               <span
                 key={tech}
                 className="px-2.5 py-1 rounded-md text-xs font-mono text-slate-300 bg-slate-800/70 border border-slate-700/50"
