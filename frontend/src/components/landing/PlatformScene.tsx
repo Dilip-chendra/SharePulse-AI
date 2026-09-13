@@ -91,11 +91,11 @@ export const PlatformScene: React.FC = () => {
     <section
       ref={sectionRef}
       id="scene-platform"
-      className="relative min-h-screen flex items-center justify-center py-20 px-4 sm:px-6 bg-[#07090E] overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden"
     >
-      {/* Background */}
-      <div className="absolute top-1/4 right-1/4 w-[500px] h-[400px] bg-indigo-900/8 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute inset-0 bg-dot-pattern opacity-25 pointer-events-none" />
+      {/* Background ambient glow */}
+      <div className="absolute top-1/4 right-1/4 w-[500px] h-[400px] bg-indigo-950/15 rounded-full blur-[130px] pointer-events-none" />
+
 
       <div className="relative z-10 max-w-6xl mx-auto w-full">
         {/* Header */}

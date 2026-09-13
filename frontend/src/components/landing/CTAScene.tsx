@@ -63,11 +63,11 @@ export const CTAScene: React.FC = () => {
     <section
       ref={sectionRef}
       id="scene-cta"
-      className="relative min-h-screen flex flex-col items-center justify-center py-20 px-4 sm:px-6 bg-[#07090E] overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center py-20 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden"
     >
-      {/* Background */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-indigo-900/10 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />
+      {/* Background glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-indigo-950/20 rounded-full blur-[150px] pointer-events-none" />
+
 
       <div ref={contentRef} className="relative z-10 max-w-4xl mx-auto w-full text-center">
         {/* Logo */}

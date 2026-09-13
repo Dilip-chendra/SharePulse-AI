@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from 'react';
 import { SignInButton, SignedIn, SignedOut } from '@clerk/clerk-react';
-import { ParticleCanvas } from './ParticleCanvas';
 import gsap from 'gsap';
 
 export const HeroScene: React.FC = () => {
@@ -25,18 +24,11 @@ export const HeroScene: React.FC = () => {
   return (
     <section
       id="scene-hero"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#07090E]"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-transparent"
     >
-      {/* Particle canvas */}
-      <div className="absolute inset-0">
-        <ParticleCanvas />
-      </div>
+      {/* Ambient center hero glow */}
+      <div className="absolute inset-0 bg-radial-gradient pointer-events-none opacity-60" />
 
-      {/* Radial gradient overlay */}
-      <div className="absolute inset-0 bg-radial-gradient pointer-events-none" />
-
-      {/* Grid overlay */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none" />
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 sm:px-6 max-w-5xl mx-auto pt-20">

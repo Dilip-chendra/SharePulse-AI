@@ -7,9 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 // Verified data
 const DEFECTOR_COUNT = 10098;
 
-// Mini scatter data — representative (spread, not fabricated individual data)
 function generateScatterPoints(count: number) {
-  // Generate deterministic-looking scatter based on seed
   const pts: { x: number; y: number; risk: 'high' | 'medium' | 'low' }[] = [];
   for (let i = 0; i < count; i++) {
     const seed = i * 1.618;
@@ -25,41 +23,52 @@ function generateScatterPoints(count: number) {
   return pts;
 }
 
-const SCATTER_PTS = generateScatterPoints(150); // Representative sample of 10,098
+const SCATTER_PTS = generateScatterPoints(150);
 
 export const DefectorScene: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
   const counterRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [count, setCount] = useState(0);
-  const [canvasReady, setCanvasReady] = useState(false);
 
-  // Counter animation
+  // Initialize with verified truth value — NEVER 0 on initial or failed animation!
+  const [count, setCount] = useState<number>(DEFECTOR_COUNT);
+  const [canvasReady, setCanvasReady] = useState<boolean>(true);
+  const animFired = useRef<boolean>(false);
+
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const ctx = gsap.context(() => {
       gsap.from(titleRef.current, {
-        opacity: 0, y: 30, duration: 0.8, ease: 'power3.out',
-        scrollTrigger: { trigger: titleRef.current, start: 'top 80%' },
+        opacity: 0,
+        y: 28,
+        duration: 0.7,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: titleRef.current, start: 'top 85%' },
       });
 
       ScrollTrigger.create({
         trigger: counterRef.current,
-        start: 'top 80%',
+        start: 'top 85%',
         onEnter: () => {
+          if (animFired.current) return;
+          animFired.current = true;
           setCanvasReady(true);
+
           if (prefersReduced) {
             setCount(DEFECTOR_COUNT);
-          } else {
-            gsap.to({ val: 0 }, {
-              val: DEFECTOR_COUNT,
-              duration: 2.0,
-              ease: 'power2.out',
-              onUpdate: function () { setCount(Math.round(this.targets()[0].val)); },
-            });
+            return;
           }
+
+          const counterObj = { val: 0 };
+          gsap.to(counterObj, {
+            val: DEFECTOR_COUNT,
+            duration: 1.8,
+            ease: 'power2.out',
+            onUpdate: () => setCount(Math.round(counterObj.val)),
+            onComplete: () => setCount(DEFECTOR_COUNT),
+          });
         },
       });
     }, sectionRef);
@@ -93,8 +102,8 @@ export const DefectorScene: React.FC = () => {
         const x = pt.x * w;
         const y = pt.y * h;
         ctx.beginPath();
-        ctx.arc(x, y, 3, 0, Math.PI * 2);
-        ctx.fillStyle = COLORS[pt.risk] + 'BB';
+        ctx.arc(x, y, 3.5, 0, Math.PI * 2);
+        ctx.fillStyle = COLORS[pt.risk] + 'CC';
         ctx.fill();
       }
       drawn += toAdd;
@@ -111,40 +120,42 @@ export const DefectorScene: React.FC = () => {
     <section
       ref={sectionRef}
       id="scene-defectors"
-      className="relative min-h-screen flex items-center justify-center py-20 px-4 sm:px-6 bg-[#07090E] overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden"
     >
-      {/* Background */}
-      <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-orange-900/8 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none" />
+      {/* Soft atmospheric ambient glow */}
+      <div className="absolute top-1/3 right-1/4 w-[500px] h-[450px] bg-orange-950/15 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="relative z-10 max-w-6xl mx-auto w-full">
         {/* Header */}
         <div ref={titleRef} className="mb-12 sm:mb-16 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-orange-500/30 bg-orange-950/30 text-xs font-mono tracking-wider text-orange-400 uppercase mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-orange-500/30 bg-orange-950/40 text-xs font-mono tracking-wider text-orange-300 uppercase mb-4 shadow-sm shadow-orange-950">
             <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" />
             Attrition Radar · OBSERVED
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
             Silent Defectors
           </h2>
-          <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto">
+          <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
             Customers who remain active MetroMart shoppers but have stopped using their HSIC co-brand card. Invisible in standard churn reports. Devastating to revenue.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-          {/* Left: counter + stats */}
+          {/* Left Column: counter + stats */}
           <div ref={counterRef} className="space-y-6">
-            {/* Big counter */}
-            <div className="p-6 sm:p-8 rounded-2xl border border-orange-500/20 bg-orange-950/15">
-              <div className="text-[10px] font-mono tracking-[0.25em] uppercase text-orange-400 mb-2">
-                Silent Defectors Identified · OBSERVED
-              </div>
-              <div className="text-5xl sm:text-6xl md:text-7xl font-black text-white metric-counter leading-none mb-2">
-                {count.toLocaleString('en-IN')}
-              </div>
-              <div className="text-sm text-slate-400">
-                Active MetroMart shoppers · ΔSoW ≤ −15 pp from prior year
+            {/* Big counter card */}
+            <div className="p-6 sm:p-8 rounded-2xl border border-orange-500/25 bg-orange-950/20 backdrop-blur-md relative overflow-hidden shadow-xl shadow-black/30">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-2xl pointer-events-none" />
+              <div className="relative">
+                <div className="text-[10px] font-mono tracking-[0.25em] uppercase text-orange-400 font-bold mb-2">
+                  Silent Defectors Identified · OBSERVED
+                </div>
+                <div className="text-5xl sm:text-6xl md:text-7xl font-black text-white metric-counter leading-none mb-2 tracking-tight">
+                  {count.toLocaleString('en-IN')}
+                </div>
+                <div className="text-sm text-slate-300">
+                  Active MetroMart shoppers · ΔSoW ≤ −15 pp from prior fiscal year
+                </div>
               </div>
             </div>
 
@@ -154,40 +165,41 @@ export const DefectorScene: React.FC = () => {
                 { label: 'Annualized Revenue at Risk', value: '₹69.5M', color: 'text-rose-400', tag: 'MODEL_DERIVED', sub: 't=118.4, p<0.001' },
                 { label: 'Big-Ticket Shoppers', value: '14,850', color: 'text-amber-400', tag: 'OBSERVED', sub: '>₹5,000 avg basket' },
               ].map((s) => (
-                <div key={s.label} className="p-4 rounded-xl border border-slate-700/50 bg-slate-900/40">
+                <div key={s.label} className="p-4 sm:p-5 rounded-xl border border-slate-700/60 bg-slate-900/60 backdrop-blur-md shadow-md">
                   <div className={`text-2xl sm:text-3xl font-black metric-counter ${s.color}`}>{s.value}</div>
-                  <div className="text-xs text-slate-400 mt-1 leading-tight">{s.label}</div>
-                  <div className={`text-[9px] font-mono mt-1 ${s.tag === 'OBSERVED' ? 'text-cyan-600' : 'text-amber-600'} uppercase tracking-wider`}>
+                  <div className="text-xs text-slate-300 font-medium mt-1 leading-snug">{s.label}</div>
+                  <div className={`text-[9px] font-mono mt-1 ${s.tag === 'OBSERVED' ? 'text-cyan-400' : 'text-amber-400'} uppercase tracking-wider font-semibold`}>
                     [{s.tag}]
                   </div>
-                  <div className="text-[9px] text-slate-600 mt-0.5 font-mono">{s.sub}</div>
+                  <div className="text-[10px] text-slate-500 mt-0.5 font-mono">{s.sub}</div>
                 </div>
               ))}
             </div>
 
             {/* Detection method */}
-            <div className="p-4 rounded-xl border border-slate-800 bg-slate-900/30">
-              <div className="text-[10px] font-mono text-slate-500 uppercase tracking-wider mb-2">Detection Method</div>
-              <div className="text-sm text-slate-300 leading-relaxed">
+            <div className="p-4 rounded-xl border border-slate-800/80 bg-slate-900/40 backdrop-blur-md">
+              <div className="text-[10px] font-mono text-slate-400 uppercase tracking-wider mb-1.5 font-bold">Detection Methodology</div>
+              <div className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                 ΔSoW computed per-customer using 12-month rolling windows. Customers with ≥15 pp decline and active MetroMart transactions in both periods are flagged as Silent Defectors.
               </div>
             </div>
           </div>
 
-          {/* Right: scatter plot */}
+          {/* Right Column: scatter plot */}
           <div className="relative">
-            <div className="text-[10px] font-mono text-slate-500 uppercase tracking-wider mb-3 text-center">
+            <div className="text-xs font-mono text-slate-400 uppercase tracking-wider mb-3 text-center">
               Representative Sample (n=150 of 10,098) · Risk by SoW Decline
             </div>
             <div
-              className="relative rounded-2xl overflow-hidden border border-slate-800/60 bg-slate-900/30"
+              className="relative rounded-2xl overflow-hidden border border-slate-800/80 bg-slate-900/60 backdrop-blur-md shadow-xl"
               style={{ aspectRatio: '1/0.75' }}
             >
               <canvas ref={canvasRef} className="w-full h-full" style={{ display: 'block' }} />
-              {/* Axis labels */}
-              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-[9px] font-mono text-slate-600">Transaction Recency →</div>
+              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-[10px] font-mono text-slate-400 font-semibold">
+                Transaction Recency →
+              </div>
               <div
-                className="absolute left-2 top-1/2 -translate-y-1/2 text-[9px] font-mono text-slate-600"
+                className="absolute left-2 top-1/2 -translate-y-1/2 text-[10px] font-mono text-slate-400 font-semibold"
                 style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg) translateY(50%)' }}
               >
                 ← SoW Decline Severity
@@ -195,15 +207,15 @@ export const DefectorScene: React.FC = () => {
             </div>
 
             {/* Legend */}
-            <div className="flex items-center justify-center gap-4 mt-3">
+            <div className="flex items-center justify-center gap-6 mt-3">
               {[
                 { color: '#f43f5e', label: 'High Risk' },
                 { color: '#f59e0b', label: 'Medium Risk' },
                 { color: '#6366f1', label: 'Lower Risk' },
               ].map((l) => (
-                <div key={l.label} className="flex items-center gap-1.5">
-                  <div className="w-2 h-2 rounded-full" style={{ backgroundColor: l.color }} />
-                  <span className="text-[10px] text-slate-500">{l.label}</span>
+                <div key={l.label} className="flex items-center gap-2">
+                  <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: l.color }} />
+                  <span className="text-xs text-slate-400 font-medium">{l.label}</span>
                 </div>
               ))}
             </div>
