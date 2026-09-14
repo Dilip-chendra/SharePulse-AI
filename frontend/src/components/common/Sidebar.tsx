@@ -1,46 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  Activity,
   LayoutDashboard, 
-  AlertTriangle,
   PieChart, 
-  ArrowRightLeft, 
-  Radar, 
-  Target,
-  ShoppingBag,
-  Gift,
-  RotateCcw,
   Users, 
-  Shapes, 
-  TrendingDown, 
-  Zap, 
-  Sliders, 
-  Shield,
-  Cpu,
+  Target,
+  Sparkles,
   FlaskConical, 
   Database,
   FileCheck,
-  GitBranch,
+  Settings,
   Search,
   ChevronDown,
   ChevronRight,
-  Server,
-  Sparkles,
-  Bot
+  ArrowRightLeft,
+  ShoppingBag,
+  Gift,
+  Radar,
+  Shapes,
+  Sliders,
+  Activity
 } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
 
-interface NavItem {
+export interface NavItem {
   id: string;
   label: string;
   icon: React.ElementType;
   badge?: string;
 }
 
-interface NavSection {
+export interface NavSection {
   id: string;
   title: string;
   icon: React.ElementType;
+  primaryPageId: string;
   items: NavItem[];
 }
 
@@ -51,112 +44,109 @@ interface SidebarProps {
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({ activePage, setActivePage, onOpenCommandPalette }) => {
+  // Clean Enterprise 9-Module Navigation Structure (Synchrony Analytics Hackathon 2026)
   const navSections: NavSection[] = [
     {
       id: "overview",
-      title: "OVERVIEW",
+      title: "Overview",
       icon: LayoutDashboard,
+      primaryPageId: "overview",
       items: [
-        { id: "overview", label: "Executive Command", icon: LayoutDashboard, badge: "COMMAND" },
-        { id: "alerts", label: "Alerts & Incidents", icon: AlertTriangle, badge: "4" },
+        { id: "overview", label: "Command Center", icon: LayoutDashboard, badge: "LIVE" },
+        { id: "pulse", label: "Business Pulse", icon: Activity, badge: "STREAM" },
       ]
     },
     {
-      id: "intelligence",
-      title: "INTELLIGENCE",
+      id: "diagnose",
+      title: "Diagnose",
       icon: PieChart,
+      primaryPageId: "diagnose",
       items: [
+        { id: "diagnose", label: "Diagnostic Studio", icon: PieChart },
         { id: "sow", label: "Share of Wallet", icon: PieChart },
-        { id: "migration", label: "Payment Migration", icon: ArrowRightLeft },
-        { id: "attrition", label: "Attrition Radar", icon: Radar },
-        { id: "opportunity", label: "Opportunity Radar", icon: Target },
-        { id: "big-ticket", label: "Big-Ticket Recovery", icon: ShoppingBag },
-        { id: "prime-reward", label: "Prime Rewards", icon: Gift },
-        { id: "return-friction", label: "Return Friction", icon: RotateCcw },
+        { id: "migration", label: "Payment Rails", icon: ArrowRightLeft },
+        { id: "big-ticket", label: "Ticket Size & Basket", icon: ShoppingBag },
+        { id: "prime-reward", label: "Prime Reward Leakage", icon: Gift },
+        { id: "attrition", label: "Decay & Silent Defection", icon: Radar },
       ]
     },
     {
       id: "customers",
-      title: "CUSTOMERS",
+      title: "Customers",
       icon: Users,
+      primaryPageId: "customers",
       items: [
-        { id: "customers", label: "Customer 360 Store", icon: Users },
-        { id: "segmentation", label: "Customer Archetypes", icon: Shapes },
-        { id: "leakage", label: "Margin Bleed Index", icon: TrendingDown },
+        { id: "customers", label: "Customer 360", icon: Users, badge: "45K" },
+        { id: "segmentation", label: "Archetypes & Clusters", icon: Shapes },
       ]
     },
     {
-      id: "decisions",
-      title: "DECISIONS",
-      icon: Zap,
+      id: "opportunities",
+      title: "Opportunities",
+      icon: Target,
+      primaryPageId: "opportunities",
       items: [
-        { id: "nba", label: "Next Best Action", icon: Sparkles },
-        { id: "strategy", label: "Strategy Lab", icon: Sliders },
-        { id: "actions", label: "Action Center Matrix", icon: Shield, badge: "PROFIT" },
-        { id: "automations", label: "Automations & HITL", icon: Cpu },
+        { id: "opportunities", label: "Ranked Pipeline", icon: Target, badge: "₹51.25M" },
+      ]
+    },
+    {
+      id: "nba",
+      title: "Next Best Actions",
+      icon: Sparkles,
+      primaryPageId: "nba",
+      items: [
+        { id: "nba", label: "Decision Engine", icon: Sparkles, badge: "AI" },
+        { id: "strategy", label: "Action Economics", icon: Sliders },
       ]
     },
     {
       id: "experiments",
-      title: "EXPERIMENTS",
+      title: "Experiments",
       icon: FlaskConical,
+      primaryPageId: "experiments",
       items: [
-        { id: "experiments", label: "Experiment & Uplift", icon: FlaskConical },
-      ]
-    },
-    {
-      id: "ai",
-      title: "AI & DISCOVERY",
-      icon: Bot,
-      items: [
-        { id: "ai-discovery", label: "Autonomous Discovery", icon: Sparkles, badge: "AI" },
-        { id: "model-explainability", label: "Model Explainability", icon: Shield },
+        { id: "experiments", label: "Experiment Center", icon: FlaskConical, badge: "RCT" },
       ]
     },
     {
       id: "data",
-      title: "DATA & PIPELINE",
+      title: "Data",
       icon: Database,
+      primaryPageId: "data",
       items: [
-        { id: "connections", label: "Data Connections", icon: Server, badge: "5 FEEDS" },
-        { id: "datasets", label: "Dataset Manager", icon: Database },
-        { id: "data-health", label: "Data Health & Drift", icon: FileCheck },
-        { id: "lineage", label: "Visual Data Lineage", icon: GitBranch },
+        { id: "data", label: "Ingestion & Quality", icon: Database, badge: "DUAL" },
       ]
     },
     {
-      id: "governance",
-      title: "GOVERNANCE",
-      icon: Shield,
+      id: "evidence",
+      title: "Evidence",
+      icon: FileCheck,
+      primaryPageId: "evidence",
       items: [
-        { id: "model-health", label: "Model Monitoring (PSI)", icon: Shield },
-        { id: "audit", label: "Audit & Security", icon: Shield },
-        { id: "governance", label: "Data Governance", icon: FileCheck },
+        { id: "evidence", label: "Auditable Claims & Logic", icon: FileCheck, badge: "AUDIT" },
       ]
     },
     {
-      id: "live-stream",
-      title: "LIVE INGESTION",
-      icon: Activity,
+      id: "settings",
+      title: "Settings",
+      icon: Settings,
+      primaryPageId: "settings",
       items: [
-        { id: "pulse", label: "Business Pulse (Live)", icon: Activity, badge: "STREAMING" },
+        { id: "settings", label: "Environment & Health", icon: Settings },
       ]
     }
   ];
 
   // Helper to find which section contains the active page
   const findSectionForPage = (pageId: string) => {
-    return navSections.find(sec => sec.items.some(item => item.id === pageId))?.id || "overview";
+    return navSections.find(sec => sec.items.some(item => item.id === pageId) || sec.primaryPageId === pageId)?.id || "overview";
   };
 
-  // Keep track of which sections are expanded.
-  // Initialize with only the active section open (or empty) so it starts clean.
   const [openSections, setOpenSections] = useState<Record<string, boolean>>(() => {
     const activeSecId = findSectionForPage(activePage);
     return { [activeSecId]: true };
   });
 
-  // When activePage changes, ensure its parent section is open
   useEffect(() => {
     const activeSecId = findSectionForPage(activePage);
     setOpenSections(prev => ({
@@ -165,11 +155,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ activePage, setActivePage, onO
     }));
   }, [activePage]);
 
-  const toggleSection = (secId: string) => {
+  const toggleSection = (secId: string, primaryPageId: string) => {
     setOpenSections(prev => ({
       ...prev,
       [secId]: !prev[secId]
     }));
+    // If user clicks the section header, navigate to primary page
+    setActivePage(primaryPageId);
   };
 
   return (
@@ -179,8 +171,21 @@ export const Sidebar: React.FC<SidebarProps> = ({ activePage, setActivePage, onO
         <BrandLogo size="md" />
       </div>
 
+      {/* Dataset Environment Indicator */}
+      <div className="px-3 pt-3 pb-1">
+        <div className="flex items-center justify-between px-3 py-1.5 rounded-lg bg-indigo-950/40 border border-indigo-500/30 text-[11px] font-mono">
+          <div className="flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+            <span className="text-cyan-300 font-semibold">Synchrony FY25–26</span>
+          </div>
+          <span className="text-[9px] text-slate-400 font-bold px-1.5 py-0.5 rounded bg-slate-800/80 border border-slate-700">
+            OFFICIAL
+          </span>
+        </div>
+      </div>
+
       {/* Global Command Palette Trigger */}
-      <div className="px-3 pt-3 pb-2">
+      <div className="px-3 py-2">
         <button
           onClick={onOpenCommandPalette}
           className="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-indigo-500/50 text-xs text-slate-400 hover:text-slate-200 transition-all shadow-inner group cursor-pointer"
@@ -194,10 +199,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ activePage, setActivePage, onO
       </div>
 
       {/* Navigation Links Accordion (Scrollable) */}
-      <div className="flex-1 overflow-y-auto px-2.5 py-2 space-y-1.5 custom-scrollbar">
+      <div className="flex-1 overflow-y-auto px-2.5 py-1 space-y-1 custom-scrollbar">
         {navSections.map((section) => {
           const isOpen = !!openSections[section.id];
-          const hasActiveChild = section.items.some(item => item.id === activePage);
+          const isSectionActive = activePage === section.primaryPageId || section.items.some(item => item.id === activePage);
           const SectionIcon = section.icon;
 
           return (
@@ -205,38 +210,40 @@ export const Sidebar: React.FC<SidebarProps> = ({ activePage, setActivePage, onO
               {/* Main Section Header Button */}
               <button
                 type="button"
-                onClick={() => toggleSection(section.id)}
-                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer group ${
-                  hasActiveChild
-                    ? "bg-slate-900/90 text-indigo-300 border border-indigo-500/30 shadow-sm"
+                onClick={() => toggleSection(section.id, section.primaryPageId)}
+                className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer group ${
+                  isSectionActive
+                    ? "bg-slate-900/90 text-indigo-300 border border-indigo-500/40 shadow-sm"
                     : "text-slate-300 hover:text-white hover:bg-slate-900/60"
                 }`}
               >
                 <div className="flex items-center gap-2.5 min-w-0">
                   <SectionIcon className={`w-4 h-4 shrink-0 transition-colors ${
-                    hasActiveChild ? "text-indigo-400" : "text-slate-400 group-hover:text-slate-200"
+                    isSectionActive ? "text-indigo-400" : "text-slate-400 group-hover:text-slate-200"
                   }`} />
-                  <span className="tracking-wide uppercase text-[11px] font-extrabold truncate">
+                  <span className="tracking-wide text-xs font-bold truncate">
                     {section.title}
                   </span>
                 </div>
 
                 <div className="flex items-center gap-1.5 shrink-0">
-                  {section.items.length > 0 && (
+                  {section.items.length > 1 && (
                     <span className="text-[10px] font-mono text-slate-400 px-1.5 py-0.2 rounded bg-slate-800/80">
                       {section.items.length}
                     </span>
                   )}
-                  {isOpen ? (
-                    <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-slate-200 transition-transform duration-200" />
-                  ) : (
-                    <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-slate-200 transition-transform duration-200" />
-                  )}
+                  {section.items.length > 1 ? (
+                    isOpen ? (
+                      <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-slate-200 transition-transform duration-200" />
+                    ) : (
+                      <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-slate-200 transition-transform duration-200" />
+                    )
+                  ) : null}
                 </div>
               </button>
 
-              {/* Sub-sections List (Collapsible) */}
-              {isOpen && (
+              {/* Sub-sections List (Collapsible, only for multi-item sections) */}
+              {isOpen && section.items.length > 1 && (
                 <div className="mt-1 mb-1.5 ml-3 pl-2.5 border-l border-slate-800/80 space-y-1 animate-in fade-in slide-in-from-top-1 duration-150">
                   {section.items.map((item) => {
                     const Icon = item.icon;
@@ -248,7 +255,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activePage, setActivePage, onO
                         onClick={() => setActivePage(item.id)}
                         className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
                           isActive
-                            ? 'bg-gradient-to-r from-indigo-600 via-indigo-600 to-indigo-700 text-white shadow-md shadow-indigo-950/80 font-semibold'
+                            ? 'bg-gradient-to-r from-indigo-600 to-indigo-700 text-white shadow-md shadow-indigo-950/80 font-semibold'
                             : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/60'
                         }`}
                       >
@@ -260,9 +267,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ activePage, setActivePage, onO
                           <span className={`text-[9px] font-mono font-bold px-1.5 py-0.2 rounded shrink-0 ${
                             isActive
                               ? 'bg-white/20 text-white'
-                              : item.badge === 'STREAMING'
+                              : item.badge === 'STREAM'
                               ? 'bg-emerald-950 text-emerald-400 border border-emerald-500/30 animate-pulse'
-                              : item.badge === 'COMMAND'
+                              : item.badge === 'LIVE'
                               ? 'bg-indigo-950 text-indigo-300 border border-indigo-500/30'
                               : item.badge === 'AI'
                               ? 'bg-purple-950 text-purple-300 border border-purple-500/30'
@@ -286,10 +293,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ activePage, setActivePage, onO
         <div className="flex items-center justify-between px-2 py-1 text-[11px] text-slate-400">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="font-mono text-slate-300">Engine v2.5.0</span>
+            <span className="font-mono text-slate-300">Decision Engine v3.0</span>
           </div>
           <span className="text-[10px] font-semibold text-emerald-400 bg-emerald-950/80 px-1.5 py-0.2 rounded border border-emerald-500/30">
-            CONNECTED
+            ONLINE
           </span>
         </div>
       </div>

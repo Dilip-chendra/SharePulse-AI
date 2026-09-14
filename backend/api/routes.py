@@ -1468,3 +1468,29 @@ def list_datasets():
                 "status": "READY",
             })
     return {"datasets": datasets, "total": len(datasets), "active_dataset": "Synchrony Case Study"}
+
+@router.get("/evidence")
+def get_evidence_pack():
+    """Returns the 13 verified Synchrony Analytics Hackathon 2026 ground truth evidence records."""
+    return {
+        "status": "success",
+        "evidence_pack_version": "2.0.0",
+        "verified_metrics": [
+            {"id": "EV-01", "claim": "Total Transactions", "value": "444,118", "status": "OBSERVED"},
+            {"id": "EV-02", "claim": "Total Cardholders", "value": "45,000", "status": "OBSERVED"},
+            {"id": "EV-03", "claim": "FY25 Total Net Spend", "value": "Rs. 296,344,254.68", "status": "OBSERVED"},
+            {"id": "EV-04", "claim": "FY25 HSIC Net Spend", "value": "Rs. 85,671,725.46 (28.91% SoW)", "status": "OBSERVED"},
+            {"id": "EV-05", "claim": "FY26 Total Net Spend", "value": "Rs. 353,804,475.40", "status": "OBSERVED"},
+            {"id": "EV-06", "claim": "FY26 HSIC Net Spend", "value": "Rs. 68,922,629.22 (19.48% SoW)", "status": "OBSERVED"},
+            {"id": "EV-07", "claim": "HSIC SoW Contraction", "value": "-9.43 percentage points", "status": "OBSERVED"},
+            {"id": "EV-08", "claim": "MetroMart Wallet Share", "value": "35.68%", "status": "OBSERVED"},
+            {"id": "EV-09", "claim": "Cash & UPI Share", "value": "23.40%", "status": "OBSERVED"},
+            {"id": "EV-10", "claim": "High-Ticket (>Rs. 5,000) HSIC SoW", "value": "11.20%", "status": "OBSERVED"},
+            {"id": "EV-11", "claim": "Prime Unclaimed Cashback", "value": "Rs. 5,516,360.84 across 19,423 cardholders", "status": "OBSERVED"},
+            {"id": "EV-12", "claim": "Silent Defector Cohort", "value": "10,098 Cardholders", "status": "MODEL_DERIVED"},
+            {"id": "EV-13", "claim": "Big-Ticket Shopper Cohort", "value": "14,850 Cardholders", "status": "MODEL_DERIVED"},
+            {"id": "EV-14", "claim": "Modeled Recapturable Spend", "value": "Rs. 51.25M", "status": "MODEL_DERIVED"},
+            {"id": "EV-15", "claim": "Return Rate & Settlement Latency", "value": "4.8% return rate verified; refund settlement latency unobserved in retail dataset", "status": "HYPOTHESIS"}
+        ]
+    }
+

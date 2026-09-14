@@ -456,3 +456,10 @@ export async function generateLiveStreamTraffic(count: number = 5, anomaly: bool
   if (!res.ok) throw new Error("Failed to generate live stream traffic");
   return res.json();
 }
+
+export async function fetchSystemStatus() {
+  const res = await safeFetch(`${API_ENDPOINT}/system/status`);
+  if (!res.ok) throw new Error("Failed to fetch system status");
+  return res.json();
+}
+
