@@ -17,20 +17,28 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import { LoadingScreen } from '../components/landing/LoadingScreen';
 import { FloatingNav } from '../components/landing/FloatingNav';
 import { ParticleCanvas } from '../components/landing/ParticleCanvas';
+
+// The 15 Pinned Cinematic Scroll Narrative Scenes
 import { HeroScene } from '../components/landing/HeroScene';
-import { CrisisScene } from '../components/landing/CrisisScene';
-import { MigrationScene } from '../components/landing/MigrationScene';
-import { DefectorScene } from '../components/landing/DefectorScene';
-import { PrimeScene } from '../components/landing/PrimeScene';
+import { SpendingUniverseScene } from '../components/landing/SpendingUniverseScene';
+import { SoWContractionScene } from '../components/landing/SoWContractionScene';
+import { RailMigrationScene } from '../components/landing/RailMigrationScene';
 import { BigTicketScene } from '../components/landing/BigTicketScene';
-import { RecoveryScene } from '../components/landing/RecoveryScene';
-import { PlatformScene } from '../components/landing/PlatformScene';
-import { CTAScene } from '../components/landing/CTAScene';
+import { PrimeParadoxScene } from '../components/landing/PrimeParadoxScene';
+import { CustomerBehaviorScene } from '../components/landing/CustomerBehaviorScene';
+import { ReasoningPipelineScene } from '../components/landing/ReasoningPipelineScene';
+import { OpportunityDiscoveryScene } from '../components/landing/OpportunityDiscoveryScene';
+import { NextBestActionScene } from '../components/landing/NextBestActionScene';
+import { ActionEconomicsScene } from '../components/landing/ActionEconomicsScene';
+import { WaitDecisionScene } from '../components/landing/WaitDecisionScene';
+import { ExperimentationScene } from '../components/landing/ExperimentationScene';
+import { LearningLoopScene } from '../components/landing/LearningLoopScene';
+import { GrandFinalScene } from '../components/landing/GrandFinalScene';
 
 // Register GSAP plugin once at module level
 gsap.registerPlugin(ScrollTrigger);
 
-const SCENE_COUNT = 9;
+const SCENE_COUNT = 15;
 
 export const LandingPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
@@ -124,34 +132,52 @@ export const LandingPage: React.FC = () => {
         {/* Floating navigation */}
         <FloatingNav activeScene={activeScene} />
 
-        {/* ── 9 CINEMATIC SCROLL SCENES (all transparent layers over the living particle canvas) ── */}
+        {/* ── 15 PINNED CINEMATIC SCROLL NARRATIVE SCENES ── */}
         <div className="relative z-10">
-          {/* Scene 1: Hero */}
+          {/* Scene 01: Hero / Opening */}
           <HeroScene />
 
-          {/* Scene 2: SoW Crisis */}
-          <CrisisScene />
+          {/* Scene 02: Customer Spending Universe */}
+          <SpendingUniverseScene />
 
-          {/* Scene 3: Payment Migration */}
-          <MigrationScene />
+          {/* Scene 03: Share of Wallet Contraction */}
+          <SoWContractionScene />
 
-          {/* Scene 4: Silent Defectors */}
-          <DefectorScene />
+          {/* Scene 04: Spend Migration */}
+          <RailMigrationScene />
 
-          {/* Scene 5: Prime Cashback Leak */}
-          <PrimeScene />
-
-          {/* Scene 6: Big-Ticket Opportunity */}
+          {/* Scene 05: Big-Ticket Reveal */}
           <BigTicketScene />
 
-          {/* Scene 7: Modeled Recapture */}
-          <RecoveryScene />
+          {/* Scene 06: Prime Reward Paradox */}
+          <PrimeParadoxScene />
 
-          {/* Scene 8: Platform Architecture */}
-          <PlatformScene />
+          {/* Scene 07: Customer Intelligence & Behavioral Clustering */}
+          <CustomerBehaviorScene />
 
-          {/* Scene 9: CTA */}
-          <CTAScene />
+          {/* Scene 08: AI Intelligence Layer / Reasoning Pipeline */}
+          <ReasoningPipelineScene />
+
+          {/* Scene 09: Opportunity Discovery */}
+          <OpportunityDiscoveryScene />
+
+          {/* Scene 10: Next Best Action Layer */}
+          <NextBestActionScene />
+
+          {/* Scene 11: Action Economics */}
+          <ActionEconomicsScene />
+
+          {/* Scene 12: The "WAIT / DO NOTHING" Decision */}
+          <WaitDecisionScene />
+
+          {/* Scene 13: Causal Experimentation */}
+          <ExperimentationScene />
+
+          {/* Scene 14: Closed-Loop Learning Flywheel */}
+          <LearningLoopScene />
+
+          {/* Scene 15: Final Grand Composition & Call to Action */}
+          <GrandFinalScene />
 
           {/* Footer */}
           <footer className="py-10 px-4 border-t border-slate-800/60 bg-[#04060A]/80 backdrop-blur-md">

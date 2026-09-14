@@ -7,10 +7,15 @@ interface FloatingNavProps {
 }
 
 const NAV_ITEMS = [
-  { label: 'Product',       sceneIndex: 0, href: '#scene-hero' },
-  { label: 'Intelligence',  sceneIndex: 1, href: '#scene-crisis' },
-  { label: 'How It Works',  sceneIndex: 7, href: '#scene-platform' },
-  { label: 'Insights',      sceneIndex: 4, href: '#scene-prime' },
+  { label: 'Overview',      sceneIndex: 0, href: '#scene-hero' },
+  { label: 'Contraction',   sceneIndex: 2, href: '#scene-sow' },
+  { label: 'Migration',     sceneIndex: 3, href: '#scene-migration' },
+  { label: 'Big-Ticket',    sceneIndex: 4, href: '#scene-bigticket' },
+  { label: 'Behavior',      sceneIndex: 6, href: '#scene-behavior' },
+  { label: 'AI Decision',   sceneIndex: 7, href: '#scene-decision' },
+  { label: 'Actions',       sceneIndex: 9, href: '#scene-actions' },
+  { label: 'Causal RCT',    sceneIndex: 12, href: '#scene-experiment' },
+  { label: 'Evidence',      sceneIndex: 14, href: '#scene-finale' },
 ];
 
 export const FloatingNav: React.FC<FloatingNavProps> = ({ activeScene }) => {
