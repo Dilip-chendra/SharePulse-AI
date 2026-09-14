@@ -8,13 +8,9 @@ interface FloatingNavProps {
 
 const NAV_ITEMS = [
   { label: 'Overview',      sceneIndex: 0, href: '#scene-hero' },
-  { label: 'Contraction',   sceneIndex: 2, href: '#scene-sow' },
-  { label: 'Migration',     sceneIndex: 3, href: '#scene-migration' },
-  { label: 'Big-Ticket',    sceneIndex: 4, href: '#scene-bigticket' },
-  { label: 'Behavior',      sceneIndex: 6, href: '#scene-behavior' },
-  { label: 'AI Decision',   sceneIndex: 7, href: '#scene-decision' },
+  { label: 'Diagnosis',     sceneIndex: 2, href: '#scene-sow' },
+  { label: 'Intelligence',  sceneIndex: 6, href: '#scene-behavior' },
   { label: 'Actions',       sceneIndex: 9, href: '#scene-actions' },
-  { label: 'Causal RCT',    sceneIndex: 12, href: '#scene-experiment' },
   { label: 'Evidence',      sceneIndex: 14, href: '#scene-finale' },
 ];
 
@@ -40,10 +36,10 @@ export const FloatingNav: React.FC<FloatingNavProps> = ({ activeScene }) => {
   return (
     <nav
       ref={navRef}
-      className={`fixed top-0 left-0 right-0 z-[500] transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-[500] transition-all duration-300 backdrop-blur-xl border-b ${
         scrolled
-          ? 'bg-[#07090E]/90 backdrop-blur-md border-b border-white/[0.06] shadow-xl shadow-black/40'
-          : 'bg-transparent'
+          ? 'bg-[#07090E]/95 border-white/[0.08] shadow-2xl shadow-black/50'
+          : 'bg-[#07090E]/75 border-white/[0.04]'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

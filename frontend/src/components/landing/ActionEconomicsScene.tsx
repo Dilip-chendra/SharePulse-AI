@@ -49,12 +49,11 @@ export const ActionEconomicsScene: React.FC = () => {
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight font-sans">
-            THE SYSTEM DOES NOT JUST ASK "WHAT CAN WE DO?"
+            Unit Margin Discipline
+            <span className="block text-2xl sm:text-3xl font-semibold text-cyan-300 mt-2 font-sans">
+              Is the Recovery Truly Worth the Cost?
+            </span>
           </h2>
-
-          <div className="text-2xl sm:text-3xl font-bold text-cyan-300 font-sans">
-            IT ASKS "IS IT WORTH DOING?"
-          </div>
 
           <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
             Every intervention is gated by transparent unit economics. No recommendation is deployed unless expected incremental spend exceeds incentive and operational hurdles.

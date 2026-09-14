@@ -62,8 +62,11 @@ export const SoWContractionScene: React.FC = () => {
             <span>SCENE 03 · THE SHARE OF WALLET COLLAPSE</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-tight">
-            HSIC SHARE CONTRACTS.
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight font-sans">
+            Share of Wallet Contraction
+            <span className="block text-xl sm:text-2xl font-semibold text-rose-400 mt-1 font-mono">
+              −9.43 Percentage Points
+            </span>
           </h2>
 
           <p className="text-slate-400 text-sm sm:text-base leading-relaxed">

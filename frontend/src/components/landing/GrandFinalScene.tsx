@@ -49,10 +49,12 @@ export const GrandFinalScene: React.FC = () => {
 
         {/* Final Statement (Section 22) */}
         <div className="space-y-4 max-w-4xl">
-          <h2 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.06] text-white font-sans">
-            DON'T JUST MEASURE LOST SHARE.
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1] text-white font-sans">
+            Don't Just Measure Lost Share.
             <br />
-            <span className="text-cyan-300">RECOVER IT INTELLIGENTLY.</span>
+            <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-emerald-400 bg-clip-text text-transparent">
+              Recover It Intelligently.
+            </span>
           </h2>
           <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-normal">
             Every transaction audited. Every customer classified. Every intervention justified by unit margin.

@@ -64,8 +64,9 @@ export const ReasoningPipelineScene: React.FC = () => {
             <span>SCENE 08 · THE DECISION PIPELINE</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-tight font-sans">
-            SHAREPULSE-AI TURNS DATA INTO DECISIONS.
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight font-sans">
+            Turning Raw Data Into
+            <span className="block text-indigo-400 mt-1">Autonomous Recovery Decisions.</span>
           </h2>
 
           <p className="text-slate-400 text-sm sm:text-base font-mono max-w-xl mx-auto">

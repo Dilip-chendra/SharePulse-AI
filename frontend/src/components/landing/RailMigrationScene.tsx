@@ -73,27 +73,27 @@ export const RailMigrationScene: React.FC = () => {
       <div className="relative z-10 max-w-5xl w-full flex flex-col md:flex-row items-center justify-between gap-12">
         {/* Left Narrative Text (Cross-Fading Story) */}
         <div className="md:w-5/12 relative h-48 flex items-center">
-          {/* Phase 1: "THE CUSTOMER DID NOT STOP SPENDING." */}
+          {/* Phase 1: Store traffic remained strong */}
           <div ref={text1Ref} className="absolute inset-x-0">
             <div className="text-[11px] font-mono tracking-widest text-slate-500 uppercase mb-3">
               SCENE 04 · SPEND REDIRECTION
             </div>
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-              THE CUSTOMER DID NOT STOP SPENDING.
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight font-sans">
+              Store Visits Remained Strong.
             </h2>
             <p className="text-slate-400 text-sm mt-3 font-mono">
               Total sales rose +19.4% in FY26. Store traffic and checkout volume grew consistently.
             </p>
           </div>
 
-          {/* Phase 2: "THE PAYMENT RAIL CHANGED." */}
+          {/* Phase 2: Payment rail changed */}
           <div ref={text2Ref} className="absolute inset-x-0 opacity-0">
             <div className="text-[11px] font-mono tracking-widest text-amber-400 uppercase mb-3 flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
               <span>THE CO-BRAND DISPLACEMENT</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-              THE PAYMENT RAIL <span className="text-amber-400">CHANGED.</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight font-sans">
+              Payment Rails <span className="text-amber-400">Shifted Away.</span>
             </h2>
             <p className="text-slate-300 text-sm mt-3 font-mono">
               MetroMart Wallet and Cash/UPI absorbed 59.08% of total retail turnover.

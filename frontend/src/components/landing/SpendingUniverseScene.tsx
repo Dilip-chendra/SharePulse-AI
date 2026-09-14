@@ -18,8 +18,8 @@ interface Particle {
 export const SpendingUniverseScene: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const text1Ref = useRef<HTMLDivElement>(null);
-  const text2Ref = useRef<HTMLDivElement>(null);
+  const hudRef = useRef<HTMLDivElement>(null);
+  const railsRef = useRef<HTMLDivElement>(null);
   const animFrameRef = useRef<number>(0);
   const scrollProgressRef = useRef<number>(0);
 
@@ -50,12 +50,16 @@ export const SpendingUniverseScene: React.FC = () => {
         },
       });
 
-      // Crossfade copy: "CUSTOMERS ARE STILL SPENDING." -> "THE QUESTION IS WHERE."
-      tl.fromTo(text1Ref.current, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.3 }, 0)
-        .to(text1Ref.current, { opacity: 0, y: -20, duration: 0.25 }, 0.4)
-        .fromTo(text2Ref.current, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35 }, 0.5)
-        .to(text2Ref.current, { opacity: 0.9, duration: 0.15 }, 0.85);
-
+      // Smooth HUD reveal and rail illumination
+      tl.fromTo(hudRef.current, { opacity: 0.85, scale: 0.98 }, { opacity: 1, scale: 1, duration: 0.3 }, 0);
+      if (railsRef.current) {
+        tl.fromTo(
+          railsRef.current.children,
+          { opacity: 0.4, y: 10 },
+          { opacity: 1, y: 0, stagger: 0.08, duration: 0.4 },
+          0.1
+        );
+      }
     }, containerRef);
 
     // Canvas particle engine
@@ -172,35 +176,78 @@ export const SpendingUniverseScene: React.FC = () => {
     <section
       ref={containerRef}
       id="scene-universe"
-      className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-[#07090E] select-none"
+      className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-[#07090E] px-4 sm:px-6 select-none"
     >
       {/* 60fps Canvas */}
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none z-0" />
 
-      {/* Center Narrative Typographic Layer */}
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-6 pointer-events-none">
-        <div className="text-[11px] font-mono tracking-widest text-slate-500 uppercase mb-4">
-          SCENE 02 · TRANSACTION UNIVERSE
+      {/* Main Glassmorphic Control HUD Card */}
+      <div
+        ref={hudRef}
+        className="relative z-10 w-full max-w-4xl p-6 sm:p-8 rounded-2xl bg-[#0B0F19]/90 border border-[#1A2234] backdrop-blur-xl shadow-2xl shadow-black/60 text-center"
+      >
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-mono text-[11px] uppercase tracking-wider mb-4">
+          <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+          <span>SCENE 02 · REAL-TIME TRANSACTION DYNAMICS</span>
         </div>
 
-        {/* Phase 1 Text */}
-        <div ref={text1Ref} className="absolute inset-x-0 top-1/2 -translate-y-1/2">
-          <h2 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-tight font-sans">
-            CUSTOMERS ARE STILL SPENDING.
-          </h2>
-          <p className="text-slate-400 text-sm sm:text-base mt-4 font-mono">
-            444,118 transactions streaming across 45,000 active retail accounts.
-          </p>
+        <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight font-sans">
+          Customers Are Still Spending.
+          <span className="block mt-1 bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent">
+            The Question Is Which Rail Absorbs It.
+          </span>
+        </h2>
+
+        <p className="text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed max-w-2xl mx-auto mt-3 font-normal">
+          Across 444,118 net transactions and ₹353.80M in retail turnover (+19.4% YoY), customer volume remained resilient. But checkout spend fractured across five competing payment rails.
+        </p>
+
+        {/* Telemetry HUD metrics */}
+        <div className="grid grid-cols-3 gap-3 pt-4 mt-6 border-t border-slate-800/80 font-mono text-center">
+          <div className="p-3 rounded-xl bg-[#07090E]/80 border border-[#1A2234]">
+            <span className="text-[10px] text-slate-500 uppercase block tracking-wider">Net Swipes</span>
+            <span className="text-sm sm:text-lg font-bold text-white">444,118</span>
+            <span className="text-[9px] text-slate-500 block">[OBSERVED]</span>
+          </div>
+          <div className="p-3 rounded-xl bg-[#07090E]/80 border border-[#1A2234]">
+            <span className="text-[10px] text-slate-500 uppercase block tracking-wider">FY26 Gross Spend</span>
+            <span className="text-sm sm:text-lg font-bold text-emerald-400">₹353.80M</span>
+            <span className="text-[9px] text-slate-500 block">+19.4% YoY</span>
+          </div>
+          <div className="p-3 rounded-xl bg-[#07090E]/80 border border-[#1A2234]">
+            <span className="text-[10px] text-slate-500 uppercase block tracking-wider">Retail Accounts</span>
+            <span className="text-sm sm:text-lg font-bold text-blue-400">45,000</span>
+            <span className="text-[9px] text-slate-500 block">Active Shoppers</span>
+          </div>
         </div>
 
-        {/* Phase 2 Text */}
-        <div ref={text2Ref} className="absolute inset-x-0 top-1/2 -translate-y-1/2 opacity-0">
-          <h2 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-cyan-300 leading-tight font-sans">
-            THE QUESTION IS WHERE.
-          </h2>
-          <p className="text-slate-300 text-sm sm:text-base mt-4 font-mono max-w-xl mx-auto">
-            Spend is separating into 5 competing payment rails at store checkout.
-          </p>
+        {/* 5 Payment Rail Migration Pills */}
+        <div ref={railsRef} className="grid grid-cols-2 sm:grid-cols-5 gap-2 mt-4 pt-4 border-t border-slate-800/60 font-mono text-xs text-left">
+          <div className="p-2.5 rounded-lg bg-[#07090E]/90 border border-amber-500/30">
+            <span className="text-[10px] text-amber-400 block font-bold">MetroMart Wallet</span>
+            <span className="text-sm font-black text-white">35.68%</span>
+            <span className="text-[9px] text-slate-400 block">₹126.2M GMV</span>
+          </div>
+          <div className="p-2.5 rounded-lg bg-[#07090E]/90 border border-emerald-500/30">
+            <span className="text-[10px] text-emerald-400 block font-bold">Cash / UPI</span>
+            <span className="text-sm font-black text-white">23.40%</span>
+            <span className="text-[9px] text-slate-400 block">₹82.8M GMV</span>
+          </div>
+          <div className="p-2.5 rounded-lg bg-blue-950/40 border border-blue-500/50 shadow-sm shadow-blue-500/10">
+            <span className="text-[10px] text-blue-400 block font-bold">HSIC Co-Brand</span>
+            <span className="text-sm font-black text-blue-300">19.48%</span>
+            <span className="text-[9px] text-rose-400 block font-semibold">−9.43 pp drop</span>
+          </div>
+          <div className="p-2.5 rounded-lg bg-[#07090E]/90 border border-pink-500/30">
+            <span className="text-[10px] text-pink-400 block font-bold">Other Bank CC</span>
+            <span className="text-sm font-black text-white">10.79%</span>
+            <span className="text-[9px] text-slate-400 block">₹38.2M GMV</span>
+          </div>
+          <div className="col-span-2 sm:col-span-1 p-2.5 rounded-lg bg-[#07090E]/90 border border-cyan-500/30">
+            <span className="text-[10px] text-cyan-400 block font-bold">Debit Cards</span>
+            <span className="text-sm font-black text-white">10.66%</span>
+            <span className="text-[9px] text-slate-400 block">₹37.7M GMV</span>
+          </div>
         </div>
       </div>
     </section>

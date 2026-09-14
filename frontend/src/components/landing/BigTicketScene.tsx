@@ -53,8 +53,9 @@ export const BigTicketScene: React.FC = () => {
             <span>SCENE 05 · THE BIG-TICKET INVERSION</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight font-sans">
-            THE LARGER THE BASKET, THE SMALLER OUR SHARE.
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight font-sans">
+            The Larger the Basket,
+            <span className="block text-blue-400 mt-1">The Smaller Our Share.</span>
           </h2>
 
           <p className="text-slate-400 text-sm sm:text-base leading-relaxed">

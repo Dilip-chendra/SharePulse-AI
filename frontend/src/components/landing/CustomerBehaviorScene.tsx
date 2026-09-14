@@ -57,27 +57,27 @@ export const CustomerBehaviorScene: React.FC = () => {
       <div className="relative z-10 max-w-5xl w-full flex flex-col md:flex-row items-center justify-between gap-12">
         {/* Left Side: Editorial Story Crossfade */}
         <div className="md:w-5/12 relative h-48 flex items-center">
-          {/* Phase 1: "WE ARE NO LONGER LOOKING AT TRANSACTIONS." */}
+          {/* Phase 1: Beyond aggregate swipes */}
           <div ref={text1Ref} className="absolute inset-x-0">
             <div className="text-[11px] font-mono tracking-widest text-slate-500 uppercase mb-3">
               SCENE 07 · BEHAVIORAL ARCHETYPES
             </div>
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-              WE ARE NO LONGER LOOKING AT TRANSACTIONS.
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight font-sans">
+              Beyond Aggregate Swipes.
             </h2>
             <p className="text-slate-400 text-sm mt-3 font-mono">
               Aggregated spend tables hide the underlying human habit decay.
             </p>
           </div>
 
-          {/* Phase 2: "WE ARE LOOKING AT BEHAVIOR." */}
+          {/* Phase 2: Behavioral archetypes */}
           <div ref={text2Ref} className="absolute inset-x-0 opacity-0">
             <div className="text-[11px] font-mono tracking-widest text-orange-400 uppercase mb-3 flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" />
               <span>COHORT DISCOVERY</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-              WE ARE LOOKING AT <span className="text-orange-400">BEHAVIOR.</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight font-sans">
+              Deconstructing <span className="text-orange-400">Behavioral Archetypes.</span>
             </h2>
             <p className="text-slate-300 text-sm mt-3 font-mono">
               Cardholders group into predictive migration vectors based on velocity and basket profile.

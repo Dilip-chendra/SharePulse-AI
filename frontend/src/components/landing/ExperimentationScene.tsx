@@ -47,7 +47,8 @@ export const ExperimentationScene: React.FC = () => {
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight font-sans">
-            PROVE CAUSALITY. ELIMINATE ASSUMPTIONS.
+            Prove Causality.
+            <span className="block text-emerald-400 mt-1">Eliminate Marketing Assumptions.</span>
           </h2>
 
           <p className="text-slate-400 text-sm sm:text-base leading-relaxed">

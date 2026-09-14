@@ -45,12 +45,11 @@ export const WaitDecisionScene: React.FC = () => {
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight font-sans">
-            NOT A SPAM ENGINE.
+            Counterfactual Restraint
+            <span className="block text-2xl sm:text-3xl font-semibold text-amber-300 mt-2 font-sans">
+              Knowing When to Act, and When to Hold.
+            </span>
           </h2>
-
-          <div className="text-2xl sm:text-3xl font-bold text-amber-300 font-sans">
-            IT KNOWS WHEN TO ACT, AND WHEN TO WAIT.
-          </div>
 
           <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
             If a customer's organic recovery probability is already high, sending a discount voucher is margin cannibalization. The engine explicitly holds back marketing capital.

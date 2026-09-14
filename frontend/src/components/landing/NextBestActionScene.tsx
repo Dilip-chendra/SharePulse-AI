@@ -87,8 +87,9 @@ export const NextBestActionScene: React.FC = () => {
             <span>SCENE 10 · PRESCRIPTIVE DECISION LAYER</span>
           </div>
 
-          <h2 className="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight font-sans">
-            WHAT SHOULD WE DO?
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight font-sans">
+            Prescribing Targeted
+            <span className="block text-purple-400 mt-1">High-ROI Interventions.</span>
           </h2>
 
           <p className="text-slate-400 text-sm sm:text-base leading-relaxed">

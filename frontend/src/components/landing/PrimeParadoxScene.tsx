@@ -46,8 +46,9 @@ export const PrimeParadoxScene: React.FC = () => {
             <span>SCENE 06 · THE PRIME REWARD PARADOX</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight font-sans">
-            VALUE EXISTS. BUT IT ISN'T ALWAYS BEING CAPTURED.
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight font-sans">
+            Value Exists.
+            <span className="block text-amber-400 mt-1">Yet It Isn't Being Captured.</span>
           </h2>
 
           <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
